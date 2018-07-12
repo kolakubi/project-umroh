@@ -17,10 +17,10 @@
         }
 
         public function paketshafa(){
-            echo 'lala';
-            // $this->load->view('front/header');
-            // $this->load->view('front/paketshafa');
-            // $this->load->view('front/footer');
+            
+            $this->load->view('front/header');
+            $this->load->view('front/paketshafa');
+            $this->load->view('front/footer');
 
         }
 

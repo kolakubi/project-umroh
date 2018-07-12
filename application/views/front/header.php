@@ -62,7 +62,7 @@
           </ul>
           <!-- button logout -->
           <ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">
-            <li><a href="<?php echo base_url() ?>logout">Login/Daftar</a></li>
+            <li><a href="<?php echo base_url() ?>login">Login/Daftar</a></li>
           </ul> <!-- end of button logout -->
         </div> <!-- end of navbar-collapse -->
 
