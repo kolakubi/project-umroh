@@ -34,7 +34,7 @@
 
 			if(!$this->form_validation->run()){
 				$data['gagal'] = false;
-				$this->load->view('login', $data);
+				$this->load->view('login/login', $data);
 			}
 			else{
 				// ambil value dr field
@@ -88,42 +88,49 @@
 					}
 
 					$ip = get_client_ip_env();
-				}
 
-				// $arr = array(
-				// 	'username' => $username,
-				// 	'password' => $password,
-				// 	'ip' => $ip
-				// );
-				//
-				// echo '<pre>';
-				// print_r($arr);
-				// echo '</pre>';
+				} // => end of cek live server
 
-				//ambil data dari model login_model
-				$result = $this->login_model->login($username, $password, $ip);
-				// jika ada result
+				$dataLogin = array(
+					'username' => $username,
+					'password' => $password,
+					'ip' => $ip
+				);
+
+				// validasi login
+				$result = $this->login_model->login($dataLogin);
+				// jika berhasil
 				if($result){
 
-					$level = $result['level']; // cek level
+					// ambil level
+					$level = $result['level'];
 					$this->session->set_userdata($result);
 
-					if($level === '1'){ // jika level 1 ke admin
+					// admin
+					if($level === '1'){ 
 						redirect('admin');
 					}
+					// keuangan
 					else if($level === '2'){
-						redirect('agen'); // jika level 2 ke agen
+						redirect('agen');
 					}
-					else{
-						return false;
+					// direktur
+					else if($level === '3'){
+						redirect('agen');
 					}
+					// calon jamaah
+					else if($level === '4'){
+						redirect('home');
+					}
+
 				}
-				// jika tdk ada result
+				// jika gagal
 				else{
 					$data['gagal'] = true;
-					$this->load->view('login', $data); // kembali ke login
-				}
-			}
+					$this->load->view('login/login', $data);
+				} // => end of cek validasi
+
+			} // => end of form
 
 		} // end of function validasi
 

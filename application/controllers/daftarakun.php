@@ -10,7 +10,8 @@
 
         public function index(){
 
-            $this->load->view('login/daftarakun');
+            $data['gagal'] = false;
+			$this->load->view('login/daftarakun', $data);
 
         }
 
@@ -40,7 +41,7 @@
 
             // jika submit gagal
             if(!$this->form_validation->run()){
-				$data['gagal'] = false;
+                $data['gagal'] = false;
 				$this->load->view('login/daftarakun', $data);
 			}
             // jika submit berhasil
@@ -52,15 +53,26 @@
                 $dataDaftarAkun = array(
                     'username' => $username,
                     'password' => $password,
-                    'emai' => $email
+                    'email' => $email,
+                    'level' => 4
                 );
 
                 // simpan input ke database
-                $result = $this->daftarakun_model->simpan();
-                echo $result;
-			}
+                $result = $this->daftarakun_model->simpan($dataDaftarAkun);
+                
+                // jika sukses
+                // brati username blum dipakai
+                if($result){
+                    redirect('login');
+                }
+                // jika gagal
+                else{
+                    $data['gagal'] = true;
+				    $this->load->view('login/daftarakun', $data);
+                } // => end of input sukses
 
-
+            } // end of validasi form
+            
         } // => end of function daftar
 
     } // => end of Class

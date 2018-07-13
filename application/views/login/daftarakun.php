@@ -19,6 +19,11 @@
                 <img src="<?php echo base_url() ?>asset/image/logo.png" alt="logo-sancu">
             </p>
             <h3 class="text-center">Buat Akun</h3>
+			
+			<!-- notif jika username sudah terdaftar -->
+			<?php if($gagal) : ?>
+				<p class="text-center" style="color: white; background-color: #f44242">Username Sudah Terdaftar</p>
+			<?php endif ?>
 
             <!-- form -->
 			<div class="col-md-4 col-sm-12 col-xs-12" style="padding: 20px 25px; border-radius: 7px; background-color: #f2f2f2">

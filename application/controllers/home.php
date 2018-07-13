@@ -8,6 +8,16 @@
             // session here
         }
 
+        public function cekSession(){
+
+            if(!empty($_SESSION['username'])){
+                return true;
+            }
+
+            return false;
+
+        }
+
         public function index(){
 
             $this->load->view('front/header');
@@ -21,6 +31,18 @@
             $this->load->view('front/header');
             $this->load->view('front/paketshafa');
             $this->load->view('front/footer');
+
+        }
+
+        public function daftarPaketShafa(){
+
+            // jika sudah login
+            if(cekSession()){
+                redirect('home/daftarpaketumrah');
+            }
+
+            // belum login, redirect ke login
+            redirect('login');
 
         }
 

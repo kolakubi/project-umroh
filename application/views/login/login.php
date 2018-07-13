@@ -13,7 +13,6 @@
 	<!-- particle -->
 	<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -999" id="particles-js"></div>
 
-
 	<div class="container">
 		<div
 			class="row" style="display: flex; align-items: center; justify-content: center; flex-direction: column; height: 100vh;"

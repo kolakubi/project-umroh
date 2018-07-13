@@ -60,10 +60,22 @@
             <li><a href="<?php echo base_url() ?>#">Gallery</a></li>
             <li><a href="<?php echo base_url() ?>#">Kontak</a></li>
           </ul>
-          <!-- button logout -->
+
+          <!-- jika blm login, tampilin tombol login -->
+          <?php if(empty($_SESSION['username'])) : ?>
+            <!-- button login -->
+            <ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">
+              <li><a href="<?php echo base_url() ?>login">Login/Daftar</a></li>
+            </ul> <!-- end of button login -->
+          
+          <!-- jika sudah login tampilin logout -->
+          <?php elseif(!empty($_SESSION['username'])) : ?>
           <ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">
-            <li><a href="<?php echo base_url() ?>login">Login/Daftar</a></li>
-          </ul> <!-- end of button logout -->
+            <li><a>Halo, <?php echo $_SESSION['username'] ?></a></li>
+            <li><a href="<?php echo base_url() ?>logout">Logout</a></li>
+          </ul> <!-- end of button login -->
+          <?php endif ?>
+
         </div> <!-- end of navbar-collapse -->
 
       </div> <!-- end of container-->
