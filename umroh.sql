@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2018 at 05:49 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Jul 14, 2018 at 09:55 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,8 +58,7 @@ CREATE TABLE `jamaah` (
   `hidung` varchar(255) NOT NULL,
   `tinggi` varchar(255) NOT NULL,
   `berat` varchar(255) NOT NULL,
-  `muka` varchar(255) NOT NULL,
-  `paket` varchar(50) NOT NULL
+  `muka` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,7 +81,8 @@ CREATE TABLE `log` (
 
 INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (1, 'mal', '2018-07-13 20:20:21', '::1', 'berhasil'),
-(2, 'mal', '2018-07-13 20:36:26', '::1', 'berhasil');
+(2, 'mal', '2018-07-13 20:36:26', '::1', 'berhasil'),
+(3, 'mal', '2018-07-14 13:27:52', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -214,21 +214,25 @@ ALTER TABLE `produk_detail`
 --
 ALTER TABLE `jamaah`
   MODIFY `kode_jamaah` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
   MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `produk_detail`
 --
 ALTER TABLE `produk_detail`
   MODIFY `kode_produk_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- Constraints for dumped tables
 --

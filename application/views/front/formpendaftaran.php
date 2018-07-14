@@ -54,8 +54,8 @@
             </div>
             <div class="form-group">
                 <label style="color: #222">Kewarganegaraan: </label><br>
-                <input type="radio" name="kewarganegaraan" value="Laki-laki"> WNI
-                <input type="radio" name="kewarganegaraan" value="Perempuan"> WNA
+                <input type="radio" name="kewarganegaraan" value="WNI"> WNI
+                <input type="radio" name="kewarganegaraan" value="WNA"> WNA
                 <div style="background-color: #f44242; text-align: center;">
                     <span style="color: white;"><?php echo form_error('kewarganegaraan') ?></span>
                 </div>
@@ -241,11 +241,12 @@
             <div class="form-group">
                 <label style="color: #222">Paket: </label>
                 <select class="form-control" name="paket">
-                    <option value="">Pilih Paket</option>
-                    <option value="umrahshafa">Umrah Shafa</option>
-                    <option value="umraharafah">Umrah Arafah</option>
-                    <option value="mina">Mina</option>
-                    <option value="hajiplus">Haji Plus</option>
+
+                    <option>-Pilih Paket-</option>
+                    <?php foreach($hasil as $dataProduk) : ?>
+                        <option value="<?php echo $dataProduk['kode_produk']?>"><?php echo $dataProduk['nama']?></option>
+                    <?php endforeach ?>
+
                 </select>
                 <div style="background-color: #f44242; text-align: center;">
                     <span style="color: white;"><?php echo form_error('paket') ?></span>

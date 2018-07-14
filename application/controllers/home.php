@@ -51,8 +51,11 @@
             // jika sudah login
             if($this->cekSession()){
 
+                $hasil = $this->pendaftaranumroh_model->ambilProduk();
+                $data['hasil'] = $hasil;
+
                 $this->load->view('front/header');
-                $this->load->view('front/formpendaftaran');
+                $this->load->view('front/formpendaftaran', $data);
                 $this->load->view('front/footer');
 
             }
@@ -183,6 +186,11 @@
                         'field' => 'muka',
                         'label' => 'muka',
                         'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'paket',
+                        'label' => 'paket',
+                        'rules' => 'required'
                     )
                 )
             );
@@ -192,8 +200,12 @@
             // jika form tidak valid
             if(!$this->form_validation->run()){
 
+                // ambil data produk
+                $hasil = $this->pendaftaranumroh_model->ambilProduk();
+                $data['hasil'] = $hasil;
+
                 $this->load->view('front/header');
-                $this->load->view('front/formpendaftaran');
+                $this->load->view('front/formpendaftaran', $data);
                 $this->load->view('front/footer');
 
             }
@@ -205,7 +217,7 @@
                 $nama = $this->input->post('nama');
                 $namaayah = $this->input->post('namaayah');
                 $tempatlahir = $this->input->post('tempatlahir');
-                $tanggallahir = $this->input->post('tanggallahhir');
+                $tanggallahir = $this->input->post('tanggallahir');
                 $kelamin = $this->input->post('kelamin');
                 $kewarganegaraan = $this->input->post('kewarganegaraan');
                 $alamat = $this->input->post('alamat');
@@ -262,7 +274,8 @@
                     'paket' => $paket,
                 );
 
-                cekArray($dataPendaftar);
+                // input ke db
+                $hasil = $this->Pendaftaranumroh_model->daftar($dataPendaftar);
 
             }
 
