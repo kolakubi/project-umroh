@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 14, 2018 at 09:55 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jul 16, 2018 at 01:48 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,9 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `jamaah` (
-  `kode_jamaah` int(11) NOT NULL,
-  `usename` varchar(100) NOT NULL,
-  `ktp` varchar(50) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `ktp` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `namaayah` varchar(255) NOT NULL,
   `tempatlahir` varchar(100) NOT NULL,
@@ -50,7 +49,7 @@ CREATE TABLE `jamaah` (
   `pekerjaan` varchar(50) NOT NULL,
   `pengalamanhaji` varchar(30) NOT NULL,
   `namamahram` varchar(255) NOT NULL,
-  `hubunganmahram` varchar(20) NOT NULL,
+  `hubunganmahram` varchar(20) DEFAULT '-',
   `nomorpendaftarmahram` varchar(40) NOT NULL,
   `golongandarah` varchar(10) NOT NULL,
   `rambut` varchar(255) NOT NULL,
@@ -60,6 +59,13 @@ CREATE TABLE `jamaah` (
   `berat` varchar(255) NOT NULL,
   `muka` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jamaah`
+--
+
+INSERT INTO `jamaah` (`username`, `ktp`, `nama`, `namaayah`, `tempatlahir`, `tanggallahir`, `kelamin`, `kewarganegaraan`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `propinsi`, `kodepos`, `telepon`, `hp`, `pendidikan`, `pekerjaan`, `pengalamanhaji`, `namamahram`, `hubunganmahram`, `nomorpendaftarmahram`, `golongandarah`, `rambut`, `alis`, `hidung`, `tinggi`, `berat`, `muka`) VALUES
+('mal', '123', 'Malmahsyar', 'Wisynu Djama', 'Jakarta', '2018-07-15', 'Laki-laki', 'WNI', 'Jalan Kelapa dua wetan III no 29 RT 06/RW 01', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08568734259', 'S1', 'Swasta', 'Belum Pernah', '', NULL, '', 'o', 'lurus', 'Tebal', 'Mancung', '165cm', '60kg', 'Bulat');
 
 -- --------------------------------------------------------
 
@@ -82,7 +88,10 @@ CREATE TABLE `log` (
 INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (1, 'mal', '2018-07-13 20:20:21', '::1', 'berhasil'),
 (2, 'mal', '2018-07-13 20:36:26', '::1', 'berhasil'),
-(3, 'mal', '2018-07-14 13:27:52', '::1', 'berhasil');
+(3, 'mal', '2018-07-14 13:27:52', '::1', 'berhasil'),
+(4, 'mal', '2018-07-15 21:03:43', '::1', 'berhasil'),
+(5, 'mal', '2018-07-15 21:04:06', '::1', 'berhasil'),
+(6, 'mal', '2018-07-15 21:23:20', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -112,11 +121,20 @@ INSERT INTO `login` (`username`, `password`, `email`, `level`) VALUES
 
 CREATE TABLE `pendaftaran` (
   `kode_pendaftaran` int(11) NOT NULL,
-  `kode_jamaah` int(11) NOT NULL,
+  `ktp` varchar(255) NOT NULL,
   `kode_produk` varchar(20) NOT NULL,
-  `status_berkas` varchar(20) NOT NULL,
-  `status_pembayaran` varchar(20) NOT NULL
+  `status_berkas` int(11) NOT NULL,
+  `ket_status_berkas` text NOT NULL,
+  `status_pembayaran` int(11) NOT NULL,
+  `ket_status_pembayaran` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pendaftaran`
+--
+
+INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`) VALUES
+(1, '123', 'umroh001', 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -172,7 +190,7 @@ INSERT INTO `produk_detail` (`kode_produk_detail`, `kode_produk`, `harga`, `hote
 -- Indexes for table `jamaah`
 --
 ALTER TABLE `jamaah`
-  ADD PRIMARY KEY (`kode_jamaah`);
+  ADD PRIMARY KEY (`ktp`);
 
 --
 -- Indexes for table `log`
@@ -210,29 +228,20 @@ ALTER TABLE `produk_detail`
 --
 
 --
--- AUTO_INCREMENT for table `jamaah`
---
-ALTER TABLE `jamaah`
-  MODIFY `kode_jamaah` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `produk_detail`
 --
 ALTER TABLE `produk_detail`
   MODIFY `kode_produk_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- Constraints for dumped tables
 --

@@ -275,10 +275,23 @@
                 );
 
                 // input ke db
-                $hasil = $this->Pendaftaranumroh_model->daftar($dataPendaftar);
+                $hasil = $this->pendaftaranumroh_model->daftar($dataPendaftar);
+
+                if($hasil){
+                    redirect('/home/daftarberhasil');
+                }
 
             }
 
         } // end of function submitFormPendaftaran
+
+
+        public function daftarBerhasil(){
+
+            $this->load->view('front/header');
+            $this->load->view('front/daftarberhasil');
+            $this->load->view('front/footer');
+
+        }
 
     } // => end of class

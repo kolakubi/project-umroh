@@ -43,22 +43,9 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="<?php echo base_url() ?>#">Beranda</a></li>
-            <li><a href="<?php echo base_url() ?>#">Tentang</a></li>
-            <!-- dropdown paket umroh -->
-            <li>
-              <a class="btn dropdown-toggle" data-toggle="dropdown">Paket Umroh
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="<?php echo base_url() ?>#">Arafah</a></li>
-                <li><a href="<?php echo base_url() ?>#">Minah</a></li>
-                <li><a href="<?php echo base_url() ?>#">Safa</a></li>
-              </ul>
-            </li> <!-- end of dropdown paket umroh -->
-            <li><a href="<?php echo base_url() ?>#">Paket Haji Plus</a></li>
-            <li><a href="<?php echo base_url() ?>#">Gallery</a></li>
-            <li><a href="<?php echo base_url() ?>#">Kontak</a></li>
+            <li><a href="<?php echo base_url() ?>jamaah">Profil</a></li>
+            <li><a href="<?php echo base_url() ?>jamaah/berkas">Berkas</a></li>
+            <li><a href="<?php echo base_url() ?>jamaah/jadwal">Jadwal Keberangkatan</a></li>
           </ul>
 
           <!-- jika blm login, tampilin tombol login -->
@@ -72,7 +59,6 @@
           <?php elseif(!empty($_SESSION['username'])) : ?>
           <ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">
             <li><a>Halo, <?php echo $_SESSION['username'] ?></a></li>
-            <li><a href="<?php echo base_url() ?>jamaah">Dashboard</a></li>
             <li><a href="<?php echo base_url() ?>logout">Logout</a></li>
           </ul> <!-- end of button login -->
           <?php endif ?>
