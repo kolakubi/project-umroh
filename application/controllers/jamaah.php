@@ -31,38 +31,48 @@
 
         public function berkas(){
 
-            if (empty($_FILES['ktp']['name'])){
+            if(empty($_FILES['ktp']['name'])){
                 $this->form_validation->set_rules('ktp', 'Document', 'required');
             }
-            // if (empty($_FILES['kk']['name'])){
+            // if(empty($_FILES['kk']['name'])){
             //     $this->form_validation->set_rules('kk', 'Document', 'required');
             // }
-            // if (empty($_FILES['passport']['name'])){
+            // if(empty($_FILES['passport']['name'])){
             //     $this->form_validation->set_rules('passport', 'Document', 'required');
             // }
             
             $this->form_validation->set_message('required', '%s tidak boleh kosong');
 
+            $_POST['ktp'] = $_FILES['ktp'];
+
             if(!$this->form_validation->run()){
-            
+                
                 $this->load->view('jamaah/header');
                 $this->load->view('jamaah/berkas');
                 $this->load->view('front/footer');
                 
             }
-            //else{
-                $ktp = $this->upload->data();
-                // $kk = $this->upload->data('kk');
-                // $passport = $this->upload->data('passport');
+            else{
 
-                echo '<pre>';
-                print_r($ktp);
-                // print_r($kk);
-                // print_r($passport);
-                echo '</pre>';
+                $config['upload_path'] = './uploads';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = 500;
 
-                echo 'xxxx';
-            //}
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                // 
+                if(!$this->upload->do_upload('ktp')){
+
+                    echo $this->upload->display_errors();
+                }
+                else{
+                    $ktp = $this->upload->data();
+                    echo '<pre>';
+                    print_r($ktp);
+                    echo '</pre>';
+                }
+            }
 
         }
 

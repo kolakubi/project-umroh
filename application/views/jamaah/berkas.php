@@ -36,6 +36,10 @@
                 </div>
             </div>
 
+            <!-- notif -->
+            <p class="text-danger">* Type file: jpg,png,gif</p>
+            <p class="text-danger">* Ukuran file maksimal 500KB</p>
+
             <!-- submit -->
             <div class="form-group">
                 <button type="submit" value="upload" class="btn btn-info btn-block">Upload</button>
