@@ -1,1 +1,46 @@
-<h1>Berkas</h1>
+<div class="row">
+    <div class="col-xs-12">
+        <h1 class="text-center">Berkas</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+        
+        <!-- form upload -->
+        <?php echo form_open_multipart('jamaah/berkas') ?>
+            <!-- KTP -->
+            <div class="form-group">
+                <label style="color: #222">KTP: </label>
+                <input type="file" name="ktp" class="form-control">
+                <div style="background-color: #f44242; text-align: center;">
+                    <span style="color: white;"><?php echo form_error('ktp') ?></span>
+                </div>
+            </div>
+
+            <!-- KK -->
+            <div class="form-group">
+                <label style="color: #222">Kartu Keluarga: </label>
+                <input type="file" name="kk" class="form-control">
+                <div style="background-color: #f44242; text-align: center;">
+                    <span style="color: white;"><?php echo form_error('kk') ?></span>
+                </div>
+            </div>
+
+            <!-- Passport -->
+            <div class="form-group">
+                <label style="color: #222">Passport: </label>
+                <input type="file" name="passport" class="form-control">
+                <div style="background-color: #f44242; text-align: center;">
+                    <span style="color: white;"><?php echo form_error('passport') ?></span>
+                </div>
+            </div>
+
+            <!-- submit -->
+            <div class="form-group">
+                <button type="submit" value="upload" class="btn btn-info btn-block">Upload</button>
+            </div>
+        <?php echo form_close() ?>
+
+    </div>
+</div>

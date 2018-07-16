@@ -31,9 +31,38 @@
 
         public function berkas(){
 
-            $this->load->view('jamaah/header');
-            $this->load->view('jamaah/berkas');
-            $this->load->view('front/footer');
+            if (empty($_FILES['ktp']['name'])){
+                $this->form_validation->set_rules('ktp', 'Document', 'required');
+            }
+            // if (empty($_FILES['kk']['name'])){
+            //     $this->form_validation->set_rules('kk', 'Document', 'required');
+            // }
+            // if (empty($_FILES['passport']['name'])){
+            //     $this->form_validation->set_rules('passport', 'Document', 'required');
+            // }
+            
+            $this->form_validation->set_message('required', '%s tidak boleh kosong');
+
+            if(!$this->form_validation->run()){
+            
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/berkas');
+                $this->load->view('front/footer');
+                
+            }
+            //else{
+                $ktp = $this->upload->data();
+                // $kk = $this->upload->data('kk');
+                // $passport = $this->upload->data('passport');
+
+                echo '<pre>';
+                print_r($ktp);
+                // print_r($kk);
+                // print_r($passport);
+                echo '</pre>';
+
+                echo 'xxxx';
+            //}
 
         }
 
@@ -43,6 +72,59 @@
             $this->load->view('jamaah/jadwal');
             $this->load->view('front/footer');
 
+        }
+
+        public function uploadBerkas(){
+
+            // //set form validation
+			// $this->form_validation->set_rules(array(
+			// 	array(
+			// 		'field' => 'ktp',
+			// 		'label' => 'KTP',
+			// 		'rules' => 'required'
+			// 	),
+			// 	array(
+			// 		'field' => 'kk',
+			// 		'label' => 'Kartu Keluarga',
+			// 		'rules' => 'required'
+            //     ),
+            //     array(
+			// 		'field' => 'passport',
+			// 		'label' => 'Passport',
+			// 		'rules' => 'required'
+			// 	)
+            // ));
+            
+            // $this->form_validation->set_message('required', '%s tidak boleh kosong');
+
+            // if(!$this->form_validation->run()){
+
+			// 	$this->load->view('jamaah/header');
+            //     $this->load->view('jamaah/berkas');
+            //     $this->load->view('front/footer');
+            // }
+            // else{
+
+            //     $ktp = $this->upload->data('ktp');
+            //     $kk = $this->upload->data('kk');
+            //     $passport = $this->upload->data('passport');
+
+            //     echo '<pre>';
+            //     print_r($ktp);
+            //     print_r($kk);
+            //     print_r($passport);
+            //     echo '<pre>';
+            // }
+
+                $ktp = $this->upload->data('ktp');
+                // $kk = $this->input->post('kk');
+                // $passport = $this->input->post('passport');
+
+                echo '<pre>';
+                print_r($ktp);
+                // print_r($kk);
+                // print_r($passport);
+                echo '<pre>';
         }
 
     }
