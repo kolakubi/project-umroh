@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2018 at 01:48 AM
+-- Generation Time: Jul 17, 2018 at 05:30 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -21,6 +21,51 @@ SET time_zone = "+00:00";
 --
 -- Database: `umroh`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berkas`
+--
+
+CREATE TABLE `berkas` (
+  `kode_berkas` varchar(20) NOT NULL,
+  `nama` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `berkas`
+--
+
+INSERT INTO `berkas` (`kode_berkas`, `nama`) VALUES
+('berkas001', 'Kartu Tanda Penduduk'),
+('berkas002', 'Kartu Keluarga'),
+('berkas003', 'Passport');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berkas_upload`
+--
+
+CREATE TABLE `berkas_upload` (
+  `kode_upload` int(11) NOT NULL,
+  `kode_berkas` varchar(20) NOT NULL,
+  `kode_pendaftaran` int(11) NOT NULL,
+  `nama_file` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `berkas_upload`
+--
+
+INSERT INTO `berkas_upload` (`kode_upload`, `kode_berkas`, `kode_pendaftaran`, `nama_file`) VALUES
+(1, 'berkas001', 1, 'back-to-school2.jpg'),
+(2, 'berkas002', 1, 'xtreme-gunung-merah.jpg'),
+(3, 'berkas003', 1, 'slide-sancu2.jpg'),
+(4, 'berkas001', 1, 'back-to-school.jpg'),
+(5, 'berkas002', 1, 'slide-sancu21.jpg'),
+(6, 'berkas003', 1, 'xtreme-gunung-merah1.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,7 +136,11 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (3, 'mal', '2018-07-14 13:27:52', '::1', 'berhasil'),
 (4, 'mal', '2018-07-15 21:03:43', '::1', 'berhasil'),
 (5, 'mal', '2018-07-15 21:04:06', '::1', 'berhasil'),
-(6, 'mal', '2018-07-15 21:23:20', '::1', 'berhasil');
+(6, 'mal', '2018-07-15 21:23:20', '::1', 'berhasil'),
+(7, 'mal', '2018-07-16 17:48:19', '::1', 'berhasil'),
+(8, 'mal', '2018-07-17 00:29:30', '::1', 'berhasil'),
+(9, 'mal', '2018-07-17 01:13:19', '::1', 'berhasil'),
+(10, 'mal', '2018-07-17 20:21:54', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -123,7 +172,9 @@ CREATE TABLE `pendaftaran` (
   `kode_pendaftaran` int(11) NOT NULL,
   `ktp` varchar(255) NOT NULL,
   `kode_produk` varchar(20) NOT NULL,
-  `status_berkas` int(11) NOT NULL,
+  `status_berkas_ktp` int(11) NOT NULL,
+  `status_berkas_kk` int(11) NOT NULL,
+  `status_berkas_passport` int(11) NOT NULL,
   `ket_status_berkas` text NOT NULL,
   `status_pembayaran` int(11) NOT NULL,
   `ket_status_pembayaran` text NOT NULL
@@ -133,8 +184,8 @@ CREATE TABLE `pendaftaran` (
 -- Dumping data for table `pendaftaran`
 --
 
-INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`) VALUES
-(1, '123', 'umroh001', 0, '', 0, '');
+INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`) VALUES
+(1, '123', 'umroh001', 0, 0, 0, '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -187,6 +238,18 @@ INSERT INTO `produk_detail` (`kode_produk_detail`, `kode_produk`, `harga`, `hote
 --
 
 --
+-- Indexes for table `berkas`
+--
+ALTER TABLE `berkas`
+  ADD PRIMARY KEY (`kode_berkas`);
+
+--
+-- Indexes for table `berkas_upload`
+--
+ALTER TABLE `berkas_upload`
+  ADD PRIMARY KEY (`kode_upload`);
+
+--
 -- Indexes for table `jamaah`
 --
 ALTER TABLE `jamaah`
@@ -228,10 +291,15 @@ ALTER TABLE `produk_detail`
 --
 
 --
+-- AUTO_INCREMENT for table `berkas_upload`
+--
+ALTER TABLE `berkas_upload`
+  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --

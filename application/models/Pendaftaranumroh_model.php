@@ -51,7 +51,9 @@
             $editedDataPendaftar = array(
                 'ktp' => $dataPendaftar['ktp'],
                 'kode_produk' => $dataPendaftar['paket'],
-                'status_berkas' => 0,
+                'status_berkas_ktp' => 0,
+                'status_berkas_kk' => 0,
+                'status_berkas_passport' => 0,
                 'status_pembayaran' => 0
             );
 

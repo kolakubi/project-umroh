@@ -4,47 +4,48 @@
     </div>
 </div>
 
+<!-- table -->
 <div class="row">
-    <div class="col-xs-12 col-md-4 col-md-offset-4">
-        
-        <!-- form upload -->
-        <?php echo form_open_multipart('jamaah/berkas') ?>
-            <!-- KTP -->
-            <div class="form-group">
-                <label style="color: #222">KTP: </label>
-                <input type="file" name="ktp" class="form-control">
-                <div style="background-color: #f44242; text-align: center;">
-                    <span style="color: white;"><?php echo form_error('ktp') ?></span>
-                </div>
-            </div>
+    <div class="col-xs-12">
+        <table class="table table-condensed table-borderd table-striped table-hover">
+            <thead>
+                <tr class="info">
+                    <th>Kode Pedaftaran</th>
+                    <th>KTP</th>
+                    <th>Paket</th>
+                    <th>Berkas KTP</th>
+                    <th>Berkas KK</th>
+                    <th>Berkas Passport</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                
+                <?php foreach($pendaftaran as $daftar) : ?>
 
-            <!-- KK -->
-            <div class="form-group">
-                <label style="color: #222">Kartu Keluarga: </label>
-                <input type="file" name="kk" class="form-control">
-                <div style="background-color: #f44242; text-align: center;">
-                    <span style="color: white;"><?php echo form_error('kk') ?></span>
-                </div>
-            </div>
+                <td><?php echo $daftar['kode_pendaftaran'] ?></td>
+                <td><?php echo $daftar['ktp'] ?></td>
+                <td><?php echo $daftar['nama'] ?></td>
+                <td><?php echo $daftar['status_berkas_ktp'] ?></td>
+                <td><?php echo $daftar['status_berkas_kk'] ?></td>
+                <td><?php echo $daftar['status_berkas_passport'] ?></td>
+                <td>
+                    <a class="btn btn-info" href="<?php echo base_url() ?>jamaah/uploadberkas/<?php echo $daftar['kode_pendaftaran'] ?>">Upload Berkas</a>
+                </td>
+                </tr>
 
-            <!-- Passport -->
-            <div class="form-group">
-                <label style="color: #222">Passport: </label>
-                <input type="file" name="passport" class="form-control">
-                <div style="background-color: #f44242; text-align: center;">
-                    <span style="color: white;"><?php echo form_error('passport') ?></span>
-                </div>
-            </div>
-
-            <!-- notif -->
-            <p class="text-danger">* Type file: jpg,png,gif</p>
-            <p class="text-danger">* Ukuran file maksimal 500KB</p>
-
-            <!-- submit -->
-            <div class="form-group">
-                <button type="submit" value="upload" class="btn btn-info btn-block">Upload</button>
-            </div>
-        <?php echo form_close() ?>
-
+                <?php endforeach ?>
+            </tbody>
+            <tfoot>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tfoot>
+        </table>
     </div>
-</div>
+</div> <!-- end of table -->

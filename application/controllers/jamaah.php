@@ -29,7 +29,29 @@
 
         }
 
+        public function ambilDataPendaftaran($username){
+
+            $hasil = $this->jamaah_model->ambilDataPendaftaran($username);
+            return $hasil;
+
+        }
+
         public function berkas(){
+
+            // ambil data pendaftaran
+            $hasil = $this->ambilDataPendaftaran($_SESSION['username']);
+            $data['pendaftaran'] = $hasil;
+
+            $this->load->view('jamaah/header');
+            $this->load->view('jamaah/berkas', $data);
+            $this->load->view('front/footer');
+
+        } // end of function berkas
+
+        public function uploadBerkas($kodePendaftaran){
+
+            // passing kode pendaftaran
+            $data['kodependaftaran'] = $kodePendaftaran;
             
             // inisiasi variable
             $dataFileKtp = array();
@@ -57,7 +79,7 @@
             && empty($_FILES['ktp']['name'])){
                 
                 $this->load->view('jamaah/header');
-                $this->load->view('jamaah/berkas');
+                $this->load->view('jamaah/uploadberkas', $data);
                 $this->load->view('front/footer');
                 
             }
@@ -65,7 +87,7 @@
             && empty($_FILES['kk']['name'])){
                 
                 $this->load->view('jamaah/header');
-                $this->load->view('jamaah/berkas');
+                $this->load->view('jamaah/uploadberkas', $data);
                 $this->load->view('front/footer');
                 
             }
@@ -73,7 +95,7 @@
             && empty($_FILES['passport']['name'])){
                 
                 $this->load->view('jamaah/header');
-                $this->load->view('jamaah/berkas');
+                $this->load->view('jamaah/uploadberkas', $data);
                 $this->load->view('front/footer');
                 
             }
@@ -98,10 +120,10 @@
                     $dataBerkasKtp = array(
                         'kode_berkas' => 'berkas001',
                         'nama_file' => $dataFileKtp['file_name'],
-                        'username' => $_SESSION['username']
+                        'kode_pendaftaran' => $kodePendaftaran
                     );
 
-                    $this->Jamaah_model->tambahBerkas($dataBerkasKtp);
+                    $this->jamaah_model->tambahBerkas($dataBerkasKtp);
                 }
                 ////////////////////////////////////////////
 
@@ -115,10 +137,10 @@
                     $dataBerkasKk = array(
                         'kode_berkas' => 'berkas002',
                         'nama_file' => $dataFileKk['file_name'],
-                        'username' => $_SESSION['username']
+                        'kode_pendaftaran' => $kodePendaftaran
                     );
 
-                    $this->Jamaah_model->tambahBerkas($dataBerkasKk);
+                    $this->jamaah_model->tambahBerkas($dataBerkasKk);
                 }
                 /////////////////////////////////////////////
 
@@ -132,16 +154,17 @@
                     $dataBerkasPassport = array(
                         'kode_berkas' => 'berkas003',
                         'nama_file' => $dataFilePassport['file_name'],
-                        'username' => $_SESSION['username']
+                        'kode_pendaftaran' => $kodePendaftaran
                     );
                     
-                    $this->Jamaah_model->tambahBerkas($dataBerkasPassport);
+                    $this->jamaah_model->tambahBerkas($dataBerkasPassport);
                 }
-                /////////////////////////////////////////////
-                
-            } // => end of form validation
 
-        } // end of function berkas
+                redirect('jamaah/berkas');
+
+            }// => end of form validation
+
+        } // end of function uploadberkas
 
         public function jadwal(){
 
