@@ -30,22 +30,47 @@
         }
 
         public function berkas(){
+            
+            // inisiasi variable
+            $dataFileKtp = array();
+            $dataFileKk = array();
+            $dataFilePassport = array();
+            $dataBerkasKtp = array();
+            $dataBerkasKk = array();
+            $dataBerkasPassport = array();
 
+            // rule biar harus diisi
             if(empty($_FILES['ktp']['name'])){
                 $this->form_validation->set_rules('ktp', 'Document', 'required');
             }
-            // if(empty($_FILES['kk']['name'])){
-            //     $this->form_validation->set_rules('kk', 'Document', 'required');
-            // }
-            // if(empty($_FILES['passport']['name'])){
-            //     $this->form_validation->set_rules('passport', 'Document', 'required');
-            // }
+            if(empty($_FILES['kk']['name'])){
+                $this->form_validation->set_rules('kk', 'Document', 'required');
+            }
+            if(empty($_FILES['passport']['name'])){
+                $this->form_validation->set_rules('passport', 'Document', 'required');
+            }
             
             $this->form_validation->set_message('required', '%s tidak boleh kosong');
 
-            $_POST['ktp'] = $_FILES['ktp'];
-
-            if(!$this->form_validation->run()){
+            // validasi kelengkapan form
+            if(!$this->form_validation->run() 
+            && empty($_FILES['ktp']['name'])){
+                
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/berkas');
+                $this->load->view('front/footer');
+                
+            }
+            else if(!$this->form_validation->run() 
+            && empty($_FILES['kk']['name'])){
+                
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/berkas');
+                $this->load->view('front/footer');
+                
+            }
+            else if(!$this->form_validation->run() 
+            && empty($_FILES['passport']['name'])){
                 
                 $this->load->view('jamaah/header');
                 $this->load->view('jamaah/berkas');
@@ -54,6 +79,7 @@
             }
             else{
 
+                // atur config file
                 $config['upload_path'] = './uploads';
                 $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size'] = 500;
@@ -61,20 +87,61 @@
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
 
-                // 
+                // upload 1 per 1
+                // ktp
                 if(!$this->upload->do_upload('ktp')){
 
                     echo $this->upload->display_errors();
                 }
                 else{
-                    $ktp = $this->upload->data();
-                    echo '<pre>';
-                    print_r($ktp);
-                    echo '</pre>';
-                }
-            }
+                    $dataFileKtp = $this->upload->data();
+                    $dataBerkasKtp = array(
+                        'kode_berkas' => 'berkas001',
+                        'nama_file' => $dataFileKtp['file_name'],
+                        'username' => $_SESSION['username']
+                    );
 
-        }
+                    $this->Jamaah_model->tambahBerkas($dataBerkasKtp);
+                }
+                ////////////////////////////////////////////
+
+                // kk
+                if(!$this->upload->do_upload('kk')){
+
+                    echo $this->upload->display_errors();
+                }
+                else{
+                    $dataFileKk = $this->upload->data();
+                    $dataBerkasKk = array(
+                        'kode_berkas' => 'berkas002',
+                        'nama_file' => $dataFileKk['file_name'],
+                        'username' => $_SESSION['username']
+                    );
+
+                    $this->Jamaah_model->tambahBerkas($dataBerkasKk);
+                }
+                /////////////////////////////////////////////
+
+                // passport
+                if(!$this->upload->do_upload('passport')){
+
+                    echo $this->upload->display_errors();
+                }
+                else{
+                    $dataFilePassport = $this->upload->data();
+                    $dataBerkasPassport = array(
+                        'kode_berkas' => 'berkas003',
+                        'nama_file' => $dataFilePassport['file_name'],
+                        'username' => $_SESSION['username']
+                    );
+                    
+                    $this->Jamaah_model->tambahBerkas($dataBerkasPassport);
+                }
+                /////////////////////////////////////////////
+                
+            } // => end of form validation
+
+        } // end of function berkas
 
         public function jadwal(){
 
@@ -82,59 +149,6 @@
             $this->load->view('jamaah/jadwal');
             $this->load->view('front/footer');
 
-        }
-
-        public function uploadBerkas(){
-
-            // //set form validation
-			// $this->form_validation->set_rules(array(
-			// 	array(
-			// 		'field' => 'ktp',
-			// 		'label' => 'KTP',
-			// 		'rules' => 'required'
-			// 	),
-			// 	array(
-			// 		'field' => 'kk',
-			// 		'label' => 'Kartu Keluarga',
-			// 		'rules' => 'required'
-            //     ),
-            //     array(
-			// 		'field' => 'passport',
-			// 		'label' => 'Passport',
-			// 		'rules' => 'required'
-			// 	)
-            // ));
-            
-            // $this->form_validation->set_message('required', '%s tidak boleh kosong');
-
-            // if(!$this->form_validation->run()){
-
-			// 	$this->load->view('jamaah/header');
-            //     $this->load->view('jamaah/berkas');
-            //     $this->load->view('front/footer');
-            // }
-            // else{
-
-            //     $ktp = $this->upload->data('ktp');
-            //     $kk = $this->upload->data('kk');
-            //     $passport = $this->upload->data('passport');
-
-            //     echo '<pre>';
-            //     print_r($ktp);
-            //     print_r($kk);
-            //     print_r($passport);
-            //     echo '<pre>';
-            // }
-
-                $ktp = $this->upload->data('ktp');
-                // $kk = $this->input->post('kk');
-                // $passport = $this->input->post('passport');
-
-                echo '<pre>';
-                print_r($ktp);
-                // print_r($kk);
-                // print_r($passport);
-                echo '<pre>';
-        }
+        } // => end of function jadwal
 
     }
