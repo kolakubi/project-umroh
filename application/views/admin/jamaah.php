@@ -7,7 +7,7 @@
 <!-- table -->
 <div class="row">
     <div class="col-xs-12">
-        <table class="table table-condensed table-borderd table-striped table-hover">
+        <table class="table table-condensed table-bordered table-striped table-hover">
             <thead>
                 <tr class="info">
                     <th>KTP</th>

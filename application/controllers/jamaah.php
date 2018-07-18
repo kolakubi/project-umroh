@@ -176,10 +176,78 @@
 
         public function pembayaran(){
 
+            // ambil data pendaftaran
+            $hasil = $this->jamaah_model->ambilTagihan($_SESSION['username']);
+            $data['pendaftaran'] = $hasil;
+
             $this->load->view('jamaah/header');
-            $this->load->view('jamaah/pembayaran');
+            $this->load->view('jamaah/pembayaran', $data);
             $this->load->view('front/footer');
 
-        }
+        } // => end of function pembayaran
+
+        public function invoice(){
+
+            $hasil = $this->jamaah_model->ambilTagihan($_SESSION['username']);
+            $data['pendaftaran'] = $hasil;
+
+            $this->load->view('jamaah/header');
+            $this->load->view('jamaah/invoice', $data);
+            $this->load->view('front/footer');
+
+        } // => end of function invoice
+
+        public function uploadPembayaran($kodePendaftaran){
+
+            // passing kode pendaftaran
+            $data['kodependaftaran'] = $kodePendaftaran;
+
+            if(empty($_FILES['buktibayar']['name'])){
+                $this->form_validation->set_rules('buktibayar', 'Document', 'required');
+            }
+
+            $this->form_validation->set_message('required', '%s tidak boleh kosong');
+
+            // validasi kelengkapan form
+            if(!$this->form_validation->run() 
+            && empty($_FILES['buktibayar']['name'])){
+                
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/uploadbuktipembayaran', $data);
+                $this->load->view('front/footer');
+                
+            }
+            else{
+
+                // atur config file
+                $config['upload_path'] = './uploads';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = 500;
+
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                // upload
+                if(!$this->upload->do_upload('buktibayar')){
+
+                    echo $this->upload->display_errors();
+                }
+                else{
+                    $dataFileBuktiPembayaran = $this->upload->data();
+                    $dataBuktiPembayaran = array(
+                        'kode_berkas' => 'berkas004',
+                        'nama_file' => $dataFileBuktiPembayaran['file_name'],
+                        'kode_pendaftaran' => $kodePendaftaran
+                    );
+
+                    $this->jamaah_model->tambahBuktiPembayaran($dataBuktiPembayaran);
+                }
+                ////////////////////////////////////////////
+
+                redirect('jamaah/pembayaran');
+
+            }// => end of form validation
+
+        } // => end of function uploadPembayaran
 
     }
