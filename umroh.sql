@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2018 at 05:30 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Jul 18, 2018 at 10:28 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -65,7 +65,10 @@ INSERT INTO `berkas_upload` (`kode_upload`, `kode_berkas`, `kode_pendaftaran`, `
 (3, 'berkas003', 1, 'slide-sancu2.jpg'),
 (4, 'berkas001', 1, 'back-to-school.jpg'),
 (5, 'berkas002', 1, 'slide-sancu21.jpg'),
-(6, 'berkas003', 1, 'xtreme-gunung-merah1.jpg');
+(6, 'berkas003', 1, 'xtreme-gunung-merah1.jpg'),
+(7, 'berkas001', 1, 'back-to-school.jpg'),
+(8, 'berkas002', 1, 'banner-sancu-fb.jpg'),
+(9, 'berkas003', 1, 'bisnis-online.jpg');
 
 -- --------------------------------------------------------
 
@@ -140,7 +143,10 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (7, 'mal', '2018-07-16 17:48:19', '::1', 'berhasil'),
 (8, 'mal', '2018-07-17 00:29:30', '::1', 'berhasil'),
 (9, 'mal', '2018-07-17 01:13:19', '::1', 'berhasil'),
-(10, 'mal', '2018-07-17 20:21:54', '::1', 'berhasil');
+(10, 'mal', '2018-07-17 20:21:54', '::1', 'berhasil'),
+(11, 'mal', '2018-07-18 11:56:55', '::1', 'berhasil'),
+(12, 'mal', '2018-07-18 13:59:22', '::1', 'berhasil'),
+(13, 'admin', '2018-07-18 14:21:12', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -160,6 +166,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`username`, `password`, `email`, `level`) VALUES
+('admin', 'admin', 'admin@admin.com', 1),
 ('mal', 'mal', 'mal@mal.com', 4);
 
 -- --------------------------------------------------------
@@ -172,11 +179,11 @@ CREATE TABLE `pendaftaran` (
   `kode_pendaftaran` int(11) NOT NULL,
   `ktp` varchar(255) NOT NULL,
   `kode_produk` varchar(20) NOT NULL,
-  `status_berkas_ktp` int(11) NOT NULL,
-  `status_berkas_kk` int(11) NOT NULL,
-  `status_berkas_passport` int(11) NOT NULL,
+  `status_berkas_ktp` varchar(30) NOT NULL,
+  `status_berkas_kk` varchar(30) NOT NULL,
+  `status_berkas_passport` varchar(30) NOT NULL,
   `ket_status_berkas` text NOT NULL,
-  `status_pembayaran` int(11) NOT NULL,
+  `status_pembayaran` varchar(30) NOT NULL,
   `ket_status_pembayaran` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -185,7 +192,7 @@ CREATE TABLE `pendaftaran` (
 --
 
 INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`) VALUES
-(1, '123', 'umroh001', 0, 0, 0, '', 0, '');
+(1, '123', 'umroh001', 'sedang diperiksa', 'sedang diperiksa', 'sedang diperiksa', '', 'tidak ada berkas', '');
 
 -- --------------------------------------------------------
 
@@ -294,22 +301,26 @@ ALTER TABLE `produk_detail`
 -- AUTO_INCREMENT for table `berkas_upload`
 --
 ALTER TABLE `berkas_upload`
-  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
   MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `produk_detail`
 --
 ALTER TABLE `produk_detail`
   MODIFY `kode_produk_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- Constraints for dumped tables
 --

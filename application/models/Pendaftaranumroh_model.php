@@ -51,10 +51,10 @@
             $editedDataPendaftar = array(
                 'ktp' => $dataPendaftar['ktp'],
                 'kode_produk' => $dataPendaftar['paket'],
-                'status_berkas_ktp' => 0,
-                'status_berkas_kk' => 0,
-                'status_berkas_passport' => 0,
-                'status_pembayaran' => 0
+                'status_berkas_ktp' => 'tidak ada berkas',
+                'status_berkas_kk' => 'tidak ada berkas',
+                'status_berkas_passport' => 'tidak ada berkas',
+                'status_pembayaran' => 'tidak ada berkas'
             );
 
             $this->db->insert('pendaftaran', $editedDataPendaftar);

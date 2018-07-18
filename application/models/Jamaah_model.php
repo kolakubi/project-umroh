@@ -19,7 +19,15 @@
             // upload berkas
             $this->db->insert('berkas_upload', $dataBerkas);
 
-            return true;
+            // update data pendaftaran
+            // status berkas menjadi sedang diperiksa
+            $this->db->set(array(
+                'status_berkas_ktp' => 'sedang diperiksa',
+                'status_berkas_kk' => 'sedang diperiksa',
+                'status_berkas_passport' => 'sedang diperiksa'
+            ));
+            $this->db->where('kode_pendaftaran', $dataBerkas['kode_pendaftaran']);
+            $this->db->update('pendaftaran');
 
         }
 
