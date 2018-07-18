@@ -10,7 +10,7 @@
 <!-- table -->
 <div class="row">
     <div class="col-xs-12">
-        <table class="table table-condensed table-borderd table-striped table-hover">
+        <table class="table table-condensed table-bordered table-striped table-hover">
             <thead>
                 <tr class="info">
                     <th>No</th>
@@ -30,14 +30,13 @@
                     <td><?php echo $daftar['nama'] ?></td>
                     <td><?php echo $daftar['ket_status_berkas'] ?></td>
                     <td>
-                        <a class="btn btn-info" href="<?php echo base_url() ?>admin/berkasvalid asi/<?php echo $daftar['kode_pendaftaran'] ?>">Validasi Berkas</a>
+                        <a class="btn btn-info" href="<?php echo base_url() ?>admin/berkasvalidasi/<?php echo $daftar['kode_pendaftaran'] ?>">Validasi Berkas</a>
                     </td>
                 </tr>
                 <?php $index++ ?>
                 <?php endforeach ?>
             </tbody>
             <tfoot>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>

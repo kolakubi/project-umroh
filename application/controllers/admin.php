@@ -45,16 +45,71 @@
         public function berkasValidasi($kodePendaftaran){
 
             $hasil = $this->admin_model->ambilDataBerkas($kodePendaftaran);
-            $data['semuaberkas'] = $hasil; 
+            $data['semuaberkas'] = $hasil;
+
+            // echo '<pre>';
+            // print_r($hasil);
+            // echo '</pre>';
 
             $this->load->view('admin/header');
             $this->load->view('admin/berkasvalidasi', $data);
             $this->load->view('front/footer');
 
-            echo '<pre>';
-            print_r($hasil);
-            echo '</pre>';
+        }
+
+
+        // update status berkas valid
+        //////////////////////////////////////////////////////
+        public function berkasValidKtp($kodePendaftaran){
+
+            $this->admin_model->updateStatusBerkas('status_berkas_ktp', 'valid', $kodePendaftaran);
+
+            $this->berkasValidasi($kodePendaftaran);
 
         }
+
+        public function berkasValidKk($kodePendaftaran){
+
+            $this->admin_model->updateStatusBerkas('status_berkas_kk', 'valid', $kodePendaftaran);
+
+            $this->berkasValidasi($kodePendaftaran);
+
+        }
+
+        public function berkasValidPassport($kodePendaftaran){
+
+            $this->admin_model->updateStatusBerkas('status_berkas_passport', 'valid', $kodePendaftaran);
+
+            $this->berkasValidasi($kodePendaftaran);
+
+        }
+        ////////////////////////////////////////////////////
+
+        // update status berkas tidak valid
+        //////////////////////////////////////////////////////
+        public function berkasTidakValidKtp($kodePendaftaran){
+
+            $this->admin_model->updateStatusBerkas('status_berkas_ktp', 'tidak valid', $kodePendaftaran);
+
+            $this->berkasValidasi($kodePendaftaran);
+
+        }
+
+        public function berkasTidakValidKk($kodePendaftaran){
+
+            $this->admin_model->updateStatusBerkas('status_berkas_kk', 'tidak valid', $kodePendaftaran);
+
+            $this->berkasValidasi($kodePendaftaran);
+
+        }
+
+        public function berkasTidakValidPassport($kodePendaftaran){
+
+            $this->admin_model->updateStatusBerkas('status_berkas_passport', 'tidak valid', $kodePendaftaran);
+
+            $this->berkasValidasi($kodePendaftaran);
+
+        }
+        ////////////////////////////////////////////////////
 
     }

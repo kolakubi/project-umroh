@@ -26,7 +26,7 @@
 
             return $result;
 
-        }
+        } // =? end of function ambilDataSatuBerkas
 
         public function ambilDataBerkas($kodePendaftaran){
 
@@ -48,6 +48,18 @@
             );
 
             return $berkas;
+        } // end of function ambilDataBerkas
+
+        public function updateStatusBerkas($berkas, $status, $kodePendaftaran){
+
+            $this->db->set(array(
+                $berkas => $status
+            ));
+            $this->db->where('kode_pendaftaran', $kodePendaftaran);
+            $this->db->update('pendaftaran');
+
+            return true;
 
         }
-    }
+
+    }// => end of class

@@ -45,6 +45,7 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url() ?>jamaah">Profil</a></li>
             <li><a href="<?php echo base_url() ?>jamaah/berkas">Berkas</a></li>
+            <li><a href="<?php echo base_url() ?>jamaah/pembayaran">Pembayaran</a></li>
             <li><a href="<?php echo base_url() ?>jamaah/jadwal">Jadwal Keberangkatan</a></li>
           </ul>
 

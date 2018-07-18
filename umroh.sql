@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2018 at 10:28 AM
+-- Generation Time: Jul 18, 2018 at 11:57 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -146,7 +146,9 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (10, 'mal', '2018-07-17 20:21:54', '::1', 'berhasil'),
 (11, 'mal', '2018-07-18 11:56:55', '::1', 'berhasil'),
 (12, 'mal', '2018-07-18 13:59:22', '::1', 'berhasil'),
-(13, 'admin', '2018-07-18 14:21:12', '::1', 'berhasil');
+(13, 'admin', '2018-07-18 14:21:12', '::1', 'berhasil'),
+(14, 'admin', '2018-07-18 16:01:12', '::1', 'berhasil'),
+(15, 'mal', '2018-07-18 16:45:04', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -192,7 +194,7 @@ CREATE TABLE `pendaftaran` (
 --
 
 INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`) VALUES
-(1, '123', 'umroh001', 'sedang diperiksa', 'sedang diperiksa', 'sedang diperiksa', '', 'tidak ada berkas', '');
+(1, '123', 'umroh001', 'valid', 'tidak valid', 'valid', '', 'tidak ada berkas', '');
 
 -- --------------------------------------------------------
 
@@ -307,7 +309,7 @@ ALTER TABLE `berkas_upload`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `pendaftaran`

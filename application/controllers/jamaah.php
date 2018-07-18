@@ -174,4 +174,12 @@
 
         } // => end of function jadwal
 
+        public function pembayaran(){
+
+            $this->load->view('jamaah/header');
+            $this->load->view('jamaah/pembayaran');
+            $this->load->view('front/footer');
+
+        }
+
     }
