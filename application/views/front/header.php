@@ -43,22 +43,22 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="<?php echo base_url() ?>#">Beranda</a></li>
-            <li><a href="<?php echo base_url() ?>#">Tentang</a></li>
+            <li><a href="<?php echo base_url() ?>">Beranda</a></li>
+            <li><a href="<?php echo base_url() ?>home/tentang">Tentang</a></li>
             <!-- dropdown paket umroh -->
             <li>
               <a class="btn dropdown-toggle" data-toggle="dropdown">Paket Umroh
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="<?php echo base_url() ?>#">Arafah</a></li>
-                <li><a href="<?php echo base_url() ?>#">Minah</a></li>
-                <li><a href="<?php echo base_url() ?>#">Safa</a></li>
+                <li><a href="<?php echo base_url() ?>home/paketshafa">Shafa</a></li>
+                <li><a href="<?php echo base_url() ?>home/paketmarwah">Marwah</a></li>
+                <li><a href="<?php echo base_url() ?>home/paketzamzam">Zam Zam</a></li>
               </ul>
             </li> <!-- end of dropdown paket umroh -->
-            <li><a href="<?php echo base_url() ?>#">Paket Haji Plus</a></li>
-            <li><a href="<?php echo base_url() ?>#">Gallery</a></li>
-            <li><a href="<?php echo base_url() ?>#">Kontak</a></li>
+            <li><a href="<?php echo base_url() ?>home/pakethajiplus">Paket Haji Plus</a></li>
+            <li><a href="<?php echo base_url() ?>home/gallery">Gallery</a></li>
+            <li><a href="<?php echo base_url() ?>home/kontak">Kontak</a></li>
           </ul>
 
           <!-- jika blm login, tampilin tombol login -->

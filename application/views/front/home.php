@@ -54,7 +54,7 @@
             <img src="<?php echo base_url() ?>asset/image/paket-marwah.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
         </p>
         <p class="text-center">
-            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>#">Lihat Detail</a>
+            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>home/paketmarwah">Lihat Detail</a>
         </p>
     </div>
     <!-- paket Zam Zam -->
@@ -64,7 +64,7 @@
             <img src="<?php echo base_url() ?>asset/image/paket-zam-zam.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
         </p>
         <p class="text-center">
-            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>#">Lihat Detail</a>
+            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>home/paketzamzam">Lihat Detail</a>
         </p>
     </div>
 </div>

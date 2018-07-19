@@ -34,14 +34,74 @@
 
         }
 
+        public function tentang(){
+
+            $this->load->view('front/header');
+            $this->load->view('front/tentang');
+            $this->load->view('front/footer');
+
+        }
+
+        public function gallery(){
+
+            $this->load->view('front/header');
+            $this->load->view('front/gallery');
+            $this->load->view('front/footer');
+
+        }
+
+        public function kontak(){
+
+            $this->load->view('front/header');
+            $this->load->view('front/kontak');
+            $this->load->view('front/footer');
+
+        }
+
         /////////////////////////////////////////////////
         /////////////////////////////////////////////////
         // DAFTAR PAKET
 
         public function paketshafa(){
+
+            $hasil = $this->home_model->ambilPaket('umrah003');
+            $data['paket'] = $hasil;
             
             $this->load->view('front/header');
-            $this->load->view('front/paketshafa');
+            $this->load->view('front/paketshafa', $data);
+            $this->load->view('front/footer');
+
+        }
+
+        public function paketMarwah(){
+
+            $hasil = $this->home_model->ambilPaket('umrah002');
+            $data['paket'] = $hasil;
+
+            $this->load->view('front/header');
+            $this->load->view('front/paketmarwah', $data);
+            $this->load->view('front/footer');
+
+        }
+
+        public function paketZamzam(){
+
+            $hasil = $this->home_model->ambilPaket('umroh001');
+            $data['paket'] = $hasil;
+
+            $this->load->view('front/header');
+            $this->load->view('front/paketzamzam', $data);
+            $this->load->view('front/footer');
+
+        }
+
+        public function paketHajiPlus(){
+
+            $hasil = $this->home_model->ambilPaket('haji001');
+            $data['paket'] = $hasil;
+
+            $this->load->view('front/header');
+            $this->load->view('front/pakethajiplus', $data);
             $this->load->view('front/footer');
 
         }
@@ -130,6 +190,11 @@
                     array(
                         'field' => 'propinsi',
                         'label' => 'propinsi',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'kodepos',
+                        'label' => 'Kode Pos',
                         'rules' => 'required'
                     ),
                     array(
@@ -225,6 +290,7 @@
                 $kecamatan = $this->input->post('kecamatan');
                 $kabupaten = $this->input->post('kabupaten');
                 $propinsi = $this->input->post('propinsi');
+                $kodepos = $this->input->post('kodepos');
                 $telepon = $this->input->post('telepon');
                 $hp = $this->input->post('hp');
                 $pendidikan = $this->input->post('pendidikan');

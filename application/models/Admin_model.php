@@ -2,6 +2,17 @@
 
     class Admin_model extends CI_Model{
 
+
+        public function ambilDataJamaah($ktp){
+
+            $this->db->select('*');
+            $this->db->from('jamaah');
+            $this->db->where('ktp', $ktp);
+            $hasil = $this->db->get()->row_array();
+            return $hasil;
+
+        } // => end of function ambilDataPendaftaran
+
         public function ambilDataPendaftaran(){
 
             $this->db->select('*');

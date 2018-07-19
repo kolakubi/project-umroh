@@ -112,4 +112,30 @@
         }
         ////////////////////////////////////////////////////
 
+        public function jamaahDetail($ktp){
+
+            $hasil = $this->admin_model->ambilDataJamaah($ktp);
+            $data['jamaah'] = $hasil;
+
+            // echo '<pre>';
+            // print_r($hasil);
+            // echo '</pre>';
+
+            $this->load->view('admin/header');
+            $this->load->view('admin/jamaahdetail', $data);
+            $this->load->view('front/footer');
+
+        }
+
+        //////////////////////////////////////////////////
+
+        public function jadwal(){
+
+            $this->load->view('admin/header');
+            $this->load->view('admin/jadwal');
+            $this->load->view('front/footer');
+
+
+        }
+
     }

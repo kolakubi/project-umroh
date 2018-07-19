@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
         <p class="text-center">
-            <img src="<?php echo base_url() ?>asset/image/paket-shafa.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
+            <img src="<?php echo base_url() ?>asset/image/paket-marwah.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
         </p>
     </div>
 </div>

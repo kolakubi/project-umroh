@@ -76,9 +76,34 @@
 
     <!-- info rekening -->
     <div class="row">
-        <div class="col-xs-12">
-            <p>Pembayaran dapat dilakukan dengan transfer ke:</p>
+        <p class="text-center">Pembayaran dapat dilakukan dengan transfer ke:</p>
+
+        <!-- mandiri -->
+        <div class="col-xs-12 col-md-4">
+            <p class="text-center">
+                <img class="img img-responsive" src="<?php echo base_url() ?>asset/image/logo-bank-mandiri.jpg" alt="logo-bank-mandiri">
+            </p>
             <p>Bank Mandiri</p>
+            <p>123135354313513</p>
+            <p>a/n: Wisnu Tampan</p>
+        </div>
+
+        <!-- bca -->
+        <div class="col-xs-12 col-md-4">
+            <p class="text-center">
+                <img class="img img-responsive" src="<?php echo base_url() ?>asset/image/logo-bank-bca.jpg" alt="logo-bank-mandiri">
+            </p>
+            <p>BCA</p>
+            <p>123135354313513</p>
+            <p>a/n: Wisnu Tampan</p>
+        </div>
+
+        <!-- permata -->
+        <div class="col-xs-12 col-md-4">
+            <p class="text-center">
+                <img class="img img-responsive" src="<?php echo base_url() ?>asset/image/logo-bank-permata.jpg" alt="logo-bank-mandiri">
+            </p>
+            <p>Permata</p>
             <p>123135354313513</p>
             <p>a/n: Wisnu Tampan</p>
         </div>

@@ -244,7 +244,7 @@
 
                     <option>-Pilih Paket-</option>
                     <?php foreach($hasil as $dataProduk) : ?>
-                        <option value="<?php echo $dataProduk['kode_produk']?>"><?php echo $dataProduk['nama']?></option>
+                        <option value="<?php echo $dataProduk['kode_produk']?>"><?php echo $dataProduk['nama_produk']?></option>
                     <?php endforeach ?>
 
                 </select>
