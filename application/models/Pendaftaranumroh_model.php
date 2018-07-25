@@ -8,21 +8,32 @@
 
         }
 
-        public function ambilProduk(){
-            
+        public function ambilProduk($kodeProduk = null){
+
+            $hasil = array();
             $this->db->select('*');
             $this->db->from('produk');
-            $hasil = $this->db->get()->result_array();
+
+            if($kodeProduk){
+                $this->db->join('produk_detail', 'produk_detail.kode_produk = produk.kode_produk');
+                $this->db->where('produk.kode_produk', $kodeProduk);
+                $hasil = $this->db->get()->result_array();
+                return $hasil;
+            }else{
+                $hasil = $this->db->get()->result_array();
+
+            }
 
             return $hasil;
-
+            
+            
         } //=> end of funtion ambil produk
 
         public function cekJamaah($dataPendaftar){
 
-            $hasil = $this->db->get_where('jamaah', array('ktp', $dataPendaftar['ktp']))->row_array();
+            $hasil = $this->db->get_where('jamaah', array('ktp' => $dataPendaftar['ktp']))->row_array();
 
-            if(!empty($hasil)){
+            if(count($hasil) > 0){
                 return true;
             }
 
@@ -75,6 +86,7 @@
             }
             // jika jamaah belum pernah terdaftar
             else{
+    
                 // insert data jamaah
                 $this->tambahJamaah($dataPendaftar);
 

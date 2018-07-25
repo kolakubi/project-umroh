@@ -8,7 +8,7 @@
     <div class="col-xs-12 col-md-6">
 
         <!-- form -->
-        <?php echo form_open('home/submitformpendaftaran') ?>
+        <?php echo form_open('home/submitformpendaftaran/umroh') ?>
             <div class="form-group">
                 <label style="color: #222">Nomor KTP: </label>
                 <input type="text" name="ktp" class="form-control">
@@ -144,7 +144,7 @@
                     <span style="color: white;"><?php echo form_error('pekerjaan') ?></span>
                 </div>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label style="color: #222">Pengalaman Haji: </label><br>
                 <input type="radio" name="pengalamanhaji" value="Pernah"> Pernah<br>
                 <input type="radio" name="pengalamanhaji" value="Belum Pernah"> Belum Pernah
@@ -176,7 +176,7 @@
                 <div style="background-color: #f44242; text-align: center;">
                     <span style="color: white;"><?php echo form_error('nomorpendaftarmahram') ?></span>
                 </div>
-            </div>
+            </div> -->
             <div class="form-group">
                 <label style="color: #222">Golongan Darah: </label>
                 <input type="text" name="golongandarah" class="form-control">
@@ -242,7 +242,7 @@
                 <label style="color: #222">Paket: </label>
                 <select class="form-control" name="paket">
 
-                    <option>-Pilih Paket-</option>
+                    <!-- <option>-Pilih Paket-</option> -->
                     <?php foreach($hasil as $dataProduk) : ?>
                         <option value="<?php echo $dataProduk['kode_produk']?>"><?php echo $dataProduk['nama_produk']?></option>
                     <?php endforeach ?>
@@ -256,7 +256,7 @@
             
 
             <div class="form-group">
-                <button type="submit" class="btn btn-info btn-block">Login</button>
+                <button type="submit" class="btn btn-info btn-block">Daftar</button>
             </div>
         <?php echo form_close() ?>
 

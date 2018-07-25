@@ -106,16 +106,18 @@
 
         }
 
-        public function daftar(){
+        public function daftarUmroh($kodePaket){
+
+            $_SESSION['kode_produk'] = $kodePaket;
 
             // jika sudah login
             if($this->cekSession()){
 
-                $hasil = $this->pendaftaranumroh_model->ambilProduk();
+                $hasil = $this->pendaftaranumroh_model->ambilProduk($kodePaket);
                 $data['hasil'] = $hasil;
 
                 $this->load->view('front/header');
-                $this->load->view('front/formpendaftaran', $data);
+                $this->load->view('front/formpendaftaranumroh', $data);
                 $this->load->view('front/footer');
 
             }
@@ -127,7 +129,30 @@
 
         } // => end of function daftarPaketUmrah
 
-        public function submitFormPendaftaran(){
+        public function daftarHaji($kodePaket){
+
+            $_SESSION['kode_produk'] = $kodePaket;
+
+            // jika sudah login
+            if($this->cekSession()){
+
+                $hasil = $this->pendaftaranumroh_model->ambilProduk($kodePaket);
+                $data['hasil'] = $hasil;
+
+                $this->load->view('front/header');
+                $this->load->view('front/formpendaftaranhaji', $data);
+                $this->load->view('front/footer');
+
+            }
+
+            // belum login, redirect ke login
+            else{
+                redirect('login');
+            }
+
+        } // => end of function daftarPaketUmrah
+
+        public function submitFormPendaftaran($produk){
 
             // set rule form
             $this->form_validation->set_rules(
@@ -265,12 +290,20 @@
             // jika form tidak valid
             if(!$this->form_validation->run()){
 
+                $kodeProduk = $_SESSION['kode_produk'];
                 // ambil data produk
-                $hasil = $this->pendaftaranumroh_model->ambilProduk();
+                $hasil = $this->pendaftaranumroh_model->ambilProduk($kodeProduk);
                 $data['hasil'] = $hasil;
 
                 $this->load->view('front/header');
-                $this->load->view('front/formpendaftaran', $data);
+
+                if($produk == 'haji'){
+                    $this->load->view('front/formpendaftaranhaji', $data);
+                }
+                else{
+                    $this->load->view('front/formpendaftaranumroh', $data);
+                }
+
                 $this->load->view('front/footer');
 
             }

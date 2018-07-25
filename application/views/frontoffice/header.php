@@ -43,7 +43,9 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="<?php echo base_url() ?>admin">Produk</a></li>
+            <li><a href="<?php echo base_url() ?>frontoffice">Jamaah</a></li>
+            <li><a href="<?php echo base_url() ?>frontoffice/berkas">Berkas</a></li>
+            <li><a href="<?php echo base_url() ?>frontoffice/jadwal">Jadwal</a></li>
           </ul>
 
           <!-- jika blm login, tampilin tombol login -->

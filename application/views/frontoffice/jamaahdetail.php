@@ -58,5 +58,5 @@
 
 <!-- button kembali -->
 <p class="text-center">
-    <a class="btn btn-info" href="<?php echo base_url() ?>admin/">kembali</a>
+    <a class="btn btn-info" href="<?php echo base_url() ?>frontoffice/">kembali</a>
 </p>

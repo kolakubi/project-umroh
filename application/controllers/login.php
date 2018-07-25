@@ -112,7 +112,7 @@
 					}
 					// keuangan
 					else if($level === '2'){
-						redirect('agen');
+						redirect('keuangan');
 					}
 					// direktur
 					else if($level === '3'){
@@ -121,6 +121,9 @@
 					// calon jamaah
 					else if($level === '4'){
 						redirect('home');
+					}
+					else if($level === '5'){
+						redirect('frontoffice');
 					}
 
 				}

@@ -39,5 +39,5 @@
 <!-- button daftar -->
 <br>
 <p class="text-center">
-    <a href="<?php echo base_url() ?>home/daftar" class="btn btn-info">Pilih Paket Ini</a>
+    <a href="<?php echo base_url() ?>home/daftarumroh/umrah003" class="btn btn-info">Pilih Paket Ini</a>
 </p>

@@ -1,76 +1,57 @@
 <?php
 
-    class Admin_model extends CI_Model{
+    Class Admin_model extends CI_Model{
 
+        public function __construct(){
 
-        public function ambilDataJamaah($ktp){
+            parent::__construct();
+
+        }
+
+        public function ambilDataProduk($kodeProduk = null){
 
             $this->db->select('*');
-            $this->db->from('jamaah');
-            $this->db->where('ktp', $ktp);
-            $hasil = $this->db->get()->row_array();
+            $this->db->from('produk');
+            $this->db->join('produk_detail', 'produk_detail.kode_produk = produk.kode_produk');
+
+            // jika ada kode produk
+            if($kodeProduk){
+                $this->db->where('produk.kode_produk', $kodeProduk);
+                $hasil = $this->db->get()->row_array();
+            }
+            else{
+                $hasil = $this->db->get()->result_array();
+            }
+
             return $hasil;
 
-        } // => end of function ambilDataPendaftaran
+        }
 
-        public function ambilDataPendaftaran(){
+        public function produkUbah($dataUbahProduk){
 
-            $this->db->select('*');
-            $this->db->from('pendaftaran');
-            $this->db->join('jamaah', 'jamaah.ktp = pendaftaran.ktp');
-            $this->db->join('produk', 'produk.kode_produk = pendaftaran.kode_produk');
-            $hasil = $this->db->get()->result_array();
-            return $hasil;
-
-        } // => end of function ambilDataPendaftaran
-
-        public function ambilDataSatuBerkas($kodePendaftaran, $kodeBerkas){
-
-            $this->db->select('*');
-            $this->db->from('berkas_upload');
-            $this->db->join('pendaftaran', 'pendaftaran.kode_pendaftaran = berkas_upload.kode_pendaftaran');
-            $this->db->where('berkas_upload.kode_pendaftaran', $kodePendaftaran);
-            $this->db->where('berkas_upload.kode_berkas', $kodeBerkas);
-            $this->db->limit(1);
-            $this->db->order_by('berkas_upload.kode_upload', 'DESC');
-            $result = $this->db->get()->row_array();
-
-            return $result;
-
-        } // =? end of function ambilDataSatuBerkas
-
-        public function ambilDataBerkas($kodePendaftaran){
-
-            $berkasKTP = array();
-            $berkasKK = array();
-            $berkasPassport = array();
-            $berkas = array();
-
-            $berkasKTP = $this->ambilDataSatuBerkas($kodePendaftaran, 'berkas001');
-
-            $berkasKK = $this->ambilDataSatuBerkas($kodePendaftaran, 'berkas002');
-
-            $berkasPassport = $this->ambilDataSatuBerkas($kodePendaftaran, 'berkas003');
-
-            $berkas = array(
-                'ktp' => $berkasKTP,
-                'kk' => $berkasKK,
-                'passport' => $berkasPassport
+            // ubah table produk
+            $this->db->set(
+                array(
+                    'nama_produk' => $dataUbahProduk['nama_produk']
+                )
             );
+            $this->db->where('kode_produk', $dataUbahProduk['kode_produk']);
+            $this->db->update('produk');
 
-            return $berkas;
-        } // end of function ambilDataBerkas
-
-        public function updateStatusBerkas($berkas, $status, $kodePendaftaran){
-
-            $this->db->set(array(
-                $berkas => $status
-            ));
-            $this->db->where('kode_pendaftaran', $kodePendaftaran);
-            $this->db->update('pendaftaran');
+            // ubah table produk_detail
+            $this->db->set(
+                array(
+                    'harga' => $dataUbahProduk['harga'],
+                    'hotel' => $dataUbahProduk['hotel'],
+                    'hari' => $dataUbahProduk['hari'],
+                    'kuota' => $dataUbahProduk['kuota']
+                )
+            );
+            $this->db->where('kode_produk', $dataUbahProduk['kode_produk']);
+            $this->db->update('produk_detail');
 
             return true;
 
         }
 
-    }// => end of class
+    }

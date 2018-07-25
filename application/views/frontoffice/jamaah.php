@@ -25,7 +25,7 @@
                     <td><?php echo $daftar['kelamin'] ?></td>
                     <td><?php echo $daftar['telepon'] ?></td>
                     <td>
-                        <a class="btn btn-info" href="<?php echo base_url() ?>admin/jamaahdetail/<?php echo $daftar['ktp'] ?>">lihat Detail</a>
+                        <a class="btn btn-info" href="<?php echo base_url() ?>frontoffice/jamaahdetail/<?php echo $daftar['ktp'] ?>">lihat Detail</a>
                     </td>
                 </tr>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2018 at 11:22 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jul 25, 2018 at 08:33 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -73,7 +73,11 @@ INSERT INTO `berkas_upload` (`kode_upload`, `kode_berkas`, `kode_pendaftaran`, `
 (10, 'berkas004', 1, '1F0ZVmzNvZ.jpg'),
 (11, 'berkas001', 2, 'warung.jpg'),
 (12, 'berkas002', 2, 'penulis-lepas.jpg'),
-(13, 'berkas003', 2, 'bisnis-tanaman-hias.jpg');
+(13, 'berkas003', 2, 'bisnis-tanaman-hias.jpg'),
+(14, 'berkas001', 3, 'back-to-school1.jpg'),
+(15, 'berkas002', 3, 'slide-sancu2.jpg'),
+(16, 'berkas003', 3, 'tiket_traveloka.png'),
+(17, 'berkas004', 3, 'xtreme-gunung-merah.jpg');
 
 -- --------------------------------------------------------
 
@@ -119,6 +123,7 @@ CREATE TABLE `jamaah` (
 
 INSERT INTO `jamaah` (`username`, `ktp`, `nama`, `namaayah`, `tempatlahir`, `tanggallahir`, `kelamin`, `kewarganegaraan`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `propinsi`, `kodepos`, `telepon`, `hp`, `pendidikan`, `pekerjaan`, `pengalamanhaji`, `namamahram`, `hubunganmahram`, `nomorpendaftarmahram`, `golongandarah`, `rambut`, `alis`, `hidung`, `tinggi`, `berat`, `muka`) VALUES
 ('mal', '123', 'Malmahsyar', 'Wisynu Djama', 'Jakarta', '2018-07-15', 'Laki-laki', 'WNI', 'Jalan Kelapa dua wetan III no 29 RT 06/RW 01', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08568734259', 'S1', 'Swasta', 'Belum Pernah', '', NULL, '', 'o', 'lurus', 'Tebal', 'Mancung', '165cm', '60kg', 'Bulat'),
+('wisnu', '1233444', 'wwww', 'wwww', 'basf', '2018-07-19', 'Laki-laki', 'WNI', 'jnjnoiuniuhnpiu', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08122340253092', 'S3', 'Tani/NElayan', NULL, '', NULL, '', 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan'),
 ('user001', '31230124012458013', 'Malmahsyar', 'Teddy', 'Jakarta', '2018-07-19', 'Laki-laki', 'WNI', 'asd', 'bogor', 'bogor', 'bogor', 'Jawa Barat', '', '02187704765', '08568734259', 'SD', 'PNS', NULL, '', NULL, '', 'o', 'lurus', 'tebal', 'mancung', '165', '60', 'bulat');
 
 -- --------------------------------------------------------
@@ -163,7 +168,22 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (21, 'admin', '2018-07-19 15:13:31', '::1', 'berhasil'),
 (22, 'admin', '2018-07-19 15:50:57', '::1', 'berhasil'),
 (23, 'admin', '2018-07-19 15:51:03', '::1', 'berhasil'),
-(24, 'mal', '2018-07-19 16:12:31', '::1', 'berhasil');
+(24, 'mal', '2018-07-19 16:12:31', '::1', 'berhasil'),
+(25, 'mal', '2018-07-19 16:46:48', '::1', 'berhasil'),
+(26, 'wisnu', '2018-07-19 17:54:20', '::1', 'berhasil'),
+(27, 'admin', '2018-07-19 18:01:08', '::1', 'berhasil'),
+(28, 'wisnu', '2018-07-19 18:02:03', '::1', 'berhasil'),
+(29, 'admin', '2018-07-19 18:05:14', '::1', 'berhasil'),
+(30, 'mal', '2018-07-25 21:04:35', '::1', 'berhasil'),
+(31, 'admin', '2018-07-25 22:33:07', '::1', 'berhasil'),
+(32, 'frontoffice', '2018-07-25 22:35:04', '::1', 'berhasil'),
+(33, 'admin', '2018-07-25 23:02:00', '::1', 'berhasil'),
+(34, 'admin', '2018-07-25 23:02:35', '::1', 'berhasil'),
+(35, 'keuangan', '2018-07-26 00:38:02', '::1', 'gagal'),
+(36, 'keungan', '2018-07-26 00:38:07', '::1', 'gagal'),
+(37, 'keuangan', '2018-07-26 00:38:21', '::1', 'berhasil'),
+(38, 'keuangan', '2018-07-26 00:38:45', '::1', 'berhasil'),
+(39, 'mal', '2018-07-26 00:40:38', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -184,8 +204,11 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`username`, `password`, `email`, `level`) VALUES
 ('admin', 'admin', 'admin@admin.com', 1),
+('frontoffice', 'frontoffice', 'front@office.com', 5),
+('keuangan', 'keuangan', 'keuangan@keuangan.com', 2),
 ('mal', 'mal', 'mal@mal.com', 4),
-('user001', 'user001', 'user@gmaiil.com', 4);
+('user001', 'user001', 'user@gmaiil.com', 4),
+('wisnu', '12345', 'wisnuwinz@gmail.com', 4);
 
 -- --------------------------------------------------------
 
@@ -225,7 +248,9 @@ CREATE TABLE `pendaftaran` (
 
 INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`, `tanggaldaftar`) VALUES
 (1, '123', 'umroh001', 'valid', 'tidak valid', 'valid', '', 'sedang diperiksa', '', '2018-07-18 20:56:44'),
-(2, '31230124012458013', 'umrah002', 'valid', 'sedang diperiksa', 'sedang diperiksa', '', 'tidak ada berkas', '', '2018-07-19 15:10:42');
+(2, '31230124012458013', 'umrah002', 'valid', 'sedang diperiksa', 'sedang diperiksa', '', 'tidak ada berkas', '', '2018-07-19 15:10:42'),
+(3, '1233444', 'umrah003', 'valid', 'valid', 'valid', '', 'sedang diperiksa', '', '2018-07-19 17:57:55'),
+(4, '123', 'haji001', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'tidak ada berkas', '', '2018-07-25 21:45:35');
 
 -- --------------------------------------------------------
 
@@ -243,7 +268,7 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`kode_produk`, `nama_produk`) VALUES
-('haji001', 'Haji Plus'),
+('haji001', 'Haji Plus +'),
 ('umrah002', 'Marwah'),
 ('umrah003', 'Safa'),
 ('umroh001', 'Zam Zam');
@@ -269,8 +294,8 @@ CREATE TABLE `produk_detail` (
 
 INSERT INTO `produk_detail` (`kode_produk_detail`, `kode_produk`, `harga`, `hotel`, `hari`, `kuota`) VALUES
 (1, 'umroh001', 24900000, 'Bintang 5', 9, 500),
-(2, 'umrah002', 25500000, 'Bintang 4', 9, 500),
-(3, 'umrah003', 31200000, 'Bintang 4', 9, 500),
+(2, 'umrah002', 25500000, 'Bintang 5', 9, 500),
+(3, 'umrah003', 31200000, 'Bintang 5', 9, 500),
 (4, 'haji001', 250000000, 'Bintang 5', 20, 200);
 
 --
@@ -340,32 +365,27 @@ ALTER TABLE `produk_detail`
 -- AUTO_INCREMENT for table `berkas_upload`
 --
 ALTER TABLE `berkas_upload`
-  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
+  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
   MODIFY `kode_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `produk_detail`
 --
 ALTER TABLE `produk_detail`
   MODIFY `kode_produk_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- Constraints for dumped tables
 --

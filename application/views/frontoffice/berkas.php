@@ -30,7 +30,7 @@
                     <td><?php echo $daftar['nama'] ?></td>
                     <td><?php echo $daftar['ket_status_berkas'] ?></td>
                     <td>
-                        <a class="btn btn-info" href="<?php echo base_url() ?>admin/berkasvalidasi/<?php echo $daftar['kode_pendaftaran'] ?>">Validasi Berkas</a>
+                        <a class="btn btn-info" href="<?php echo base_url() ?>frontoffice/berkasvalidasi/<?php echo $daftar['kode_pendaftaran'] ?>">Validasi Berkas</a>
                     </td>
                 </tr>
                 <?php $index++ ?>
