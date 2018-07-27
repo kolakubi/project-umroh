@@ -13,6 +13,7 @@
             <thead>
                 <tr class="info">
                     <th>No</th>
+                    <th>Kode Pendaftaran</th>
                     <th>Nama</th>
                     <th>Paket</th>
                     <th>Harga</th>
@@ -26,6 +27,7 @@
                 <?php foreach($pendaftaran as $daftar) : ?>
                 <?php $index++ ?>
                 <td><?php echo $index ?></td>
+                <td><?php echo $daftar['kode_pendaftaran'] ?></td>
                 <td><?php echo $daftar['nama'] ?></td>
                 <td><?php echo $daftar['nama_produk'] ?></td>
                 <td><?php echo 'Rp'.number_format($daftar['harga'], 0, ',', '.') ?></td>

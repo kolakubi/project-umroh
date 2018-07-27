@@ -23,11 +23,34 @@
 
         public function index(){
 
+            $hasil = $this->keuangan_model->ambilDataKeuangan();
+            $data['hasil'] = $hasil;
+
             $this->load->view('keuangan/header');
-            $this->load->view('keuangan/pembayaran');
+            $this->load->view('keuangan/pembayaran', $data);
             $this->load->view('front/footer');
 
         } // => end of function index
+
+        public function statusValid($kodePendaftaran){
+
+            $status = 1;
+
+            $this->keuangan_model->ubahStatusPembayaran($kodePendaftaran, $status);
+
+            redirect('keuangan/index');
+
+        } // end of function statusValid
+
+        public function statusTidakValid($kodePendaftaran){
+
+            $status = 0;
+
+            $this->keuangan_model->ubahStatusPembayaran($kodePendaftaran, $status);
+
+            redirect('keuangan/index');
+
+        } // end of function statusValid
 
 
     } // => end of class

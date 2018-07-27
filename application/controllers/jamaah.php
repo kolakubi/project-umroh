@@ -178,7 +178,7 @@
 
             // ambil data pendaftaran
             $hasil = $this->jamaah_model->ambilTagihan($_SESSION['username']);
-            $data['pendaftaran'] = $hasil;
+            $data['pendaftaran'] = $hasil; 
 
             $this->load->view('jamaah/header');
             $this->load->view('jamaah/pembayaran', $data);
@@ -235,7 +235,6 @@
                 else{
                     $dataFileBuktiPembayaran = $this->upload->data();
                     $dataBuktiPembayaran = array(
-                        'kode_berkas' => 'berkas004',
                         'nama_file' => $dataFileBuktiPembayaran['file_name'],
                         'kode_pendaftaran' => $kodePendaftaran
                     );

@@ -60,6 +60,7 @@
             // buat array baru
             // ambil data yang dibutuhkan
             $editedDataPendaftar = array(
+                'username' => $dataPendaftar['username'],
                 'ktp' => $dataPendaftar['ktp'],
                 'kode_produk' => $dataPendaftar['paket'],
                 'status_berkas_ktp' => 'tidak ada berkas',
@@ -72,28 +73,40 @@
 
         }
 
+        public function tambahPembayaran($kodePendaftaran, $nominal){
+
+            $this->db->insert('pembayaran', 
+                array(
+                    'kode_pendaftaran' => $kodePendaftaran,
+                    'status_pembayaran' => 0,
+                    'nominal_pembayaran' => $nominal
+                )
+            );
+
+        } // => end of function tambahPembayaran
+
         public function daftar($dataPendaftar){
 
             // cek apakah jamaah sudah ada datanya
 
-            // jika jamaah sdh pernah daftar
-            if($this->cekJamaah($dataPendaftar)){
+            // jika jamaah belum pernah pernah daftar
+            if(!$this->cekJamaah($dataPendaftar)){
 
-                // input pendaftaran aja
-                // insert data pendaftaran
-                $this->tambahPendaftaran($dataPendaftar);
-
-            }
-            // jika jamaah belum pernah terdaftar
-            else{
-    
-                // insert data jamaah
-                $this->tambahJamaah($dataPendaftar);
-
-                // insert data pendaftaran
-                $this->tambahPendaftaran($dataPendaftar);
+               // insert data jamaah
+               $this->tambahJamaah($dataPendaftar);
 
             }
+
+            // insert data pendaftaran
+            $dataPendaftar['username'] = $_SESSION['username'];
+            $this->tambahPendaftaran($dataPendaftar);
+            // ambil kode pendaftaran baru diinput
+            $kodePendaftaranBaruDiinput = $this->db->insert_id();
+            // ambil harga produk
+            $hargaProduk = $this->ambilProduk($dataPendaftar['paket'])[0]['harga'];
+
+            // insert pembayaran
+            $this->tambahPembayaran($kodePendaftaranBaruDiinput, $hargaProduk);
 
             return true;
 

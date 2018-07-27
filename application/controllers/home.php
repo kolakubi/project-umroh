@@ -310,6 +310,8 @@
             // jika form valid
             else{
 
+                $username = $_SESSION['username'];
+
                 // ambil value dari semua field
                 $ktp = $this->input->post('ktp');
                 $nama = $this->input->post('nama');
@@ -343,6 +345,7 @@
 
                 // masukin ke array
                 $dataPendaftar = array(
+                    'username' => $username,
                     'ktp' => $ktp,
                     'nama' => $nama,
                     'namaayah' => $namaayah,
@@ -372,6 +375,10 @@
                     'muka' => $muka,
                     'paket' => $paket,
                 );
+
+                // echo '<pre>';
+                // print_r($dataPendaftar);
+                // echo '</pre>';
 
                 // input ke db
                 $hasil = $this->pendaftaranumroh_model->daftar($dataPendaftar);

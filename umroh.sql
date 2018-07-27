@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2018 at 08:33 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- Generation Time: Jul 27, 2018 at 05:59 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -61,23 +61,9 @@ CREATE TABLE `berkas_upload` (
 --
 
 INSERT INTO `berkas_upload` (`kode_upload`, `kode_berkas`, `kode_pendaftaran`, `nama_file`) VALUES
-(1, 'berkas001', 1, 'back-to-school2.jpg'),
-(2, 'berkas002', 1, 'xtreme-gunung-merah.jpg'),
-(3, 'berkas003', 1, 'slide-sancu2.jpg'),
-(4, 'berkas001', 1, 'back-to-school.jpg'),
-(5, 'berkas002', 1, 'slide-sancu21.jpg'),
-(6, 'berkas003', 1, 'xtreme-gunung-merah1.jpg'),
-(7, 'berkas001', 1, 'back-to-school.jpg'),
-(8, 'berkas002', 1, 'banner-sancu-fb.jpg'),
-(9, 'berkas003', 1, 'bisnis-online.jpg'),
-(10, 'berkas004', 1, '1F0ZVmzNvZ.jpg'),
-(11, 'berkas001', 2, 'warung.jpg'),
-(12, 'berkas002', 2, 'penulis-lepas.jpg'),
-(13, 'berkas003', 2, 'bisnis-tanaman-hias.jpg'),
-(14, 'berkas001', 3, 'back-to-school1.jpg'),
-(15, 'berkas002', 3, 'slide-sancu2.jpg'),
-(16, 'berkas003', 3, 'tiket_traveloka.png'),
-(17, 'berkas004', 3, 'xtreme-gunung-merah.jpg');
+(18, 'berkas001', 11, 'back-to-school.jpg'),
+(19, 'berkas002', 11, 'banner_iklan.png'),
+(20, 'berkas003', 11, 'bisnis-online.jpg');
 
 -- --------------------------------------------------------
 
@@ -183,7 +169,28 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (36, 'keungan', '2018-07-26 00:38:07', '::1', 'gagal'),
 (37, 'keuangan', '2018-07-26 00:38:21', '::1', 'berhasil'),
 (38, 'keuangan', '2018-07-26 00:38:45', '::1', 'berhasil'),
-(39, 'mal', '2018-07-26 00:40:38', '::1', 'berhasil');
+(39, 'mal', '2018-07-26 00:40:38', '::1', 'berhasil'),
+(40, 'keuangan', '2018-07-27 08:25:50', '::1', 'gagal'),
+(41, 'keuangan', '2018-07-27 08:25:57', '::1', 'berhasil'),
+(42, 'mal', '2018-07-27 08:51:17', '::1', 'berhasil'),
+(43, 'frontoffice', '2018-07-27 08:56:56', '::1', 'berhasil'),
+(44, 'frontoffice', '2018-07-27 09:10:02', '::1', 'berhasil'),
+(45, 'keuangan', '2018-07-27 09:10:10', '::1', 'berhasil'),
+(46, 'mal', '2018-07-27 09:10:22', '::1', 'berhasil'),
+(47, 'mal', '2018-07-27 09:26:07', '::1', 'berhasil'),
+(48, 'mal', '2018-07-27 09:51:11', '::1', 'berhasil'),
+(49, 'frontoffice', '2018-07-27 09:52:50', '::1', 'berhasil'),
+(50, 'mal', '2018-07-27 09:55:19', '::1', 'berhasil'),
+(51, 'keuangan', '2018-07-27 10:17:57', '::1', 'berhasil'),
+(52, 'mal', '2018-07-27 10:33:06', '::1', 'berhasil'),
+(53, 'keuangan', '2018-07-27 10:34:41', '::1', 'gagal'),
+(54, 'keuangan', '2018-07-27 10:34:46', '::1', 'berhasil'),
+(55, 'mal', '2018-07-27 10:45:11', '::1', 'berhasil'),
+(56, 'admin', '2018-07-27 10:51:55', '::1', 'berhasil'),
+(57, 'keuangan', '2018-07-27 10:52:06', '::1', 'berhasil'),
+(58, 'mal', '2018-07-27 10:52:51', '::1', 'berhasil'),
+(59, 'keuangan', '2018-07-27 10:53:47', '::1', 'berhasil'),
+(60, 'mal', '2018-07-27 10:53:53', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -220,8 +227,17 @@ CREATE TABLE `pembayaran` (
   `kode_pembayaran` int(11) NOT NULL,
   `kode_pendaftaran` int(11) NOT NULL,
   `status_pembayaran` varchar(30) NOT NULL,
-  `tanggal` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `tanggal` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `nominal_pembayaran` int(11) NOT NULL,
+  `file_bukti_pembayaran` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembayaran`
+--
+
+INSERT INTO `pembayaran` (`kode_pembayaran`, `kode_pendaftaran`, `status_pembayaran`, `tanggal`, `nominal_pembayaran`, `file_bukti_pembayaran`) VALUES
+(7, 11, '1', '2018-07-27 09:51:43', 31200000, 'boncu-owl.jpg');
 
 -- --------------------------------------------------------
 
@@ -239,18 +255,16 @@ CREATE TABLE `pendaftaran` (
   `ket_status_berkas` text NOT NULL,
   `status_pembayaran` varchar(30) NOT NULL,
   `ket_status_pembayaran` text NOT NULL,
-  `tanggaldaftar` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `tanggaldaftar` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `username` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pendaftaran`
 --
 
-INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`, `tanggaldaftar`) VALUES
-(1, '123', 'umroh001', 'valid', 'tidak valid', 'valid', '', 'sedang diperiksa', '', '2018-07-18 20:56:44'),
-(2, '31230124012458013', 'umrah002', 'valid', 'sedang diperiksa', 'sedang diperiksa', '', 'tidak ada berkas', '', '2018-07-19 15:10:42'),
-(3, '1233444', 'umrah003', 'valid', 'valid', 'valid', '', 'sedang diperiksa', '', '2018-07-19 17:57:55'),
-(4, '123', 'haji001', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'tidak ada berkas', '', '2018-07-25 21:45:35');
+INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`, `tanggaldaftar`, `username`) VALUES
+(11, '31230124012458013', 'umrah003', 'valid', 'valid', 'sedang diperiksa', '', 'Lunas', '', '2018-07-27 09:51:43', 'mal');
 
 -- --------------------------------------------------------
 
@@ -365,27 +379,32 @@ ALTER TABLE `produk_detail`
 -- AUTO_INCREMENT for table `berkas_upload`
 --
 ALTER TABLE `berkas_upload`
-  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `kode_pembayaran` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kode_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `produk_detail`
 --
 ALTER TABLE `produk_detail`
   MODIFY `kode_produk_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- Constraints for dumped tables
 --

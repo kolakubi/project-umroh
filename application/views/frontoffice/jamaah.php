@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <h1 class="text-center">Jamaah</h1>
+        <h1 class="text-center">Pendaftaran</h1>
     </div>
 </div>
 
@@ -10,6 +10,7 @@
         <table class="table table-condensed table-bordered table-striped table-hover">
             <thead>
                 <tr class="info">
+                    <th>Kode Pendaftaran</th>
                     <th>KTP</th>
                     <th>Nama</th>
                     <th>Kelamin</th>
@@ -20,6 +21,7 @@
             <tbody>
                 <tr>
                     <?php foreach($pendaftaran as $daftar) : ?>
+                    <td><?php echo $daftar['kode_pendaftaran'] ?></td>
                     <td><?php echo $daftar['ktp'] ?></td>
                     <td><?php echo $daftar['nama'] ?></td>
                     <td><?php echo $daftar['kelamin'] ?></td>

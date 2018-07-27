@@ -8,7 +8,7 @@
             $this->db->from('pendaftaran');
             $this->db->join('jamaah', 'jamaah.ktp = pendaftaran.ktp');
             $this->db->join('produk', 'produk.kode_produk = pendaftaran.kode_produk');
-            $this->db->where('jamaah.username', $username);
+            $this->db->where('pendaftaran.username', $username);
             $hasil = $this->db->get()->result_array();
             return $hasil;
 
@@ -33,9 +33,6 @@
 
         public function tambahBuktiPembayaran($dataBuktiPembayaran){
 
-            // upload berkas
-            $this->db->insert('berkas_upload', $dataBuktiPembayaran);
-
             // update data pendaftaran
             // status berkas menjadi sedang diperiksa
             $this->db->set(array(
@@ -43,6 +40,13 @@
             ));
             $this->db->where('kode_pendaftaran', $dataBuktiPembayaran['kode_pendaftaran']);
             $this->db->update('pendaftaran');
+
+            // update data pembayaran
+            $this->db->set(array(
+                'file_bukti_pembayaran' => $dataBuktiPembayaran['nama_file']
+            ));
+            $this->db->where('kode_pendaftaran', $dataBuktiPembayaran['kode_pendaftaran']);
+            $this->db->update('pembayaran');
 
         } // => end of tambahBuktiPembayaran
 
@@ -53,7 +57,7 @@
             $this->db->join('jamaah', 'jamaah.ktp = pendaftaran.ktp');
             $this->db->join('produk', 'produk.kode_produk = pendaftaran.kode_produk');
             $this->db->join('produk_detail', 'produk_detail.kode_produk = produk.kode_produk');
-            $this->db->where('jamaah.username', $username);
+            $this->db->where('pendaftaran.username', $username);
             $hasil = $this->db->get()->result_array();
             return $hasil;
 

@@ -52,6 +52,16 @@
 
             $berkasPassport = $this->ambilDataSatuBerkas($kodePendaftaran, 'berkas003');
 
+            if(empty($berkasKTP)){
+                $berkasKTP = array();
+            }
+            if(empty($berkasKK)){
+                $berkasKK = array();
+            }
+            if(empty($berkasPassport)){
+                $berkasPassport = array();
+            }
+
             $berkas = array(
                 'ktp' => $berkasKTP,
                 'kk' => $berkasKK,
@@ -59,6 +69,7 @@
             );
 
             return $berkas;
+            
         } // end of function ambilDataBerkas
 
         public function updateStatusBerkas($berkas, $status, $kodePendaftaran){
