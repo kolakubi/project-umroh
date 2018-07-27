@@ -116,7 +116,7 @@
 					}
 					// direktur
 					else if($level === '3'){
-						redirect('agen');
+						redirect('direktur');
 					}
 					// calon jamaah
 					else if($level === '4'){
