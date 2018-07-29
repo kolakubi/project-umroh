@@ -39,8 +39,8 @@
                         
                         </td>
                         <td>
-                            <a href="<?php echo base_url() ?>keuangan/statusvalid/<?php echo $pembayaran['kode_pendaftaran'] ?>" class="btn btn-success">Valid</a>
-                            <a href="<?php echo base_url() ?>keuangan/statustidakvalid/<?php echo $pembayaran['kode_pendaftaran'] ?>" class="btn btn-danger">Tidak Valid</a>
+                            <a href="<?php echo base_url() ?>keuangan/statusvalid/<?php echo $pembayaran['kode_pembayaran'] ?>" class="btn btn-success">Valid</a>
+                            <a href="<?php echo base_url() ?>keuangan/statustidakvalid/<?php echo $pembayaran['kode_pembayaran'] ?>" class="btn btn-danger">Tidak Valid</a>
                         </td>
                     </tr>
                 <?php endforeach ?>

@@ -32,21 +32,21 @@
 
         } // => end of function index
 
-        public function statusValid($kodePendaftaran){
+        public function statusValid($kodePembayaran){
 
             $status = 1;
 
-            $this->keuangan_model->ubahStatusPembayaran($kodePendaftaran, $status);
+            $this->keuangan_model->ubahStatusPembayaran($kodePembayaran, $status);
 
             redirect('keuangan/index');
 
         } // end of function statusValid
 
-        public function statusTidakValid($kodePendaftaran){
+        public function statusTidakValid($kodePembayaran){
 
             $status = 0;
 
-            $this->keuangan_model->ubahStatusPembayaran($kodePendaftaran, $status);
+            $this->keuangan_model->ubahStatusPembayaran($kodePembayaran, $status);
 
             redirect('keuangan/index');
 

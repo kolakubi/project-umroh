@@ -17,7 +17,7 @@
 
         } // => end of function ambilDataKeuangan
 
-        public function ubahStatusPembayaran($kodePendaftaran, $status){
+        public function ubahStatusPembayaran($kodePembayaran, $status){
 
             // update status pembayaran
             $this->db->set(
@@ -25,8 +25,11 @@
                     'status_pembayaran' => $status
                 )
             );
-            $this->db->where('kode_pendaftaran', $kodePendaftaran);
+            $this->db->where('kode_pembayaran', $kodePembayaran);
             $this->db->update('pembayaran');
+
+            // ambil kode pendaftaran
+            $kodePendaftaran = $this->db->get_where('pembayaran', array('kode_pembayaran' => $kodePembayaran))->row_array()['kode_pendaftaran'];
 
             // update status pembayaran di pendaftran
             // jika status valid

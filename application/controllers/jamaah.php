@@ -23,9 +23,11 @@
 
         public function index(){
 
-            $this->load->view('jamaah/header');
-            $this->load->view('jamaah/profil');
-            $this->load->view('front/footer');
+            // $this->load->view('jamaah/header');
+            // $this->load->view('jamaah/profil');
+            // $this->load->view('front/footer');
+
+            $this->berkas();
 
         }
 
@@ -50,8 +52,22 @@
 
         public function uploadBerkas($kodePendaftaran){
 
+            // ambil status berkas
+            $berkas = $this->frontoffice_model->ambilDataBerkas($kodePendaftaran);
+            // $statusBerkas['ktp'] = $berkas['ktp']['status_berkas_ktp'];
+            // $statusBerkas['kk'] = $berkas['kk']['status_berkas_kk'];
+            // $statusBerkas['passport'] = $berkas['passport']['status_berkas_passport'];
+
+            // echo '<pre>';
+            // print_r($berkas);
+            // echo '</pre>';
+
             // passing kode pendaftaran
             $data['kodependaftaran'] = $kodePendaftaran;
+            $data['pesan_error'] = null;
+            // $data['status_ktp'] = $statusBerkas['ktp'];
+            // $data['status_kk'] = $statusBerkas['kk'];
+            // $data['status_passport'] = $statusBerkas['passport'];
             
             // inisiasi variable
             $dataFileKtp = array();
@@ -61,6 +77,18 @@
             $dataBerkasKk = array();
             $dataBerkasPassport = array();
 
+            // if($statusBerkas['ktp'] != 'valid'){
+            //     $this->cekFormBerkas('ktp', $data);
+
+            // }
+            // if($statusBerkas['kk'] != 'valid'){
+            //     $this->cekFormBerkas('kk', $data);
+
+            // }
+            // if($statusBerkas['passport'] != 'valid'){
+            //     $this->cekFormBerkas('passport', $data);
+
+            // }
             // rule biar harus diisi
             if(empty($_FILES['ktp']['name'])){
                 $this->form_validation->set_rules('ktp', 'Document', 'required');
@@ -101,70 +129,77 @@
             }
             else{
 
-                // atur config file
-                $config['upload_path'] = './uploads';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = 500;
-
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-
-                // upload 1 per 1
-                // ktp
-                if(!$this->upload->do_upload('ktp')){
-
-                    echo $this->upload->display_errors();
-                }
-                else{
-                    $dataFileKtp = $this->upload->data();
-                    $dataBerkasKtp = array(
-                        'kode_berkas' => 'berkas001',
-                        'nama_file' => $dataFileKtp['file_name'],
-                        'kode_pendaftaran' => $kodePendaftaran
-                    );
-
-                    $this->jamaah_model->tambahBerkas($dataBerkasKtp);
-                }
-                ////////////////////////////////////////////
-
-                // kk
-                if(!$this->upload->do_upload('kk')){
-
-                    echo $this->upload->display_errors();
-                }
-                else{
-                    $dataFileKk = $this->upload->data();
-                    $dataBerkasKk = array(
-                        'kode_berkas' => 'berkas002',
-                        'nama_file' => $dataFileKk['file_name'],
-                        'kode_pendaftaran' => $kodePendaftaran
-                    );
-
-                    $this->jamaah_model->tambahBerkas($dataBerkasKk);
-                }
-                /////////////////////////////////////////////
-
-                // passport
-                if(!$this->upload->do_upload('passport')){
-
-                    echo $this->upload->display_errors();
-                }
-                else{
-                    $dataFilePassport = $this->upload->data();
-                    $dataBerkasPassport = array(
-                        'kode_berkas' => 'berkas003',
-                        'nama_file' => $dataFilePassport['file_name'],
-                        'kode_pendaftaran' => $kodePendaftaran
-                    );
-                    
-                    $this->jamaah_model->tambahBerkas($dataBerkasPassport);
+                // jika semua berhasil di upload
+                if($this->uploadSatuBerkas('ktp', 'berkas001',$kodePendaftaran) &&
+                $this->uploadSatuBerkas('kk', 'berkas002', $kodePendaftaran) &&
+                $this->uploadSatuBerkas('passport', 'berkas003', $kodePendaftaran)){
+                    redirect('jamaah/berkas');
                 }
 
-                redirect('jamaah/berkas');
-
-            }// => end of form validation
+            }
 
         } // end of function uploadberkas
+
+        public function cekFormBerkas($berkas, $data){
+
+            if(empty($_FILES[$berkas]['name'])){
+                $this->form_validation->set_rules($berkas, 'Document', 'required');
+            }
+
+            $this->form_validation->set_message('required', '%s tidak boleh kosong');
+
+            // validasi kelengkapan form
+            if(!$this->form_validation->run() 
+            && empty($_FILES[$berkas]['name'])){
+                
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/uploadberkas', $data);
+                $this->load->view('front/footer');
+                
+            }
+
+        } // end of function cekFormBerkas
+
+        public function uploadSatuBerkas($namaInput, $kodeBerkas, $kodePendaftaran){
+
+            // inisiasi
+            $data['kodependaftaran'] = $kodePendaftaran;
+            $data['pesan_error'] = null;
+
+            // atur config file
+            $config['upload_path'] = './uploads';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size'] = 500;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            // upload 1 per 1
+            if(!$this->upload->do_upload($namaInput)){
+
+                $data['pesan_error'] = $this->upload->display_errors();
+
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/uploadberkas', $data);
+                $this->load->view('front/footer');
+
+                return false;
+            }
+            else{
+                ////////////////////////////////////////////
+                // ktp
+                $dataFile = $this->upload->data();
+                $dataBerkas = array(
+                    'kode_berkas' => $kodeBerkas,
+                    'nama_file' => $dataFile['file_name'],
+                    'kode_pendaftaran' => $kodePendaftaran
+                );
+                $this->jamaah_model->tambahBerkas($dataBerkas);
+            }
+
+            return true;
+
+        } // end of function uploadSatuBerkas
 
         public function jadwal(){
 
@@ -178,7 +213,7 @@
 
             // ambil data pendaftaran
             $hasil = $this->jamaah_model->ambilTagihan($_SESSION['username']);
-            $data['pendaftaran'] = $hasil; 
+            $data['pendaftaran'] = $hasil;
 
             $this->load->view('jamaah/header');
             $this->load->view('jamaah/pembayaran', $data);
@@ -186,10 +221,10 @@
 
         } // => end of function pembayaran
 
-        public function invoice(){
+        public function invoice($kodePembayaran){
 
-            $hasil = $this->jamaah_model->ambilTagihan($_SESSION['username']);
-            $data['pendaftaran'] = $hasil;
+            $hasil = $this->jamaah_model->ambilInvoice($kodePembayaran);
+            $data['pembayaran'] = $hasil;
 
             $this->load->view('jamaah/header');
             $this->load->view('jamaah/invoice', $data);
@@ -197,10 +232,10 @@
 
         } // => end of function invoice
 
-        public function uploadPembayaran($kodePendaftaran){
+        public function uploadPembayaran($kodePembayaran){
 
             // passing kode pendaftaran
-            $data['kodependaftaran'] = $kodePendaftaran;
+            $data['kodepembayaran'] = $kodePembayaran;
 
             if(empty($_FILES['buktibayar']['name'])){
                 $this->form_validation->set_rules('buktibayar', 'Document', 'required');
@@ -236,7 +271,7 @@
                     $dataFileBuktiPembayaran = $this->upload->data();
                     $dataBuktiPembayaran = array(
                         'nama_file' => $dataFileBuktiPembayaran['file_name'],
-                        'kode_pendaftaran' => $kodePendaftaran
+                        'kode_pembayaran' => $kodePembayaran
                     );
 
                     $this->jamaah_model->tambahBuktiPembayaran($dataBuktiPembayaran);

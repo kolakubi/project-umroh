@@ -19,6 +19,7 @@
             $this->db->from('pendaftaran');
             $this->db->join('jamaah', 'jamaah.ktp = pendaftaran.ktp');
             $this->db->join('produk', 'produk.kode_produk = pendaftaran.kode_produk');
+            $this->db->order_by('pendaftaran.kode_pendaftaran', 'ASC');
             $hasil = $this->db->get()->result_array();
             return $hasil;
 
@@ -82,6 +83,18 @@
 
             return true;
 
-        }
+        } // end of function updateStatusBerkas
+
+        public function updateStatusBerkasPendaftaran($kodePendaftaran){
+
+            $this->db->set(array(
+                'ket_status_berkas' => 'valid'
+            ));
+            $this->db->where('kode_pendaftaran', $kodePendaftaran);
+            $this->db->update('pendaftaran');
+
+            return true;
+
+        } // end of function updateStatusBerkas
 
     }// => end of class

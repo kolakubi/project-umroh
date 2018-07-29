@@ -47,6 +47,8 @@
 
             // hapus paket
             unset($dataPendaftar['paket']);
+            // hapus metode pembayaran
+            unset($dataPendaftar['metodepembayaran']);
 
             // tambah username
             $dataPendaftar['username'] = $_SESSION['username'];
@@ -66,20 +68,22 @@
                 'status_berkas_ktp' => 'tidak ada berkas',
                 'status_berkas_kk' => 'tidak ada berkas',
                 'status_berkas_passport' => 'tidak ada berkas',
-                'status_pembayaran' => 'tidak ada berkas'
+                'status_pembayaran' => 'tidak ada berkas',
+                'metodepembayaran' => $dataPendaftar['metodepembayaran']
             );
 
             $this->db->insert('pendaftaran', $editedDataPendaftar);
 
         }
 
-        public function tambahPembayaran($kodePendaftaran, $nominal){
+        public function tambahPembayaran($kodePendaftaran, $nominal, $invoice){
 
             $this->db->insert('pembayaran', 
                 array(
                     'kode_pendaftaran' => $kodePendaftaran,
                     'status_pembayaran' => 0,
-                    'nominal_pembayaran' => $nominal
+                    'nominal_pembayaran' => $nominal,
+                    'invoice' => $invoice
                 )
             );
 
@@ -100,16 +104,32 @@
             // insert data pendaftaran
             $dataPendaftar['username'] = $_SESSION['username'];
             $this->tambahPendaftaran($dataPendaftar);
+
+
             // ambil kode pendaftaran baru diinput
             $kodePendaftaranBaruDiinput = $this->db->insert_id();
             // ambil harga produk
             $hargaProduk = $this->ambilProduk($dataPendaftar['paket'])[0]['harga'];
 
-            // insert pembayaran
-            $this->tambahPembayaran($kodePendaftaranBaruDiinput, $hargaProduk);
+            // jika metode pembayaran DP
+            if($dataPendaftar['metodepembayaran'] == 'dp'){
+
+                // insert 2x pembayaran
+                // invoice dp
+                $this->tambahPembayaran($kodePendaftaranBaruDiinput, 5000000, 'dp');
+
+                // invoice sisa full - dp
+                $this->tambahPembayaran($kodePendaftaranBaruDiinput, $hargaProduk-5000000, 'sisa');
+
+            }
+            else{
+
+                 // insert pembayaran
+                $this->tambahPembayaran($kodePendaftaranBaruDiinput, $hargaProduk, 'full');
+            }
 
             return true;
 
-        }
+        } // end of function daftar
 
     } //=> end of class

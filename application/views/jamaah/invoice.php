@@ -11,8 +11,8 @@
     <!-- header -->
     <div class="row">
         <div class="col-xs-12 col-md-4">
-            <p style="font-size: 20px">INVOICE #<?php echo $pendaftaran[0]['kode_pendaftaran']?></p>
-            <p>Invoice date: <?php echo $pendaftaran[0]['tanggaldaftar'] ?></p>
+            <p style="font-size: 20px">INVOICE #<?php echo $pembayaran['kode_pembayaran']?></p>
+            <p>Invoice date: <?php echo $pembayaran['tanggaldaftar'] ?></p>
         </div>
     </div>
     <hr>
@@ -21,10 +21,10 @@
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <p><strong>Invoice to:</strong></p>
-            <p><?php echo $pendaftaran[0]['nama'] ?></p>
-            <p><?php echo $pendaftaran[0]['alamat'] ?></p>
-            <p><?php echo $pendaftaran[0]['kelurahan'] ?>, <?php echo $pendaftaran[0]['kecamatan'] ?>, <?php echo $pendaftaran[0]['kabupaten'] ?></p>
-            <p><?php echo $pendaftaran[0]['propinsi'] ?></p>
+            <p><?php echo $pembayaran['nama'] ?></p>
+            <p><?php echo $pembayaran['alamat'] ?></p>
+            <p><?php echo $pembayaran['kelurahan'] ?>, <?php echo $pembayaran['kecamatan'] ?>, <?php echo $pembayaran['kabupaten'] ?></p>
+            <p><?php echo $pembayaran['propinsi'] ?></p>
         </div>
         <div class="col-xs-12 col-md-6">
             <p><strong>Pay to:</strong></p>
@@ -53,12 +53,12 @@
                         <td><strong>Amount</strong></td>
                     </tr>
                     <tr>
-                        <td>Paket <?php echo $pendaftaran[0]['nama_produk'] ?> (<?php echo $pendaftaran[0]['tanggaldaftar'] ?>)</td>
-                        <td><?php echo 'Rp'.number_format($pendaftaran[0]['harga'], 0, ',', '.') ?></td>
+                        <td>Paket <?php echo $pembayaran['nama_produk'] ?> (<?php echo $pembayaran['invoice'] ?>)</td>
+                        <td><?php echo 'Rp'.number_format($pembayaran['nominal_pembayaran'], 0, ',', '.') ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right"><strong>Sub total</strong></td>
-                        <td><?php echo 'Rp'.number_format($pendaftaran[0]['harga'], 0, ',', '.') ?></td>
+                        <td><?php echo 'Rp'.number_format($pembayaran['nominal_pembayaran'], 0, ',', '.') ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right"><strong>Tax</strong></td>
@@ -66,7 +66,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right"><strong>Total</strong></td>
-                        <td><?php echo 'Rp'.number_format($pendaftaran[0]['harga'], 0, ',', '.') ?></td>
+                        <td><?php echo 'Rp'.number_format($pembayaran['nominal_pembayaran'], 0, ',', '.') ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -114,6 +114,6 @@
 <br>
 
 <p class="text-center">
-    <a href="<?php echo base_url() ?>jamaah/uploadpembayaran/<?php echo $pendaftaran[0]['kode_pendaftaran'] ?>" class="btn btn-info">Upload Bukti Pembayaran</a>
+    <a href="<?php echo base_url() ?>jamaah/uploadpembayaran/<?php echo $pembayaran['kode_pembayaran'] ?>" class="btn btn-info">Upload Bukti Pembayaran</a>
 </p>
 

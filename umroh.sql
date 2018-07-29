@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2018 at 05:59 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jul 29, 2018 at 07:16 PM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -63,7 +63,37 @@ CREATE TABLE `berkas_upload` (
 INSERT INTO `berkas_upload` (`kode_upload`, `kode_berkas`, `kode_pendaftaran`, `nama_file`) VALUES
 (18, 'berkas001', 11, 'back-to-school.jpg'),
 (19, 'berkas002', 11, 'banner_iklan.png'),
-(20, 'berkas003', 11, 'bisnis-online.jpg');
+(20, 'berkas003', 11, 'bisnis-online.jpg'),
+(21, 'berkas001', 12, 'back-to-school1.jpg'),
+(22, 'berkas002', 12, 'sancu-frozen.jpg'),
+(23, 'berkas003', 12, 'logo.jpg'),
+(24, 'berkas001', 16, 'trunade1.png'),
+(25, 'berkas001', 16, 'trunade11.png'),
+(26, 'berkas001', 16, 'trunade11.png'),
+(27, 'berkas002', 16, 'tsunade21.jpeg'),
+(28, 'berkas001', 16, 'trunade13.png'),
+(29, 'berkas002', 16, 'tsunade22.jpeg'),
+(30, 'berkas001', 16, 'trunade15.png'),
+(31, 'berkas002', 16, 'tsunade23.jpeg'),
+(32, 'berkas001', 16, 'trunade1.png'),
+(33, 'berkas002', 16, 'tsunade2.jpeg'),
+(34, 'berkas001', 16, 'trunade1.png'),
+(35, 'berkas002', 16, 'tsunade2.jpeg'),
+(36, 'berkas003', 16, 'tsunade3.jpg'),
+(37, 'berkas001', 16, 'trunade11.png'),
+(38, 'berkas002', 16, 'tsunade21.jpeg'),
+(39, 'berkas001', 16, 'trunade12.png'),
+(40, 'berkas002', 16, 'tsunade22.jpeg'),
+(41, 'berkas003', 16, 'tsunade31.jpg'),
+(42, 'berkas001', 16, 'trunade1.png'),
+(43, 'berkas002', 16, 'tsunade2.jpeg'),
+(44, 'berkas003', 16, 'tsunade3.jpg'),
+(45, 'berkas001', 16, 'trunade1.png'),
+(46, 'berkas002', 16, 'tsunade2.jpeg'),
+(47, 'berkas003', 16, 'tsunade3.jpg'),
+(48, 'berkas001', 15, 'jiraiya2.jpg'),
+(49, 'berkas002', 15, 'jiraiya3.jpg'),
+(50, 'berkas003', 15, 'jiraiya31.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,26 +121,34 @@ CREATE TABLE `jamaah` (
   `pendidikan` varchar(10) NOT NULL,
   `pekerjaan` varchar(50) NOT NULL,
   `pengalamanhaji` varchar(30) DEFAULT NULL,
-  `namamahram` varchar(255) NOT NULL,
+  `namamahram` varchar(255) DEFAULT NULL,
   `hubunganmahram` varchar(20) DEFAULT '-',
-  `nomorpendaftarmahram` varchar(40) NOT NULL,
+  `nomorpendaftarmahram` varchar(40) DEFAULT NULL,
   `golongandarah` varchar(10) NOT NULL,
   `rambut` varchar(255) NOT NULL,
   `alis` varchar(255) NOT NULL,
   `hidung` varchar(255) NOT NULL,
   `tinggi` varchar(255) NOT NULL,
   `berat` varchar(255) NOT NULL,
-  `muka` varchar(255) NOT NULL
+  `muka` varchar(255) NOT NULL,
+  `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jamaah`
 --
 
-INSERT INTO `jamaah` (`username`, `ktp`, `nama`, `namaayah`, `tempatlahir`, `tanggallahir`, `kelamin`, `kewarganegaraan`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `propinsi`, `kodepos`, `telepon`, `hp`, `pendidikan`, `pekerjaan`, `pengalamanhaji`, `namamahram`, `hubunganmahram`, `nomorpendaftarmahram`, `golongandarah`, `rambut`, `alis`, `hidung`, `tinggi`, `berat`, `muka`) VALUES
-('mal', '123', 'Malmahsyar', 'Wisynu Djama', 'Jakarta', '2018-07-15', 'Laki-laki', 'WNI', 'Jalan Kelapa dua wetan III no 29 RT 06/RW 01', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08568734259', 'S1', 'Swasta', 'Belum Pernah', '', NULL, '', 'o', 'lurus', 'Tebal', 'Mancung', '165cm', '60kg', 'Bulat'),
-('wisnu', '1233444', 'wwww', 'wwww', 'basf', '2018-07-19', 'Laki-laki', 'WNI', 'jnjnoiuniuhnpiu', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08122340253092', 'S3', 'Tani/NElayan', NULL, '', NULL, '', 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan'),
-('user001', '31230124012458013', 'Malmahsyar', 'Teddy', 'Jakarta', '2018-07-19', 'Laki-laki', 'WNI', 'asd', 'bogor', 'bogor', 'bogor', 'Jawa Barat', '', '02187704765', '08568734259', 'SD', 'PNS', NULL, '', NULL, '', 'o', 'lurus', 'tebal', 'mancung', '165', '60', 'bulat');
+INSERT INTO `jamaah` (`username`, `ktp`, `nama`, `namaayah`, `tempatlahir`, `tanggallahir`, `kelamin`, `kewarganegaraan`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `propinsi`, `kodepos`, `telepon`, `hp`, `pendidikan`, `pekerjaan`, `pengalamanhaji`, `namamahram`, `hubunganmahram`, `nomorpendaftarmahram`, `golongandarah`, `rambut`, `alis`, `hidung`, `tinggi`, `berat`, `muka`, `foto`) VALUES
+('mal', '11111111111111111111', 'Tsunade', 'Hashirama Senjuu', 'konoha', '2018-07-02', 'Laki-laki', 'WNI', 'JALAN KELAPA DUA WETAN III NO 29', 'Kelapa dua wetan', '13730', 'jakarta timur', 'Indonesia — DKI Jakarta', '', '+622187704765', '+622187704765', 'S3', 'Swasta', NULL, NULL, NULL, NULL, 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
+('mal', '12000000000000000000', 'Tobirama Senju', 'Senju', 'konoha', '2018-07-27', 'Laki-laki', 'WNI', 'JALAN KELAPA DUA WETAN III NO 29', 'Kelapa dua wetan', '13730', 'jakarta timur', 'Indonesia — DKI Jakarta', '', '+622187704765', '+622187704765', 'S3', 'TNI/Polri', NULL, NULL, NULL, NULL, 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', 'tobirama1.jpg'),
+('mal', '123', 'Malmahsyar', 'Wisynu Djama', 'Jakarta', '2018-07-15', 'Laki-laki', 'WNI', 'Jalan Kelapa dua wetan III no 29 RT 06/RW 01', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08568734259', 'S1', 'Swasta', 'Belum Pernah', '', NULL, '', 'o', 'lurus', 'Tebal', 'Mancung', '165cm', '60kg', 'Bulat', ''),
+('wisnu', '123123123', 'Son Goku', 'bardock', 'jakarta timur', '2018-07-20', 'Laki-laki', 'WNI', 'qweqweq', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08122340253092', 'S3', 'PNS', NULL, NULL, NULL, NULL, 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
+('wisnu', '1233444', 'wwww', 'wwww', 'basf', '2018-07-19', 'Laki-laki', 'WNI', 'jnjnoiuniuhnpiu', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08122340253092', 'S3', 'Tani/NElayan', NULL, '', NULL, '', 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
+('mal', '22222222222222222222', 'Jiraiya', 'Jiji', 'Tokyo', '2018-07-01', 'Laki-laki', 'WNA', 'Kyoto', 'Kelapa dua wetan', '13730', 'jakarta timur', 'Indonesia — DKI Jakarta', '', '+622187704765', '+622187704765', 'S3', 'Lainnya', 'Belum Pernah', 'Naruto', 'Saudara Kandung', '1312312', 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
+('wisnu', '22364565321546542', 'Son Goku', 'bardock', 'saiyan', '2018-07-27', 'Laki-laki', 'WNI', 'asd', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '+622187704765', '08122340253092', 'S3', 'Pengusaha', NULL, NULL, NULL, NULL, 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
+('user001', '31230124012458013', 'Malmahsyar', 'Teddy', 'Jakarta', '2018-07-19', 'Laki-laki', 'WNI', 'asd', 'bogor', 'bogor', 'bogor', 'Jawa Barat', '', '02187704765', '08568734259', 'SD', 'PNS', NULL, '', NULL, '', 'o', 'lurus', 'tebal', 'mancung', '165', '60', 'bulat', ''),
+('mal', '40100000000000000000', 'Umi', 'Abah', 'Jakarta', '2018-07-28', 'Perempuan', 'WNA', 'dasdasdas', 'Kelapa dua wetan', '13730', 'jakarta timur', 'Indonesia — DKI Jakarta', '', '+622187704765', '+622187704765', 'S1', 'Ibu Rumah Tangga', NULL, NULL, NULL, NULL, 'o', 'lurus', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
+('mal', '55555555555555555555', 'hatake kakashi', 'Shiro Kiba', 'jakarta timur', '2018-07-12', 'Laki-laki', 'WNI', 'asd', 'Kelapa dua wetan', '13730', 'jakarta timur', 'Indonesia — DKI Jakarta', '', '+622187704765', '+622187704765', 'S2', 'Tani/NElayan', 'Pernah', 'asd', 'Orang Tua', '1312312', 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', 'kakashi1.png');
 
 -- --------------------------------------------------------
 
@@ -190,7 +228,36 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (57, 'keuangan', '2018-07-27 10:52:06', '::1', 'berhasil'),
 (58, 'mal', '2018-07-27 10:52:51', '::1', 'berhasil'),
 (59, 'keuangan', '2018-07-27 10:53:47', '::1', 'berhasil'),
-(60, 'mal', '2018-07-27 10:53:53', '::1', 'berhasil');
+(60, 'mal', '2018-07-27 10:53:53', '::1', 'berhasil'),
+(61, 'frontoffice', '2018-07-27 17:58:21', '::1', 'berhasil'),
+(62, 'wisnu', '2018-07-27 17:59:14', '::1', 'gagal'),
+(63, 'wisnu', '2018-07-27 17:59:18', '::1', 'gagal'),
+(64, 'wisnu', '2018-07-27 17:59:24', '::1', 'gagal'),
+(65, 'wisnu', '2018-07-27 17:59:46', '::1', 'berhasil'),
+(66, 'keuangan', '2018-07-27 18:01:18', '::1', 'berhasil'),
+(67, 'wisnu', '2018-07-27 18:01:51', '::1', 'berhasil'),
+(68, 'keuangan', '2018-07-27 18:02:25', '::1', 'berhasil'),
+(69, 'keuangan', '2018-07-27 18:02:25', '::1', 'berhasil'),
+(70, 'direktur', '2018-07-27 18:02:56', '::1', 'gagal'),
+(71, 'bos', '2018-07-27 18:03:27', '::1', 'berhasil'),
+(72, 'mal', '2018-07-28 20:12:07', '::1', 'berhasil'),
+(73, 'admin', '2018-07-28 21:06:16', '::1', 'berhasil'),
+(74, 'frontoffice', '2018-07-28 21:06:47', '::1', 'berhasil'),
+(75, 'mal', '2018-07-28 21:13:22', '::1', 'berhasil'),
+(76, 'admin', '2018-07-28 23:27:55', '::1', 'berhasil'),
+(77, 'frontoffice', '2018-07-28 23:28:18', '::1', 'berhasil'),
+(78, 'mal', '2018-07-29 21:16:47', '::1', 'berhasil'),
+(79, 'admin', '2018-07-29 21:51:32', '::1', 'berhasil'),
+(80, 'frontoffice', '2018-07-29 21:51:45', '::1', 'berhasil'),
+(81, 'mal', '2018-07-29 22:10:18', '::1', 'berhasil'),
+(82, 'frontoffice', '2018-07-29 22:10:50', '::1', 'berhasil'),
+(83, 'mal', '2018-07-29 22:11:21', '::1', 'berhasil'),
+(84, 'keuangan', '2018-07-29 22:44:49', '::1', 'berhasil'),
+(85, 'mal', '2018-07-29 23:25:20', '::1', 'berhasil'),
+(86, 'mal', '2018-07-29 23:26:02', '::1', 'berhasil'),
+(87, 'frontoffice', '2018-07-29 23:51:29', '::1', 'berhasil'),
+(88, 'mal', '2018-07-29 23:58:37', '::1', 'berhasil'),
+(89, 'frontoffice', '2018-07-30 00:05:14', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -211,6 +278,7 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`username`, `password`, `email`, `level`) VALUES
 ('admin', 'admin', 'admin@admin.com', 1),
+('bos', 'bos', 'bos@bos.com', 3),
 ('frontoffice', 'frontoffice', 'front@office.com', 5),
 ('keuangan', 'keuangan', 'keuangan@keuangan.com', 2),
 ('mal', 'mal', 'mal@mal.com', 4),
@@ -229,15 +297,25 @@ CREATE TABLE `pembayaran` (
   `status_pembayaran` varchar(30) NOT NULL,
   `tanggal` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `nominal_pembayaran` int(11) NOT NULL,
-  `file_bukti_pembayaran` text NOT NULL
+  `file_bukti_pembayaran` text NOT NULL,
+  `invoice` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pembayaran`
 --
 
-INSERT INTO `pembayaran` (`kode_pembayaran`, `kode_pendaftaran`, `status_pembayaran`, `tanggal`, `nominal_pembayaran`, `file_bukti_pembayaran`) VALUES
-(7, 11, '1', '2018-07-27 09:51:43', 31200000, 'boncu-owl.jpg');
+INSERT INTO `pembayaran` (`kode_pembayaran`, `kode_pendaftaran`, `status_pembayaran`, `tanggal`, `nominal_pembayaran`, `file_bukti_pembayaran`, `invoice`) VALUES
+(7, 11, '1', '2018-07-27 09:51:43', 31200000, 'boncu-owl.jpg', ''),
+(8, 12, '0', '2018-07-27 17:53:40', 31200000, 'logo1.jpg', ''),
+(9, 13, '1', '2018-07-27 17:57:00', 25500000, 'slide-sancu2.jpg', ''),
+(10, 14, '0', '2018-07-28 20:50:02', 31200000, '', ''),
+(11, 15, '0', '2018-07-28 20:53:25', 250000000, '', ''),
+(12, 16, '1', '2018-07-28 20:59:28', 5000000, 'logo2.jpg', 'dp'),
+(13, 16, '0', '2018-07-28 20:59:28', 20500000, '', 'sisa'),
+(14, 17, '0', '2018-07-29 23:49:27', 250000000, '', 'full'),
+(15, 18, '0', '2018-07-30 00:04:50', 5000000, '', 'dp'),
+(16, 18, '0', '2018-07-30 00:04:50', 26200000, '', 'sisa');
 
 -- --------------------------------------------------------
 
@@ -256,15 +334,23 @@ CREATE TABLE `pendaftaran` (
   `status_pembayaran` varchar(30) NOT NULL,
   `ket_status_pembayaran` text NOT NULL,
   `tanggaldaftar` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `username` varchar(100) NOT NULL
+  `username` varchar(100) NOT NULL,
+  `metodepembayaran` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pendaftaran`
 --
 
-INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`, `tanggaldaftar`, `username`) VALUES
-(11, '31230124012458013', 'umrah003', 'valid', 'valid', 'sedang diperiksa', '', 'Lunas', '', '2018-07-27 09:51:43', 'mal');
+INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_berkas_ktp`, `status_berkas_kk`, `status_berkas_passport`, `ket_status_berkas`, `status_pembayaran`, `ket_status_pembayaran`, `tanggaldaftar`, `username`, `metodepembayaran`) VALUES
+(11, '31230124012458013', 'umrah003', 'valid', 'valid', 'sedang diperiksa', '', 'Lunas', '', '2018-07-27 09:51:43', 'mal', ''),
+(12, '22364565321546542', 'umrah003', 'valid', 'valid', 'sedang diperiksa', '', 'sedang diperiksa', '', '2018-07-27 17:53:40', 'wisnu', ''),
+(13, '123123123', 'umrah002', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'Lunas', '', '2018-07-27 17:57:00', 'wisnu', ''),
+(14, '40100000000000000000', 'umrah003', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'tidak ada berkas', '', '2018-07-28 20:50:02', 'mal', ''),
+(15, '22222222222222222222', 'haji001', 'valid', 'valid', 'valid', 'valid', 'tidak ada berkas', '', '2018-07-28 20:53:25', 'mal', ''),
+(16, '11111111111111111111', 'umrah002', 'valid', 'valid', 'valid', 'valid', 'Belum Lunas', '', '2018-07-28 20:59:28', 'mal', 'dp'),
+(17, '55555555555555555555', 'haji001', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'tidak ada berkas', '', '2018-07-29 23:49:27', 'mal', 'full'),
+(18, '12000000000000000000', 'umrah003', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'tidak ada berkas', '', '2018-07-30 00:04:49', 'mal', 'dp');
 
 -- --------------------------------------------------------
 
@@ -379,32 +465,27 @@ ALTER TABLE `produk_detail`
 -- AUTO_INCREMENT for table `berkas_upload`
 --
 ALTER TABLE `berkas_upload`
-  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
-
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `kode_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `kode_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+  MODIFY `kode_pendaftaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `produk_detail`
 --
 ALTER TABLE `produk_detail`
   MODIFY `kode_produk_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- Constraints for dumped tables
 --

@@ -9,7 +9,7 @@
     <div class="col-xs-12 col-md-4 col-md-offset-4">
         
         <!-- form upload -->
-        <?php echo form_open_multipart('jamaah/uploadpembayaran/'.$kodependaftaran) ?>
+        <?php echo form_open_multipart('jamaah/uploadpembayaran/'.$kodepembayaran) ?>
             <!-- Buti Pembayaran -->
             <div class="form-group">
                 <label style="color: #222">Bukti Pembayaran: </label>

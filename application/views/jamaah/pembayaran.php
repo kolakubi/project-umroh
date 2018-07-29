@@ -17,6 +17,7 @@
                     <th>Nama</th>
                     <th>Paket</th>
                     <th>Harga</th>
+                    <th>Invoice</th>
                     <th>Status Pembayaran</th>
                     <th>Action</th>
                 </tr>
@@ -30,10 +31,11 @@
                 <td><?php echo $daftar['kode_pendaftaran'] ?></td>
                 <td><?php echo $daftar['nama'] ?></td>
                 <td><?php echo $daftar['nama_produk'] ?></td>
-                <td><?php echo 'Rp'.number_format($daftar['harga'], 0, ',', '.') ?></td>
+                <td><?php echo 'Rp'.number_format($daftar['nominal_pembayaran'], 0, ',', '.') ?></td>
+                <td><?php echo $daftar['invoice'] ?></td>
                 <td class="<?php if($daftar['status_pembayaran'] == 'valid'){echo 'success';}elseif($daftar['status_pembayaran'] == 'tidak valid'){echo 'danger';}else{echo 'default';} ?>"><?php echo $daftar['status_pembayaran'] ?></td>
                 <td>
-                    <a class="btn btn-info" href="<?php echo base_url() ?>jamaah/invoice/<?php echo $daftar['kode_pendaftaran'] ?>">Bayar</a>
+                    <a class="btn btn-info" href="<?php echo base_url() ?>jamaah/invoice/<?php echo $daftar['kode_pembayaran'] ?>">Bayar</a>
                 </td>
                 </tr>
 

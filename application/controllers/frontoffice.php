@@ -57,12 +57,34 @@
 
         }
 
+        public function cekValidSemuaBerkas($kodePendaftaran, $berkas){
+
+            // ambil semua data berkas
+            $hasil = $this->frontoffice_model->ambilDataBerkas($kodePendaftaran);
+
+            // cek jika semua berkas valid
+            if($hasil[$berkas]['status_berkas_'.$berkas] == 'valid'){
+                return true;
+            }
+
+        } // end of function cekValidSemuaBerkas
+
 
         // update status berkas valid
         //////////////////////////////////////////////////////
         public function berkasValidKtp($kodePendaftaran){
 
             $this->frontoffice_model->updateStatusBerkas('status_berkas_ktp', 'valid', $kodePendaftaran);
+
+            // cek semua status berkas
+            if($this->cekValidSemuaBerkas($kodePendaftaran, 'ktp') &&
+            $this->cekValidSemuaBerkas($kodePendaftaran, 'kk') &&
+            $this->cekValidSemuaBerkas($kodePendaftaran, 'passport')){
+
+                // jika semua valid
+                // update status berkas di pendaftaran jadi valid
+                $this->frontoffice_model->updateStatusBerkasPendaftaran($kodePendaftaran);
+            }
 
             $this->berkasValidasi($kodePendaftaran);
 
@@ -72,6 +94,16 @@
 
             $this->frontoffice_model->updateStatusBerkas('status_berkas_kk', 'valid', $kodePendaftaran);
 
+            // cek semua status berkas
+            if($this->cekValidSemuaBerkas($kodePendaftaran, 'ktp') &&
+            $this->cekValidSemuaBerkas($kodePendaftaran, 'kk') &&
+            $this->cekValidSemuaBerkas($kodePendaftaran, 'passport')){
+
+                // jika semua valid
+                // update status berkas di pendaftaran jadi valid
+                $this->frontoffice_model->updateStatusBerkasPendaftaran($kodePendaftaran);
+            }
+
             $this->berkasValidasi($kodePendaftaran);
 
         }
@@ -79,6 +111,16 @@
         public function berkasValidPassport($kodePendaftaran){
 
             $this->frontoffice_model->updateStatusBerkas('status_berkas_passport', 'valid', $kodePendaftaran);
+
+            // cek semua status berkas
+            if($this->cekValidSemuaBerkas($kodePendaftaran, 'ktp') &&
+            $this->cekValidSemuaBerkas($kodePendaftaran, 'kk') &&
+            $this->cekValidSemuaBerkas($kodePendaftaran, 'passport')){
+
+                // jika semua valid
+                // update status berkas di pendaftaran jadi valid
+                $this->frontoffice_model->updateStatusBerkasPendaftaran($kodePendaftaran);
+            }
 
             $this->berkasValidasi($kodePendaftaran);
 
@@ -105,6 +147,7 @@
 
         public function berkasTidakValidPassport($kodePendaftaran){
 
+            //  update status berkas
             $this->frontoffice_model->updateStatusBerkas('status_berkas_passport', 'tidak valid', $kodePendaftaran);
 
             $this->berkasValidasi($kodePendaftaran);

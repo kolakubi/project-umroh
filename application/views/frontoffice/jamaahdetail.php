@@ -6,10 +6,16 @@
         <table class="table table-responsive table-bordered">
             <thead>
                 <tr>
-                    <th colspan="2" class="text-center"><?php echo $jamaah['ktp'] ?></th>
+                    <th colspan="2" class="text-center">
+                        <img src="<?php echo base_url().'uploads/foto/'.$jamaah['foto'] ?>" alt="" class="img img-responsive" style="margin: 0 auto;">
+                    </th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>No KTP:</td>
+                    <td><?php echo $jamaah['ktp'] ?></td>
+                </tr>
                 <tr>
                     <td>Nama:</td>
                     <td><?php echo $jamaah['nama'] ?></td>
@@ -43,12 +49,12 @@
                     <td><?php echo $jamaah['pendidikan'] ?></td>
                 </tr>
                 <tr>
-                    <td>Telepon:</td>
-                    <td><?php echo $jamaah['telepon'] ?></td>
+                    <td>Pekerjaan:</td>
+                    <td><?php echo $jamaah['pekerjaan'] ?></td>
                 </tr>
                 <tr>
-                    <td>Telepon:</td>
-                    <td><?php echo $jamaah['telepon'] ?></td>
+                    <td>Muka:</td>
+                    <td><?php echo $jamaah['muka'] ?></td>
                 </tr>
             </tbody>
         </table>

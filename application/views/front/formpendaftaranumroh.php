@@ -8,10 +8,10 @@
     <div class="col-xs-12 col-md-6">
 
         <!-- form -->
-        <?php echo form_open('home/submitformpendaftaran/umroh') ?>
+        <?php echo form_open_multipart('home/submitformpendaftaran/umroh') ?>
             <div class="form-group">
                 <label style="color: #222">Nomor KTP: </label>
-                <input type="text" name="ktp" class="form-control">
+                <input type="text" name="ktp" class="form-control" maxlength="20">
                 <div style="background-color: #f44242; text-align: center;">
                     <span style="color: white;"><?php echo form_error('ktp') ?></span>
                 </div>
@@ -238,7 +238,7 @@
             </div>
 
             <!-- paket -->
-            <div class="form-group">
+            <div class="form-group hidden">
                 <label style="color: #222">Paket: </label>
                 <select class="form-control" name="paket">
 
@@ -252,7 +252,34 @@
                     <span style="color: white;"><?php echo form_error('paket') ?></span>
                 </div>
             </div>
+
+            <!-- Metode Pembayaran -->
+            <div class="form-group">
+                <label style="color: #222">Metode Pembayaran: </label>
+                <select class="form-control" name="metodepembayaran">
+
+                   <option value="">-Pilih-</option>
+                   <option value="dp">DP</option>
+                   <option value="full">Full</option>
+
+                </select>
+                <div style="background-color: #f44242; text-align: center;">
+                    <span style="color: white;"><?php echo form_error('metodepembayaran') ?></span>
+                </div>
+            </div>
             
+            <!-- foto -->
+            <div class="form-group">
+                <label style="color: #222">Foto: </label>
+                <input type="file" name="foto" class="form-control">
+                <div style="background-color: #f44242; text-align: center;">
+                    <span style="color: white;"><?php echo form_error('foto') ?></span>
+                </div>
+            </div>
+
+            <!-- notif -->
+            <p class="text-danger">* Type file: jpg,png,gif</p>
+            <p class="text-danger">* Ukuran file maksimal 500KB</p>
             
 
             <div class="form-group">

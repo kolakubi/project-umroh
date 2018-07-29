@@ -281,9 +281,18 @@
                         'field' => 'paket',
                         'label' => 'paket',
                         'rules' => 'required'
-                    )
+                    ),
+                    array(
+                        'field' => 'metodepembayaran',
+                        'label' => 'metode pembayaran',
+                        'rules' => 'required'
+                    ),
                 )
             );
+
+            if(empty($_FILES['foto']['name'])){
+                $this->form_validation->set_rules('foto', 'Foto', 'required');
+            }
 
             $this->form_validation->set_message('required', '%s wajib diisi');
 
@@ -309,6 +318,28 @@
             }
             // jika form valid
             else{
+
+                /////////////////////////////////////////////
+                // upload file foto
+                // atur config file
+                $namaFileFoto = '';
+                $config['upload_path'] = './uploads/foto';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = 500;
+
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                // upload
+                if(!$this->upload->do_upload('foto')){
+
+                    echo $this->upload->display_errors();
+                }
+                else{
+                    $dataFileBuktiPembayaran = $this->upload->data();
+                    $namaFileFoto = $dataFileBuktiPembayaran['file_name'];
+                }
+                ////////////////////////////////////////////
 
                 $username = $_SESSION['username'];
 
@@ -342,6 +373,7 @@
                 $berat = $this->input->post('berat');
                 $muka = $this->input->post('muka');
                 $paket = $this->input->post('paket');
+                $metodepembayaran = $this->input->post('metodepembayaran');
 
                 // masukin ke array
                 $dataPendaftar = array(
@@ -374,6 +406,8 @@
                     'berat' => $berat,
                     'muka' => $muka,
                     'paket' => $paket,
+                    'metodepembayaran' => $metodepembayaran,
+                    'foto' => $namaFileFoto
                 );
 
                 // echo '<pre>';
