@@ -284,4 +284,80 @@
 
         } // => end of function uploadPembayaran
 
+        public function pembatalan(){
+
+            $username = $_SESSION['username'];
+
+            $hasil = $this->jamaah_model->ambilDataPendaftaran($username);
+            $data['pendaftaran'] = $hasil;
+
+            // echo '<pre>';
+            // print_r($hasil);
+            // echo '</pre>';
+
+            $this->load->view('jamaah/header');
+            $this->load->view('jamaah/pembatalan', $data);
+            $this->load->view('front/footer');
+
+        } // end of function pembatalan
+
+        public function metodepembatalan($kodePendaftaran){
+
+            $data['kodependaftaran'] = $kodePendaftaran;
+
+            $this->load->view('jamaah/header');
+            $this->load->view('jamaah/formpembatalan', $data);
+            $this->load->view('front/footer');
+
+        } // end of function batalkan
+
+        public function metodebatal1($kodePendaftaran){
+
+            // extract variable kodePendaftaran
+            $data['kodependaftaran'] = $kodePendaftaran;
+
+            // set rule form
+            $this->form_validation->set_rules(
+                array(
+                    array(
+                        'field' => 'setuju',
+                        'label' => 'setuju',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'alasan',
+                        'label' => 'alasan',
+                        'rules' => 'required'
+                    ),
+                )
+            );
+
+            $this->form_validation->set_message('required', 'anda harus menyetujui syarat dan ketentuan');
+
+            if(!$this->form_validation->run()){
+
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/metodebatal1', $data);
+                $this->load->view('front/footer');
+
+            }
+            else{
+                // ambil variable
+                $setuju = $this->input->post('setuju');
+                $alasan = $this->input->post('alasan');
+                echo $setuju.' '.$alasan;
+            }
+
+        } // end of function metodebatal1
+
+        public function metodebatal2($kodePendaftaran){
+
+            $data['kodependaftaran'] = $kodePendaftaran;
+
+            $this->load->view('jamaah/header');
+            $this->load->view('jamaah/metodebatal2', $data);
+            $this->load->view('front/footer');
+
+        } // end of function metodebatal2
+
     }

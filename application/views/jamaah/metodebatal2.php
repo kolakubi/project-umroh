@@ -1,12 +1,11 @@
-<!-- Judul -->
-<div class="row">
-    <h1>Form Pendaftaran Haji Khusus / Umroh</h1>
-</div> <!-- end of row -->
+<h1 class="text-center">Pembatalan</h1>
+<h3 class="text-center">diwariskan</h3>
+<br><br>
 
-<!-- Formn -->
 <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
 
+        <h4 class="text-center">isi biodata yang akan diwariskan</h4>
         <!-- form -->
         <?php echo form_open_multipart('home/submitformpendaftaran/umroh') ?>
 
@@ -239,37 +238,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- paket -->
-            <div class="form-group hidden">
-                <label style="color: #222">Paket: </label>
-                <select class="form-control" name="paket">
-
-                    <!-- <option>-Pilih Paket-</option> -->
-                    <?php foreach($hasil as $dataProduk) : ?>
-                        <option value="<?php echo $dataProduk['kode_produk']?>"><?php echo $dataProduk['nama_produk']?></option>
-                    <?php endforeach ?>
-
-                </select>
-                <div style="background-color: #f44242; text-align: center;">
-                    <span style="color: white;"><?php echo form_error('paket') ?></span>
-                </div>
-            </div>
-
-            <!-- Metode Pembayaran -->
-            <div class="form-group">
-                <label style="color: #222">Metode Pembayaran: </label>
-                <select class="form-control" name="metodepembayaran">
-
-                   <option value="">-Pilih-</option>
-                   <option value="dp">DP</option>
-                   <option value="full">Full</option>
-
-                </select>
-                <div style="background-color: #f44242; text-align: center;">
-                    <span style="color: white;"><?php echo form_error('metodepembayaran') ?></span>
-                </div>
-            </div>
             
             <!-- foto -->
             <div class="form-group">
@@ -286,10 +254,10 @@
             
 
             <div class="form-group">
-                <button type="submit" class="btn btn-info btn-block">Daftar</button>
+                <button type="submit" class="btn btn-info btn-block">Submit</button>
             </div>
+
         <?php echo form_close() ?>
 
-    </div> <!-- end of form -->
-
-</div> <!-- end of row -->
+    </div>
+</div>

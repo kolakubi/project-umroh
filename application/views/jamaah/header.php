@@ -47,6 +47,7 @@
             <li><a href="<?php echo base_url() ?>jamaah/berkas">Berkas</a></li>
             <li><a href="<?php echo base_url() ?>jamaah/pembayaran">Pembayaran</a></li>
             <li><a href="<?php echo base_url() ?>jamaah/jadwal">Jadwal Keberangkatan</a></li>
+            <li><a href="<?php echo base_url() ?>jamaah/pembatalan">Pembatalan</a></li>
           </ul>
 
           <!-- jika blm login, tampilin tombol login -->

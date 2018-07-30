@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2018 at 07:16 PM
+-- Generation Time: Jul 31, 2018 at 01:37 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -257,7 +257,10 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (86, 'mal', '2018-07-29 23:26:02', '::1', 'berhasil'),
 (87, 'frontoffice', '2018-07-29 23:51:29', '::1', 'berhasil'),
 (88, 'mal', '2018-07-29 23:58:37', '::1', 'berhasil'),
-(89, 'frontoffice', '2018-07-30 00:05:14', '::1', 'berhasil');
+(89, 'frontoffice', '2018-07-30 00:05:14', '::1', 'berhasil'),
+(90, 'mal', '2018-07-30 21:31:18', '::1', 'berhasil'),
+(91, 'mal', '2018-07-30 23:08:35', '::1', 'berhasil'),
+(92, 'mal', '2018-07-31 06:06:29', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -470,7 +473,7 @@ ALTER TABLE `berkas_upload`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --
