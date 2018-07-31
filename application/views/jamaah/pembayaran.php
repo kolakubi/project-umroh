@@ -33,7 +33,7 @@
                 <td><?php echo $daftar['nama_produk'] ?></td>
                 <td><?php echo 'Rp'.number_format($daftar['nominal_pembayaran'], 0, ',', '.') ?></td>
                 <td><?php echo $daftar['invoice'] ?></td>
-                <td class="<?php if($daftar['status_pembayaran'] == 'valid'){echo 'success';}elseif($daftar['status_pembayaran'] == 'tidak valid'){echo 'danger';}else{echo 'default';} ?>"><?php echo $daftar['status_pembayaran'] ?></td>
+                <td class="<?php if($daftar['status_pembayaran']){echo 'success';}else{echo 'danger';} ?>"><?php if($daftar['status_pembayaran']){echo 'Lunas';}else{echo 'Belum Lunas';} ?></td>
                 <td>
                     <a class="btn btn-info" href="<?php echo base_url() ?>jamaah/invoice/<?php echo $daftar['kode_pembayaran'] ?>">Bayar</a>
                 </td>

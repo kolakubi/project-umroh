@@ -89,6 +89,12 @@
 
         } // => end of function tambahPembayaran
 
+        public function tambahJadwalKeberangkatan($kodePendaftaran){
+
+            $this->db->insert('jadwal_keberangkatan', array('kode_pendaftaran' => $kodePendaftaran));
+
+        } // end of function tambahJadwalKeberangkatan
+
         public function daftar($dataPendaftar){
 
             // cek apakah jamaah sudah ada datanya
@@ -108,6 +114,10 @@
 
             // ambil kode pendaftaran baru diinput
             $kodePendaftaranBaruDiinput = $this->db->insert_id();
+
+            // insert jadwal Keberangkatan
+            $this->tambahJadwalKeberangkatan($kodePendaftaranBaruDiinput);
+
             // ambil harga produk
             $hargaProduk = $this->ambilProduk($dataPendaftar['paket'])[0]['harga'];
 

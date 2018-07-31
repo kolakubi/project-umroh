@@ -81,4 +81,14 @@
 
         } // public function ambilInvoice
 
+        public function ambilDataJadwal(){
+
+            $this->db->select('*');
+            $this->db->from('jadwal_keberangkatan');
+            $hasil = $this->db->get()->result_array();
+
+            return $hasil;
+
+        } // end of function ambilDataJadwal
+
     }

@@ -203,8 +203,11 @@
 
         public function jadwal(){
 
+            $hasil = $this->jamaah_model->ambilDataJadwal();
+            $data['hasil'] = $hasil;
+
             $this->load->view('jamaah/header');
-            $this->load->view('jamaah/jadwal');
+            $this->load->view('jamaah/jadwal', $data);
             $this->load->view('front/footer');
 
         } // => end of function jadwal

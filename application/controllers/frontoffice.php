@@ -174,10 +174,12 @@
 
         public function jadwal(){
 
-            $this->load->view('frontoffice/header');
-            $this->load->view('frontoffice/jadwal');
-            $this->load->view('front/footer');
+            $hasil = $this->frontoffice_model->ambilDataPendaftaran();
+            $data['pendaftaran'] = $hasil;
 
+            $this->load->view('frontoffice/header');
+            $this->load->view('frontoffice/jadwal', $data);
+            $this->load->view('front/footer');
 
         }
 
