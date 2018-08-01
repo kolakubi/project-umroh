@@ -47,7 +47,18 @@
             <li><a href="<?php echo base_url() ?>jamaah/berkas">Berkas</a></li>
             <li><a href="<?php echo base_url() ?>jamaah/pembayaran">Pembayaran</a></li>
             <li><a href="<?php echo base_url() ?>jamaah/jadwal">Jadwal Keberangkatan</a></li>
-            <li><a href="<?php echo base_url() ?>jamaah/pembatalan">Pembatalan</a></li>
+
+             <!-- dropdown pembatalan -->
+             <li>
+              <a class="btn dropdown-toggle" data-toggle="dropdown">Pembatalan
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="<?php echo base_url() ?>jamaah/pembatalan">Pengajuan</a></li>
+                <li><a href="<?php echo base_url() ?>jamaah/pembatalanstatus">Status</a></li>
+              </ul>
+            </li> <!-- end of dropdown pembatalan -->
+
           </ul>
 
           <!-- jika blm login, tampilin tombol login -->

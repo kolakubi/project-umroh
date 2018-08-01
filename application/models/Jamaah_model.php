@@ -91,4 +91,62 @@
 
         } // end of function ambilDataJadwal
 
+        //////////////////////////////////////////////
+        //////////////////////////////////////////////
+        // P E M B A T A L A N
+
+        public function tambahPembatalan($dataPembatalan){
+
+            $this->db->insert('pembatalan', $dataPembatalan);
+
+            return true;
+
+        } // end of function tambahPembatalan
+
+        public function ambilPembatalanDetail($username){
+
+            $this->db->select('*');
+            $this->db->from('pembatalan');
+            $this->db->join('pendaftaran', 'pendaftaran.kode_pendaftaran = pembatalan.kode_pendaftaran');
+            $this->db->join('produk', 'produk.kode_produk = pendaftaran.kode_produk');
+            $this->db->join('jamaah', 'jamaah.ktp = pendaftaran.ktp');
+            $this->db->order_by('pembatalan.kode_pembatalan', 'ASC');
+            $this->db->where('jamaah.username', $username);
+            $hasil = $this->db->get()->result_array();
+
+            return $hasil;
+
+        } // end of function ambilPembatalanDetail
+
+        public function cekJamaah($dataPendaftar){
+
+            $hasil = $this->db->get_where('jamaah', array('ktp' => $dataPendaftar['ktp']))->row_array();
+
+            if(count($hasil) > 0){
+                return true;
+            }
+
+            return false;
+
+        } // end of function cekJamaah
+
+        public function tambahJamaah($dataPendaftar){
+
+            // hapus paket
+            unset($dataPendaftar['paket']);
+            // hapus metode pembayaran
+            unset($dataPendaftar['metodepembayaran']);
+            // hapus alasan
+            unset($dataPendaftar['alasan']);
+
+            if(!$this->cekJamaah($dataPendaftar)){
+
+                // tambah username
+                $dataPendaftar['username'] = $_SESSION['username'];
+
+                $this->db->insert('jamaah', $dataPendaftar);
+ 
+            }
+
+        } // end of function tambahJamaah
     }

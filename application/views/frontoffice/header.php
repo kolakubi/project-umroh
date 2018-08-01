@@ -46,6 +46,7 @@
             <li><a href="<?php echo base_url() ?>frontoffice">Pendaftaran</a></li>
             <li><a href="<?php echo base_url() ?>frontoffice/berkas">Berkas</a></li>
             <li><a href="<?php echo base_url() ?>frontoffice/jadwal">Jadwal Keberangkatan</a></li>
+            <li><a href="<?php echo base_url() ?>frontoffice/pembatalan">Pembatalan</a></li>
           </ul>
 
           <!-- jika blm login, tampilin tombol login -->

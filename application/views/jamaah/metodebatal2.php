@@ -3,11 +3,11 @@
 <br><br>
 
 <div class="row">
-    <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
 
-        <h4 class="text-center">isi biodata yang akan diwariskan</h4>
+        <h4 class="text-center">isi biodata yang Pewaris</h4>
         <!-- form -->
-        <?php echo form_open_multipart('home/submitformpendaftaran/umroh') ?>
+        <?php echo form_open_multipart('jamaah/metodebatal2/'.$kodependaftaran) ?>
 
             <!-- nomor ktp -->
             <div class="form-group">
@@ -251,6 +251,16 @@
             <!-- notif -->
             <p class="text-danger">* Type file: jpg,png,gif</p>
             <p class="text-danger">* Ukuran file maksimal 500KB</p>
+            
+            <hr>
+            <!-- alasan pembatalan -->
+            <div class="form-group">
+                <label>Alasan Pembatalan</label>
+                <textarea name="alasan" cols="30" rows="10" class="form-control"></textarea>
+                <div style="background-color: #f44242; text-align: center;">
+                    <span style="color: white;"><?php echo form_error('alasan') ?></span>
+                </div>
+            </div>
             
 
             <div class="form-group">

@@ -183,4 +183,47 @@
 
         }
 
+        /////////////////////////////////////////////////
+
+        public function pembatalan(){
+
+            $hasil = $this->frontoffice_model->ambilPembatalan();
+            $data['pembatalan'] = $hasil;
+
+            $this->load->view('frontoffice/header');
+            $this->load->view('frontoffice/pembatalan', $data);
+            $this->load->view('front/footer');
+
+        }
+
+        public function pembatalanDetail($kodePembatalan){
+
+            $hasil = $this->frontoffice_model->ambilPembatalan($kodePembatalan);
+            $data['pembatalan'] = $hasil;
+
+            $this->load->view('frontoffice/header');
+            $this->load->view('frontoffice/pembatalandetail', $data);
+            $this->load->view('front/footer');
+
+        }
+
+        public function pembatalanRefund($kodePembatalan){
+
+            $hasil = $this->frontoffice_model->ambilPembatalanJoin($kodePembatalan);
+            $data['pembatalan'] = $hasil;
+
+            $this->load->view('frontoffice/header');
+            $this->load->view('frontoffice/pembatalanrefund', $data);
+            $this->load->view('front/footer');
+
+        }
+
+        public function pembatalanrefundapprove($kodePembatalan){
+
+            $this->frontoffice_model->pembatalanrRefundApprove($kodePembatalan);
+
+            redirect('frontoffice/pembatalan');
+
+        }
+
     }

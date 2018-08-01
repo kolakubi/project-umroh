@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2018 at 06:28 PM
+-- Generation Time: Aug 01, 2018 at 07:49 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -166,6 +166,7 @@ INSERT INTO `jamaah` (`username`, `ktp`, `nama`, `namaayah`, `tempatlahir`, `tan
 ('mal', '123', 'Malmahsyar', 'Wisynu Djama', 'Jakarta', '2018-07-15', 'Laki-laki', 'WNI', 'Jalan Kelapa dua wetan III no 29 RT 06/RW 01', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08568734259', 'S1', 'Swasta', 'Belum Pernah', '', NULL, '', 'o', 'lurus', 'Tebal', 'Mancung', '165cm', '60kg', 'Bulat', ''),
 ('wisnu', '123123123', 'Son Goku', 'bardock', 'jakarta timur', '2018-07-20', 'Laki-laki', 'WNI', 'qweqweq', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08122340253092', 'S3', 'PNS', NULL, NULL, NULL, NULL, 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
 ('wisnu', '1233444', 'wwww', 'wwww', 'basf', '2018-07-19', 'Laki-laki', 'WNI', 'jnjnoiuniuhnpiu', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '02187704765', '08122340253092', 'S3', 'Tani/NElayan', NULL, '', NULL, '', 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
+('mal', '18239817298371928739', 'Kania', 'Wisynu Djama', 'Jakarta', '2018-08-02', 'Perempuan', 'WNA', 'JALAN KELAPA DUA WETAN III NO 29', 'Kelapa dua wetan', '13730', 'jakarta timur', 'Indonesia — DKI Jakarta', '', '+622187704765', '+622187704765', 'SLTA', 'Pelajar', NULL, NULL, NULL, NULL, 'o', 'lurus', 'Tebal', 'Mancung', '180', '80', 'Tampan', 'gal-gadot.jpg'),
 ('mal', '22222222222222222222', 'Jiraiya', 'Jiji', 'Tokyo', '2018-07-01', 'Laki-laki', 'WNA', 'Kyoto', 'Kelapa dua wetan', '13730', 'jakarta timur', 'Indonesia — DKI Jakarta', '', '+622187704765', '+622187704765', 'S3', 'Lainnya', 'Belum Pernah', 'Naruto', 'Saudara Kandung', '1312312', 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
 ('wisnu', '22364565321546542', 'Son Goku', 'bardock', 'saiyan', '2018-07-27', 'Laki-laki', 'WNI', 'asd', 'Kelapa dua wetan', 'Ciracas', 'Jakarta Timur', 'DKI Jakarta', '', '+622187704765', '08122340253092', 'S3', 'Pengusaha', NULL, NULL, NULL, NULL, 'o', 'jabrik', 'Tebal', 'Mancung', '180', '80', 'Tampan', ''),
 ('user001', '31230124012458013', 'Malmahsyar', 'Teddy', 'Jakarta', '2018-07-19', 'Laki-laki', 'WNI', 'asd', 'bogor', 'bogor', 'bogor', 'Jawa Barat', '', '02187704765', '08568734259', 'SD', 'PNS', NULL, '', NULL, '', 'o', 'lurus', 'tebal', 'mancung', '165', '60', 'bulat', ''),
@@ -299,7 +300,15 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (105, 'mal', '2018-07-31 23:03:40', '::1', 'berhasil'),
 (106, 'frontoffice', '2018-07-31 23:06:24', '::1', 'berhasil'),
 (107, 'mal', '2018-07-31 23:06:41', '::1', 'berhasil'),
-(108, 'bos', '2018-07-31 23:23:55', '::1', 'berhasil');
+(108, 'bos', '2018-07-31 23:23:55', '::1', 'berhasil'),
+(109, 'mal', '2018-08-01 20:17:52', '::1', 'berhasil'),
+(110, 'frontoffice', '2018-08-01 20:35:49', '::1', 'berhasil'),
+(111, 'mal', '2018-08-01 22:41:20', '::1', 'berhasil'),
+(112, 'frontoffice', '2018-08-01 22:42:16', '::1', 'berhasil'),
+(113, 'mal', '2018-08-01 22:49:52', '::1', 'berhasil'),
+(114, 'frontoffice', '2018-08-02 00:11:57', '::1', 'berhasil'),
+(115, 'mal', '2018-08-02 00:12:32', '::1', 'berhasil'),
+(116, 'frontoffice', '2018-08-02 00:49:23', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -326,6 +335,30 @@ INSERT INTO `login` (`username`, `password`, `email`, `level`) VALUES
 ('mal', 'mal', 'mal@mal.com', 4),
 ('user001', 'user001', 'user@gmaiil.com', 4),
 ('wisnu', '12345', 'wisnuwinz@gmail.com', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pembatalan`
+--
+
+CREATE TABLE `pembatalan` (
+  `kode_pembatalan` int(11) NOT NULL,
+  `kode_pendaftaran` int(11) NOT NULL,
+  `metode_pembatalan` int(11) NOT NULL,
+  `pewaris` varchar(100) NOT NULL,
+  `status_pembatalan` int(11) NOT NULL,
+  `alasan_pembatalan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembatalan`
+--
+
+INSERT INTO `pembatalan` (`kode_pembatalan`, `kode_pendaftaran`, `metode_pembatalan`, `pewaris`, `status_pembatalan`, `alasan_pembatalan`) VALUES
+(1, 20, 1, '0', 0, 'jamaah sakit dan tidak bisa melanjutkan umroh'),
+(2, 18, 1, '0', 1, 'saya perlu uang nya untuk kebutuhan lain yang sangat amat mendesak'),
+(3, 17, 2, '18239817298371928739', 0, 'saya berangkat tahun depan aja, sekarang temen saya aja dlu yang umroh karena dia tahun depan mau kerja di luar negri jadi waktunya ga ada lagi');
 
 -- --------------------------------------------------------
 
@@ -484,6 +517,12 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`username`);
 
 --
+-- Indexes for table `pembatalan`
+--
+ALTER TABLE `pembatalan`
+  ADD PRIMARY KEY (`kode_pembatalan`);
+
+--
 -- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
@@ -526,7 +565,12 @@ ALTER TABLE `jadwal_keberangkatan`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+--
+-- AUTO_INCREMENT for table `pembatalan`
+--
+ALTER TABLE `pembatalan`
+  MODIFY `kode_pembatalan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pembayaran`
 --

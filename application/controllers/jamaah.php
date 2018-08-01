@@ -304,6 +304,23 @@
 
         } // end of function pembatalan
 
+        public function pembatalanstatus(){
+
+            $username = $_SESSION['username'];
+
+            $hasil = $this->jamaah_model->ambilpembatalandetail($username);
+            $data['pembatalan'] = $hasil;
+
+            // echo '<pre>';
+            // print_r($hasil);
+            // echo '</pre>';
+
+            $this->load->view('jamaah/header');
+            $this->load->view('jamaah/pembatalanstatus', $data);
+            $this->load->view('front/footer');
+
+        } // end of function pembatalandetail
+
         public function metodepembatalan($kodePendaftaran){
 
             $data['kodependaftaran'] = $kodePendaftaran;
@@ -346,20 +363,290 @@
             }
             else{
                 // ambil variable
-                $setuju = $this->input->post('setuju');
                 $alasan = $this->input->post('alasan');
-                echo $setuju.' '.$alasan;
+                $dataPembatalan = array(
+                    'kode_pendaftaran' => $kodePendaftaran,
+                    'metode_pembatalan' => 1,
+                    'pewaris' => 0,
+                    'alasan_pembatalan' => $alasan
+                );
+
+                $hasil = $this->jamaah_model->tambahPembatalan($dataPembatalan);
+
+                if($hasil){
+                    redirect('jamaah/pembatalan');
+                }
+                
             }
 
         } // end of function metodebatal1
 
         public function metodebatal2($kodePendaftaran){
 
-            $data['kodependaftaran'] = $kodePendaftaran;
+            // set rule form
+            $this->form_validation->set_rules(
+                array(
+                    array(
+                        'field' => 'ktp',
+                        'label' => 'ktp',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'nama',
+                        'label' => 'nama',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'namaayah',
+                        'label' => 'namaayah',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'tempatlahir',
+                        'label' => 'tempatlahir',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'tanggallahir',
+                        'label' => 'tanggallahir',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'kelamin',
+                        'label' => 'kelamin',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'kewarganegaraan',
+                        'label' => 'kewarganegaraan',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'alamat',
+                        'label' => 'alamat',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'kelurahan',
+                        'label' => 'kelurahan',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'kecamatan',
+                        'label' => 'kecamatan',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'kecamatan',
+                        'label' => 'kecamatan',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'propinsi',
+                        'label' => 'propinsi',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'kodepos',
+                        'label' => 'Kode Pos',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'telepon',
+                        'label' => 'telepon',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'hp',
+                        'label' => 'hp',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'pendidikan',
+                        'label' => 'pendidikan',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'pekerjaan',
+                        'label' => 'pekerjaan',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'golongandarah',
+                        'label' => 'golongandarah',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'rambut',
+                        'label' => 'rambut',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'alis',
+                        'label' => 'alis',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'hidung',
+                        'label' => 'hidung',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'tinggi',
+                        'label' => 'tinggi',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'berat',
+                        'label' => 'berat',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'muka',
+                        'label' => 'muka',
+                        'rules' => 'required'
+                    ),
+                    array(
+                        'field' => 'alasan',
+                        'label' => 'Alasan',
+                        'rules' => 'required'
+                    ),
+                )
+            );
 
-            $this->load->view('jamaah/header');
-            $this->load->view('jamaah/metodebatal2', $data);
-            $this->load->view('front/footer');
+            if(empty($_FILES['foto']['name'])){
+                $this->form_validation->set_rules('foto', 'Foto', 'required');
+            }
+
+            $this->form_validation->set_message('required', '%s wajib diisi');
+
+            // jika form tidak valid
+            if(!$this->form_validation->run()){
+                echo '0';
+
+                $data['kodependaftaran'] = $kodePendaftaran;
+
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/metodebatal2', $data);
+                $this->load->view('front/footer');
+
+            }
+            else{
+                echo '1';
+
+                /////////////////////////////////////////////
+                // upload file foto
+                // atur config file
+                $namaFileFoto = '';
+                $config['upload_path'] = './uploads/foto';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_size'] = 500;
+
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+
+                // upload
+                if(!$this->upload->do_upload('foto')){
+
+                    echo $this->upload->display_errors();
+                }
+                else{
+                    $dataFileBuktiPembayaran = $this->upload->data();
+                    $namaFileFoto = $dataFileBuktiPembayaran['file_name'];
+                }
+                ////////////////////////////////////////////
+
+                $username = $_SESSION['username'];
+
+                // ambil value dari semua field
+                $ktp = $this->input->post('ktp');
+                $nama = $this->input->post('nama');
+                $namaayah = $this->input->post('namaayah');
+                $tempatlahir = $this->input->post('tempatlahir');
+                $tanggallahir = $this->input->post('tanggallahir');
+                $kelamin = $this->input->post('kelamin');
+                $kewarganegaraan = $this->input->post('kewarganegaraan');
+                $alamat = $this->input->post('alamat');
+                $kelurahan = $this->input->post('kelurahan');
+                $kecamatan = $this->input->post('kecamatan');
+                $kabupaten = $this->input->post('kabupaten');
+                $propinsi = $this->input->post('propinsi');
+                $kodepos = $this->input->post('kodepos');
+                $telepon = $this->input->post('telepon');
+                $hp = $this->input->post('hp');
+                $pendidikan = $this->input->post('pendidikan');
+                $pekerjaan = $this->input->post('pekerjaan');
+                $pengalamanhaji = $this->input->post('pengalamanhaji');
+                $namamahram = $this->input->post('namamahram');
+                $hubunganmahram = $this->input->post('hubunganmahram');
+                $nomorpendaftarmahram = $this->input->post('nomorpendaftarmahram');
+                $golongandarah = $this->input->post('golongandarah');
+                $rambut = $this->input->post('rambut');
+                $alis = $this->input->post('alis');
+                $hidung = $this->input->post('hidung');
+                $tinggi = $this->input->post('tinggi');
+                $berat = $this->input->post('berat');
+                $muka = $this->input->post('muka');
+                $paket = $this->input->post('paket');
+                $metodepembayaran = $this->input->post('metodepembayaran');
+                $alasan = $this->input->post('alasan');
+
+                // masukin ke array
+                $dataPendaftar = array(
+                    'username' => $username,
+                    'ktp' => $ktp,
+                    'nama' => $nama,
+                    'namaayah' => $namaayah,
+                    'tempatlahir' => $tempatlahir,
+                    'tanggallahir' => $tanggallahir,
+                    'kelamin' => $kelamin,
+                    'kewarganegaraan' => $kewarganegaraan,
+                    'alamat' => $alamat,
+                    'kelurahan' => $kelurahan,
+                    'kecamatan' => $kecamatan,
+                    'kabupaten' => $kabupaten,
+                    'propinsi' => $propinsi,
+                    'telepon' => $telepon,
+                    'hp' => $hp,
+                    'pendidikan' => $pendidikan,
+                    'pekerjaan' => $pekerjaan,
+                    'pengalamanhaji' => $pengalamanhaji,
+                    'namamahram' => $namamahram,
+                    'hubunganmahram' => $hubunganmahram,
+                    'nomorpendaftarmahram' => $nomorpendaftarmahram,
+                    'golongandarah' => $golongandarah,
+                    'rambut' => $rambut,
+                    'alis' => $alis,
+                    'hidung' => $hidung,
+                    'tinggi' => $tinggi,
+                    'berat' => $berat,
+                    'muka' => $muka,
+                    'paket' => $paket,
+                    'metodepembayaran' => $metodepembayaran,
+                    'foto' => $namaFileFoto
+                );
+
+                // echo '<pre>';
+                // print_r($dataPendaftar);
+                // echo '</pre>';
+
+                $alasan = $this->input->post('alasan');
+                $dataPembatalan = array(
+                    'kode_pendaftaran' => $kodePendaftaran,
+                    'metode_pembatalan' => 2,
+                    'pewaris' => $ktp,
+                    'alasan_pembatalan' => $alasan
+                );
+                // input ke pembatalan
+                $hasil = $this->jamaah_model->tambahPembatalan($dataPembatalan);
+
+                // input ke jamaah
+                $hasil = $this->jamaah_model->tambahJamaah($dataPendaftar);
+
+               
+                redirect('jamaah/pembatalanstatus');
+                
+            }
 
         } // end of function metodebatal2
 

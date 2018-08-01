@@ -97,4 +97,49 @@
 
         } // end of function updateStatusBerkas
 
+        public function ambilPembatalan($kodePembatalan=null){
+
+            $hasil = array();
+
+            $this->db->select('*');
+            $this->db->from('pembatalan');
+
+            // jika ada kode pembatalan
+            if($kodePembatalan){
+                $this->db->where('kode_pembatalan', $kodePembatalan);
+                $hasil = $this->db->get()->row_array();
+            }
+            // jika tidak ada kode pembatalan
+            else{
+                $hasil = $this->db->get()->result_array();
+            }
+            
+            return $hasil;
+
+        } // end of function ambilPembatalan
+
+        public function ambilPembatalanJoin($kodePembatalan){
+
+            $this->db->select('*');
+            $this->db->from('pembatalan');
+            $this->db->join('pendaftaran', 'pendaftaran.kode_pendaftaran = pembatalan.kode_pendaftaran');
+            $this->db->join('jamaah', 'jamaah.ktp = pendaftaran.ktp');
+            $this->db->join('pembayaran', 'pembayaran.kode_pendaftaran = pendaftaran.kode_pendaftaran');
+            $this->db->where('pembatalan.kode_pembatalan', $kodePembatalan);
+            $hasil = $this->db->get()->result_array();
+
+            return $hasil;
+
+        } // end of function ambilPembatalanJoin
+
+        public function pembatalanrRefundApprove($kodePembatalan){
+
+            $this->db->set('status_pembatalan', 1);
+            $this->db->where('kode_pembatalan', $kodePembatalan);
+            $this->db->update('pembatalan');
+
+            return true;
+
+        }
+
     }// => end of class
