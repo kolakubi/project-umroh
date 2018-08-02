@@ -19,17 +19,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+            <tr>
                     <td>Hotel:</td>
                     <td><?php echo $paket['hotel'] ?></td>
                 </tr>
                 <tr>
                     <td>Lama:</td>
-                    <td><?php echo $paket['hari'] ?></td>
+                    <td><?php echo $paket['hari'] ?> hari</td>
                 </tr>
                 <tr>
                     <td>Harga</td>
                     <td><?php echo 'Rp'.number_format($paket['harga'], 0, ',', '.') ?></td>
+                </tr>
+                <tr>
+                    <td>Kuota:</td>
+                    <td><?php echo $paket['kuota'] ?></td>
+                </tr>
+                <tr>
+                    <td valign="center">Keberangkatan</td>
+                    <td>Oktober<br>November<br>Desember</td>
                 </tr>
             </tbody>
         </table>

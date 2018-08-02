@@ -13,14 +13,26 @@
 
         } // => end of function ambilDataPendaftaran
 
-        public function ambilDataPendaftaran(){
+        public function ambilDataPendaftaran($kodePendaftaran=null){
+
+            $hasil = array();
 
             $this->db->select('*');
             $this->db->from('pendaftaran');
             $this->db->join('jamaah', 'jamaah.ktp = pendaftaran.ktp');
             $this->db->join('produk', 'produk.kode_produk = pendaftaran.kode_produk');
+            $this->db->join('produk_detail', 'produk_detail.kode_produk = produk.kode_produk');
             $this->db->order_by('pendaftaran.kode_pendaftaran', 'ASC');
-            $hasil = $this->db->get()->result_array();
+
+            // jika ada Kode Pembayaran
+            if($kodePendaftaran){
+                $this->db->where('pendaftaran.kode_pendaftaran', $kodePendaftaran);
+                $hasil = $this->db->get()->row_array();
+            }
+            else{
+                $hasil = $this->db->get()->result_array();
+            }
+            
             return $hasil;
 
         } // => end of function ambilDataPendaftaran
@@ -132,11 +144,31 @@
 
         } // end of function ambilPembatalanJoin
 
-        public function pembatalanrRefundApprove($kodePembatalan){
+        public function pembatalanApprove($kodePembatalan){
 
             $this->db->set('status_pembatalan', 1);
             $this->db->where('kode_pembatalan', $kodePembatalan);
             $this->db->update('pembatalan');
+
+            return true;
+
+        } // end of pembatalanApprove
+
+        //////////////////////////////////////////////////
+        //////////////////////////////////////////////////
+        // j A D W A L
+
+        public function tambahJadwal($dataKeberangkatan, $dataProdukDetail){
+
+            // update jadwal
+            $this->db->set(array('tanggal_berangkat' => $dataKeberangkatan['tanggal_berangkat']));
+            $this->db->where('kode_pendaftaran', $dataKeberangkatan['kode_pendaftaran']);
+            $this->db->update('jadwal_keberangkatan');
+
+            // update kuota
+            $this->db->set(array('kuota' => $dataProdukDetail['kuota']));
+            $this->db->where('kode_produk', $dataProdukDetail['kode_produk']);
+            $this->db->update('produk_detail');
 
             return true;
 

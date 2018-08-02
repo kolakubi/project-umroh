@@ -28,7 +28,7 @@
                         <!-- action -->
                         <td>
                             <?php if(!empty($daftar['ket_status_berkas']) && !empty($daftar['ket_status_pembayaran'])) : ?>
-                                <a class="btn btn-info">Tentukan Jadwal</a>
+                                <a class="btn btn-info" href="<?php echo base_url() ?>frontoffice/jadwaltambah/<?php echo $daftar['kode_pendaftaran'] ?>">Tentukan Jadwal</a>
                             <?php else : ?>
                                 <a class="btn btn-danger">Berkas Belum Lengkap</a>
                             <?php endif ?>

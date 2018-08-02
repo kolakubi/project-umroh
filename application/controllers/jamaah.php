@@ -522,7 +522,6 @@
 
             // jika form tidak valid
             if(!$this->form_validation->run()){
-                echo '0';
 
                 $data['kodependaftaran'] = $kodePendaftaran;
 

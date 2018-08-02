@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2018 at 07:49 PM
+-- Generation Time: Aug 02, 2018 at 07:49 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -96,7 +96,10 @@ INSERT INTO `berkas_upload` (`kode_upload`, `kode_berkas`, `kode_pendaftaran`, `
 (50, 'berkas003', 15, 'jiraiya31.jpg'),
 (51, 'berkas001', 18, 'tobirama11.jpg'),
 (52, 'berkas002', 18, 'tobirama2.png'),
-(53, 'berkas003', 18, 'tobirama3.jpg');
+(53, 'berkas003', 18, 'tobirama3.jpg'),
+(54, 'berkas001', 20, 'back-to-school2.jpg'),
+(55, 'berkas002', 20, 'jiraiya32.jpg'),
+(56, 'berkas003', 20, 'kakashi3.jpg');
 
 -- --------------------------------------------------------
 
@@ -115,7 +118,7 @@ CREATE TABLE `jadwal_keberangkatan` (
 --
 
 INSERT INTO `jadwal_keberangkatan` (`kode_jadwal_keberangkatan`, `kode_pendaftaran`, `tanggal_berangkat`) VALUES
-(1, 20, '0000-00-00');
+(1, 20, '2018-12-15');
 
 -- --------------------------------------------------------
 
@@ -308,7 +311,14 @@ INSERT INTO `log` (`kode_log`, `username`, `tanggal`, `ip`, `status`) VALUES
 (113, 'mal', '2018-08-01 22:49:52', '::1', 'berhasil'),
 (114, 'frontoffice', '2018-08-02 00:11:57', '::1', 'berhasil'),
 (115, 'mal', '2018-08-02 00:12:32', '::1', 'berhasil'),
-(116, 'frontoffice', '2018-08-02 00:49:23', '::1', 'berhasil');
+(116, 'frontoffice', '2018-08-02 00:49:23', '::1', 'berhasil'),
+(117, 'frontoffice', '2018-08-02 22:29:56', '::1', 'berhasil'),
+(118, 'mal', '2018-08-03 00:40:21', '::1', 'berhasil'),
+(119, 'frontoffice', '2018-08-03 00:41:03', '::1', 'berhasil'),
+(120, 'mal', '2018-08-03 00:41:30', '::1', 'berhasil'),
+(121, 'keuangan', '2018-08-03 00:42:07', '::1', 'berhasil'),
+(122, 'frontoffice', '2018-08-03 00:42:44', '::1', 'berhasil'),
+(123, 'mal', '2018-08-03 00:42:59', '::1', 'berhasil');
 
 -- --------------------------------------------------------
 
@@ -358,7 +368,7 @@ CREATE TABLE `pembatalan` (
 INSERT INTO `pembatalan` (`kode_pembatalan`, `kode_pendaftaran`, `metode_pembatalan`, `pewaris`, `status_pembatalan`, `alasan_pembatalan`) VALUES
 (1, 20, 1, '0', 0, 'jamaah sakit dan tidak bisa melanjutkan umroh'),
 (2, 18, 1, '0', 1, 'saya perlu uang nya untuk kebutuhan lain yang sangat amat mendesak'),
-(3, 17, 2, '18239817298371928739', 0, 'saya berangkat tahun depan aja, sekarang temen saya aja dlu yang umroh karena dia tahun depan mau kerja di luar negri jadi waktunya ga ada lagi');
+(3, 17, 2, '18239817298371928739', 1, 'saya berangkat tahun depan aja, sekarang temen saya aja dlu yang umroh karena dia tahun depan mau kerja di luar negri jadi waktunya ga ada lagi');
 
 -- --------------------------------------------------------
 
@@ -391,7 +401,7 @@ INSERT INTO `pembayaran` (`kode_pembayaran`, `kode_pendaftaran`, `status_pembaya
 (14, 17, '1', '2018-07-29 23:49:27', 250000000, 'logo-bank-mandiri.png', 'full'),
 (15, 18, '1', '2018-07-30 00:04:50', 5000000, 'tobirama1.jpg', 'dp'),
 (16, 18, '1', '2018-07-30 00:04:50', 26200000, 'tobirama21.png', 'sisa'),
-(17, 20, '0', '2018-07-31 23:05:17', 31200000, '', 'full');
+(17, 20, '1', '2018-07-31 23:05:17', 31200000, 'logo-bank-mandiri1.png', 'full');
 
 -- --------------------------------------------------------
 
@@ -428,7 +438,7 @@ INSERT INTO `pendaftaran` (`kode_pendaftaran`, `ktp`, `kode_produk`, `status_ber
 (17, '55555555555555555555', 'haji001', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'Lunas', 'Lunas', '2018-07-29 23:49:27', 'mal', 'full'),
 (18, '12000000000000000000', 'umrah003', 'valid', 'valid', 'valid', 'valid', 'Lunas', 'Lunas', '2018-07-30 00:04:49', 'mal', 'dp'),
 (19, '99999999999999999999', 'umrah003', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'tidak ada berkas', '', '2018-07-31 23:04:48', 'mal', 'full'),
-(20, '99999999999999999999', 'umrah003', 'tidak ada berkas', 'tidak ada berkas', 'tidak ada berkas', '', 'tidak ada berkas', '', '2018-07-31 23:05:17', 'mal', 'full');
+(20, '99999999999999999999', 'umrah003', 'valid', 'valid', 'valid', 'valid', 'Lunas', 'Lunas', '2018-07-31 23:05:17', 'mal', 'full');
 
 -- --------------------------------------------------------
 
@@ -473,7 +483,7 @@ CREATE TABLE `produk_detail` (
 INSERT INTO `produk_detail` (`kode_produk_detail`, `kode_produk`, `harga`, `hotel`, `hari`, `kuota`) VALUES
 (1, 'umroh001', 24900000, 'Bintang 5', 9, 500),
 (2, 'umrah002', 25500000, 'Bintang 5', 9, 500),
-(3, 'umrah003', 31200000, 'Bintang 5', 9, 500),
+(3, 'umrah003', 31200000, 'Bintang 5', 9, 498),
 (4, 'haji001', 250000000, 'Bintang 5', 20, 200);
 
 --
@@ -555,7 +565,7 @@ ALTER TABLE `produk_detail`
 -- AUTO_INCREMENT for table `berkas_upload`
 --
 ALTER TABLE `berkas_upload`
-  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `kode_upload` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `jadwal_keberangkatan`
 --
@@ -565,7 +575,7 @@ ALTER TABLE `jadwal_keberangkatan`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `kode_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `pembatalan`
 --
