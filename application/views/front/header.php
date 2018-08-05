@@ -51,9 +51,10 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="<?php echo base_url() ?>home/paketshafa">Shafa</a></li>
-                <li><a href="<?php echo base_url() ?>home/paketmarwah">Marwah</a></li>
-                <li><a href="<?php echo base_url() ?>home/paketzamzam">Zam Zam</a></li>
+                <li><a href="<?php echo base_url() ?>home/paketzamzam">Diamond</a></li>
+                <li><a href="<?php echo base_url() ?>home/paketshafa">Gold</a></li>
+                <li><a href="<?php echo base_url() ?>home/paketmarwah">Silver</a></li>
+                
               </ul>
             </li> <!-- end of dropdown paket umroh -->
             <li><a href="<?php echo base_url() ?>home/pakethajiplus">Paket Haji Plus</a></li>

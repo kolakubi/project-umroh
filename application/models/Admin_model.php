@@ -25,7 +25,7 @@
 
             return $hasil;
 
-        }
+        } // end of funciton ambilDataProduk
 
         public function produkUbah($dataUbahProduk){
 
@@ -52,6 +52,93 @@
 
             return true;
 
-        }
+        } // end of function produkUbah
+
+        public function ambilDataAkun($username=null){
+
+            $hasil = array();
+
+            $this->db->select('*');
+            $this->db->from('login');
+            // jika ada username
+            if($username){
+                $this->db->where('username', $username);
+                $hasil = $this->db->get()->row_array();
+            }
+            else{
+                $hasil = $this->db->get()->result_array();
+            }
+
+            return $hasil;
+
+        } // end of function ambilLogin
+
+        public function cekUsername($username){
+
+            // cek jika username ada
+            $this->db->select('*');
+            $this->db->from('login');
+            $this->db->where('username', $username);
+            $hasil = $this->db->get()->row_array();
+
+            // jika ada
+            if($hasil){
+                return true;
+            }
+
+            // jika tdk ada
+            return false;
+
+        } // end of function cekUsername
+
+        public function tambahAkun($dataDaftarAkun){
+
+            // cek ketersediaan username
+            // jika ada
+            if(!$this->cekUsername($dataDaftarAkun['username'])){
+
+                // input data ke db
+                $this->db->insert('login', $dataDaftarAkun);
+                return true;
+            }
+
+            return false;
+
+        } // end of funcrion akun tambah
+
+        public function akunUbah($dataUbahakun){
+
+            // ubah table produk
+            $this->db->set(
+                array(
+                    'password' => $dataUbahakun['password'],
+                    'email' => $dataUbahakun['email']
+                )
+            );
+            $this->db->where('username', $dataUbahakun['username']);
+            $this->db->update('login');
+
+            return true;
+
+        } // end of function akunUbah
+
+        public function ambilDataJamaah($ktp=null){
+
+            $hasil = array();
+
+            $this->db->select('*');
+            $this->db->from('jamaah');
+            // jika ada ktp
+            if($ktp){
+                $this->db->where('ktp', $ktp);
+                $hasil = $this->db->get()->row_array();
+            }
+            else{
+                $hasil = $this->db->get()->result_array();
+            }
+
+            return $hasil;
+
+        } // end of function ambilDataJamaah
 
     }

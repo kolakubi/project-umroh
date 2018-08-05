@@ -295,4 +295,12 @@
 
         } // end of function pembatalanWaris
 
+        public function pembatalanWarisApprove($kodePembatalan){
+
+            $this->frontoffice_model->pembatalanWarisApprove($kodePembatalan);
+
+            redirect('frontoffice/pembatalan');
+
+        }
+
     }

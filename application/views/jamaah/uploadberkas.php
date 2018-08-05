@@ -19,7 +19,7 @@
             <!-- KTP -->
             <!-- <?php if($status_ktp != 'valid') : ?> -->
                 <div class="form-group">
-                    <label style="color: #222">KTP: </label>
+                    <label style="color: #222">KTP atau Akta Lahir: </label>
                     <input type="file" name="ktp" class="form-control">
                     <div style="background-color: #f44242; text-align: center;">
                         <span style="color: white;"><?php echo form_error('ktp') ?></span>

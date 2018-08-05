@@ -120,7 +120,7 @@
         <!-- button -->
         <div class="row">
             <div class="col-xs-6">
-                <a href="<?php echo base_url() ?>frontoffice/pembatalanapprove/<?php echo $pembatalan[0]['kode_pembatalan'] ?>" class="btn btn-info btn-block">Approve</a>
+                <a href="<?php echo base_url() ?>frontoffice/pembatalanwarisapprove/<?php echo $pembatalan[0]['kode_pembatalan'] ?>" class="btn btn-info btn-block">Approve</a>
             </div>
             <div class="col-xs-6">
                 <a href="<?php echo base_url() ?>frontoffice/pembatalan" class="btn btn-warning btn-block">Kembali</a>

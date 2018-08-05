@@ -12,13 +12,13 @@
             </p>
             <ul>
                 <li>
-                    <p>Uang muka tidak kembali</p>
+                    <p>Jamaah mendapat denda sebesar 25 % dari harga paket apabila hari melakukan pembatalan sekitar hari pendaftaran.</p>
                 </li>
                 <li>
-                    <p>Pembayaran pokok akan kembali 75%</p>
+                    <p>Jamaah mendapat denda sebesar 50 % dari harga paket apabila hari melakukan pembatalan sebulan sebelum hari keberangkatan.</p>
                 </li>
                 <li>
-                    <p>Proses pembatalan tidak bisa di cancel</p>
+                    <p>Jamaah mendapat denda sebesar 75 % dari harga paket apabila hari melakukan pembatalan seminggu sebelum hari keberangkatan.</p>
                 </li>
                 <li>
                     <p>Pembatalan akan di review terlebih dahulu oleh petugas kami</p>

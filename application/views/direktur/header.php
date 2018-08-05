@@ -36,17 +36,17 @@
             <span class="icon-bar"></span>
           </button>
           <!-- logo -->
-          <a class="navbar-brand" href="<?php echo base_url() ?>">
+          <a class="navbar-brand" href="<?php echo base_url() ?>/direktur">
             <img alt="brand" src="<?php echo base_url() ?>asset/image/logo.png" style="max-width: 100px; margin-top: -10px;">
           </a>
         </div> <!-- end of nav-header -->
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <!-- <ul class="nav navbar-nav">
-            <li><a href="<?php echo base_url() ?>frontoffice">Pendaftaran</a></li>
-            <li><a href="<?php echo base_url() ?>frontoffice/berkas">Berkas</a></li>
-            <li><a href="<?php echo base_url() ?>frontoffice/jadwal">Jadwal</a></li>
-          </ul> -->
+          <ul class="nav navbar-nav">
+            <li><a href="<?php echo base_url() ?>direktur/pendaftaran">Pendaftaran</a></li>
+            <li><a href="<?php echo base_url() ?>direktur/pembayaran">Pembayaran</a></li>
+            <li><a href="<?php echo base_url() ?>direktur/keberangkatan">Keberangkatan</a></li>
+          </ul>
 
           <!-- jika blm login, tampilin tombol login -->
           <?php if(empty($_SESSION['username'])) : ?>

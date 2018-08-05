@@ -14,13 +14,13 @@
         </a>
     </div>
     <div class="col-xs-6 col-md-3">
-        <a href="<?php echo base_url() ?>asset/image/gallery-3.jpg" target="_blank">
-            <img src="<?php echo base_url() ?>asset/image/gallery-3.jpg" alt="" class="img img-responsive">
+        <a href="<?php echo base_url() ?>asset/image/gallery-3.png" target="_blank">
+            <img src="<?php echo base_url() ?>asset/image/gallery-3.png" alt="" class="img img-responsive">
         </a>
     </div>
     <div class="col-xs-6 col-md-3">
-        <a href="<?php echo base_url() ?>asset/image/gallery-4.jpg" target="_blank">
-            <img src="<?php echo base_url() ?>asset/image/gallery-4.jpg" alt="" class="img img-responsive">
+        <a href="<?php echo base_url() ?>asset/image/gallery-4.png" target="_blank">
+            <img src="<?php echo base_url() ?>asset/image/gallery-4.png" alt="" class="img img-responsive">
         </a>
     </div>
 </div>
@@ -44,8 +44,8 @@
         </a>
     </div>
     <div class="col-xs-6 col-md-3">
-        <a href="<?php echo base_url() ?>asset/image/gallery-8.jpg" target="_blank">
-            <img src="<?php echo base_url() ?>asset/image/gallery-8.jpg" alt="" class="img img-responsive">
+        <a href="<?php echo base_url() ?>asset/image/gallery-8.png" target="_blank">
+            <img src="<?php echo base_url() ?>asset/image/gallery-8.png" alt="" class="img img-responsive">
         </a>
     </div>
 </div>

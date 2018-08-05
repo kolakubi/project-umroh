@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
           </button>
           <!-- logo -->
-          <a class="navbar-brand" href="<?php echo base_url() ?>">
+          <a class="navbar-brand" href="<?php echo base_url() ?>keuangan">
             <img alt="brand" src="<?php echo base_url() ?>asset/image/logo.png" style="max-width: 100px; margin-top: -10px;">
           </a>
         </div> <!-- end of nav-header -->

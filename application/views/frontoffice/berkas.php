@@ -28,7 +28,7 @@
                     <td><?php echo $daftar['kode_pendaftaran'] ?></td>
                     <td><?php echo $daftar['ktp'] ?></td>
                     <td><?php echo $daftar['nama'] ?></td>
-                    <td class="<?php if(empty($daftar['ket_status_berkas'])){echo 'danger';}else{echo 'success';} ?>"><?php echo $daftar['ket_status_berkas'] ?></td>
+                    <td class="<?php if(empty($daftar['ket_status_berkas'])){echo 'danger';}else{echo 'success';} ?>"><?php if($daftar['ket_status_berkas'] == null){echo 'belum valid';}else{echo $daftar['ket_status_berkas'];} ?></td>
                     <td>
                         <a class="btn btn-info" href="<?php echo base_url() ?>frontoffice/berkasvalidasi/<?php echo $daftar['kode_pendaftaran'] ?>">Validasi Berkas</a>
                     </td>

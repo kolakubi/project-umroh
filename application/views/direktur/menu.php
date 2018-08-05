@@ -5,16 +5,16 @@
 <div class="row">
     <!-- jamaah -->
     <div class="col-xs-6 col-md-4">
-        <a href="">
+        <a href="<?php echo base_url() ?>direktur/pendaftaran">
             <img src="<?php echo base_url() ?>asset/image/jamaah.png" alt="" class="img img-responsive" style="margin: 0 auto">
             <br>
-            <p class="text-center"><strong>Jamaah</strong></p>
+            <p class="text-center"><strong>Pendaftaran</strong></p>
         </a>
     </div>
 
     <!-- pembayaran -->
     <div class="col-xs-6 col-md-4">
-        <a href="">
+        <a href="<?php echo base_url() ?>direktur/pembayaran">
             <img src="<?php echo base_url() ?>asset/image/pembayaran.png" alt="" class="img img-responsive" style="margin: 0 auto">
             <br>
             <p class="text-center"><strong>Pembayaran</strong></p>
@@ -23,7 +23,7 @@
 
     <!-- keberangkatan -->
     <div class="col-xs-6 col-md-4">
-        <a href="">
+        <a href="<?php echo base_url() ?>direktur/keberangkatan">
             <img src="<?php echo base_url() ?>asset/image/keberangkatan.png" alt="" class="img img-responsive" style="margin: 0 auto">
             <br>
             <p class="text-center"><strong>Keberangkatan</strong></p>

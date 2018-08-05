@@ -4,13 +4,15 @@
 <div class="row">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
         <p class="text-center">
-            <img src="<?php echo base_url() ?>asset/image/paket-shafa.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
+            <img src="<?php echo base_url() ?>asset/image/kabah.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
         </p>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <!-- pembuka -->
+        <p class="text-center">Paket dengan akomodasi Hotel Bintang 3</p>
         <!-- rincian -->
         <table class="table table-bordered table-responsive table-striped">
             <thead>
@@ -19,9 +21,20 @@
                 </tr>
             </thead>
             <tbody>
-            <tr>
+                 <tr>
                     <td>Hotel:</td>
-                    <td><?php echo $paket['hotel'] ?></td>
+                    <td>
+                        <?php echo $paket['hotel'] ?>
+                        <br>
+                        <ul>
+                            <li>Makkah : Hanin Tower (100m) ***</li>
+                            <li>Madinah : Al Mukhtara International (100m) ***</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pesawat:</td>
+                    <td>Garuda, Lion Air, Qatar air, Emirates, Etihad</td>
                 </tr>
                 <tr>
                     <td>Lama:</td>

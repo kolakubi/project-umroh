@@ -154,6 +154,26 @@
 
         } // end of pembatalanApprove
 
+        public function pembatalanWarisApprove($kodePembatalan, $ktpAhliWaris){
+
+            $hasil = $this->ambilPembatalanJoin($kodePembatalan);
+            $ktpAhliWaris = $hasil[0]['pewaris'];
+            $kodePendaftaran = $hasil[0]['kode_pendaftaran'];
+
+            // update status pembatalan
+            $this->db->set('status_pembatalan', 1);
+            $this->db->where('kode_pembatalan', $kodePembatalan);
+            $this->db->update('pembatalan');
+
+            // update status pendaftaran
+            $this->db->set('ktp', $ktpAhliWaris);
+            $this->db->where('kode_pendaftaran', $kodePendaftaran);
+            $this->db->update('pendaftaran');
+
+            return true;
+
+        } // end of pembatalanApprove
+
         //////////////////////////////////////////////////
         //////////////////////////////////////////////////
         // j A D W A L

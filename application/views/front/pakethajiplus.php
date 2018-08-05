@@ -4,13 +4,18 @@
 <div class="row">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
         <p class="text-center">
-            <img src="<?php echo base_url() ?>asset/image/paket-shafa.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
+            <img src="<?php echo base_url() ?>asset/image/kabah.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
         </p>
     </div>
 </div>
 
 <div class="row">
-    <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <!-- pembuka -->
+        <p class="text-justify">Haji Khusus atau yang dikenal dimasyarakat sebagai ONH plus, adalah perjalanan ibadah haji yang segala sesuatunya ditangani oleh Travel atau Penyelenggara Ibadah Haji Khusus (PIHK) yang telah mempunyai izin dari Kementrian Agama RI.
+        </p>
+        <p class="text-justify">Alhamdulillah, Helutrans Al Haadi Ziarah Tour (izin haji nomor D 689), sudah sejak tahun 2000 ditunjuk sebagai PIHK dan mendapatkan Izin Haji dari Kemetrian Agama
+        </p>
         <!-- rincian -->
         <table class="table table-bordered table-responsive table-striped">
             <thead>
@@ -21,7 +26,18 @@
             <tbody>
                 <tr>
                     <td>Hotel:</td>
-                    <td><?php echo $paket['hotel'] ?></td>
+                    <td>
+                        <?php echo $paket['hotel'] ?>
+                        <br>
+                        <ul>
+                            <li>Makkah : Swisshotel (50m) *****</li>
+                            <li>Madinah : Movenpick (50m) *****</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Pesawat:</td>
+                    <td>Garuda</td>
                 </tr>
                 <tr>
                     <td>Lama:</td>

@@ -41,7 +41,7 @@
                         <td><?php echo $pembayaran['invoice'] ?></td>
 
                         <!-- status -->
-                        <td>
+                        <td class="<?php if($pembayaran['status_pembayaran']){echo 'success';}else{echo 'danger';} ?>">
                             <?php if($pembayaran['status_pembayaran']) : ?>
                                 Lunas
                             <?php else : ?>

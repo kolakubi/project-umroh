@@ -37,9 +37,19 @@
         <p class="text-center">Wisnu Travel Umroh memiliki beberapa pilihan Paket Umroh Regular 9 Hari antara lain: Paket Umroh Shafa, Paket Umroh Marwah dan Paket Umroh Zamzam</p>
         <br><br><br>
     </div>
+    <!-- paket Zam Zam -->
+    <div class="col-xs-12 col-sm-4 col-md-4">
+        <h4 class="text-center text-uppercase"><strong>Paket Umroh Diamond</strong></h4>
+        <p class="text-center">
+            <img src="<?php echo base_url() ?>asset/image/paket-zam-zam.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
+        </p>
+        <p class="text-center">
+            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>home/paketzamzam">Lihat Detail</a>
+        </p>
+    </div>
     <!-- paket shafa -->
     <div class="col-xs-12 col-sm-4 col-md-4">
-        <h4 class="text-center text-uppercase">Paket Umroh Shafa</h4>
+        <h4 class="text-center text-uppercase"><strong>Paket Umroh Gold</strong></h4>
         <p class="text-center">
             <img src="<?php echo base_url() ?>asset/image/paket-shafa.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
         </p>
@@ -49,7 +59,7 @@
     </div>
     <!-- paket marwah -->
     <div class="col-xs-12 col-sm-4 col-md-4">
-        <h4 class="text-center text-uppercase">Paket Umroh Marwah</h4>
+        <h4 class="text-center text-uppercase"><strong>Paket Umroh Silve</strong>r</h4>
         <p class="text-center">
             <img src="<?php echo base_url() ?>asset/image/paket-marwah.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
         </p>
@@ -57,16 +67,7 @@
             <a class="btn btn-md btn-info" href="<?php echo base_url() ?>home/paketmarwah">Lihat Detail</a>
         </p>
     </div>
-    <!-- paket Zam Zam -->
-    <div class="col-xs-12 col-sm-4 col-md-4">
-        <h4 class="text-center text-uppercase">Paket Umroh Zam Zam</h4>
-        <p class="text-center">
-            <img src="<?php echo base_url() ?>asset/image/paket-zam-zam.jpg" alt="paket umroh shafa" class="img img-responsive" style="margin: 0 auto">
-        </p>
-        <p class="text-center">
-            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>home/paketzamzam">Lihat Detail</a>
-        </p>
-    </div>
+    
 </div>
 
 <!-- paket haji -->
@@ -76,7 +77,7 @@
         <p class="text-right">Tazkia Tours &amp; Travel menerima Pendaftaran Haji Khusus tahun 2018, adapun keberangkatan mengikuti nomor urut porsi Kementerian Agama Republik Indonesia</p>
         <p class="text-right"><strong>DAFTAR SEKARANG</strong> untuk mendapatkan nomor urut porsi lebih awal</p>
         <p class="text-right">
-            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>#">Lihat Detail</a>
+            <a class="btn btn-md btn-info" href="<?php echo base_url() ?>home/pakethajiplus">Lihat Detail</a>
         </p>
         <br><br><br>
     </div>

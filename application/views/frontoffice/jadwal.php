@@ -22,9 +22,9 @@
                     <tr>
                         <td><?php echo $daftar['kode_pendaftaran'] ?></td>
                         <!-- status berkas -->
-                        <td class="<?php if(empty($daftar['ket_status_berkas'])){echo 'danger';}else{echo 'success';} ?>"><?php echo $daftar['ket_status_berkas'] ?></td>
+                        <td class="<?php if(empty($daftar['ket_status_berkas'])){echo 'danger';}else{echo 'success';} ?>"><?php if($daftar['ket_status_berkas']==null){echo 'belum Valid';}else{ echo $daftar['ket_status_berkas'];} ?></td>
                         <!-- status pembayaran -->
-                        <td class="<?php if(empty($daftar['ket_status_pembayaran'])){echo 'danger';}else{echo 'success';} ?>"><?php echo $daftar['ket_status_pembayaran'] ?></td>
+                        <td class="<?php if(empty($daftar['ket_status_pembayaran'])){echo 'danger';}else{echo 'success';} ?>"><?php if($daftar['ket_status_pembayaran']==null){echo 'belum Lunas';}else{ echo $daftar['ket_status_pembayaran'];} ?></td>
                         <!-- action -->
                         <td>
                             <?php if(!empty($daftar['ket_status_berkas']) && !empty($daftar['ket_status_pembayaran'])) : ?>

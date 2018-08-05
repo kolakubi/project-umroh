@@ -5,7 +5,7 @@
 <nav class="navbar navbar-default">
 
   <div class="container-fluid">
-    <p class="navbar-text">Copyright Mal Corp @<?php echo date('Y') ?></p>
+    <p class="navbar-text">Copyright Ahaadi Ziarah @<?php echo date('Y') ?></p>
     <p class="navbar-text">ver 1.2</p>
   </div>
 
