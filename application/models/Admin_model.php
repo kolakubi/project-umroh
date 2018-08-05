@@ -141,4 +141,17 @@
 
         } // end of function ambilDataJamaah
 
+        public function jamaahUbah($dataBaru){
+
+            $ktp = $dataBaru['ktp'];
+            unset($dataBaru['ktp']);
+
+            $this->db->set($dataBaru);
+            $this->db->where('ktp', $ktp);
+            $this->db->update('jamaah');
+
+            return true;
+
+        } // end of function jamaahUbah
+
     }

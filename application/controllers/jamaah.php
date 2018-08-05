@@ -383,7 +383,7 @@
 
         public function metodebatal2($kodePendaftaran){
 
-            // set rule form
+            //set rule form
             $this->form_validation->set_rules(
                 array(
                     array(
@@ -517,18 +517,58 @@
             if(empty($_FILES['foto']['name'])){
                 $this->form_validation->set_rules('foto', 'Foto', 'required');
             }
+            if(empty($_FILES['berkas_waris_ktp']['name'])){
+                $this->form_validation->set_rules('berkas_waris_ktp', 'Document', 'required');
+            }
+            if(empty($_FILES['berkas_waris_kk']['name'])){
+                $this->form_validation->set_rules('berkas_waris_kk', 'Document', 'required');
+            }
+            if(empty($_FILES['berkas_waris_passport']['name'])){
+                $this->form_validation->set_rules('berkas_waris_passport', 'Document', 'required');
+            }
 
             $this->form_validation->set_message('required', '%s wajib diisi');
 
             // jika form tidak valid
-            if(!$this->form_validation->run()){
+          if(!$this->form_validation->run() 
+            && empty($_FILES['foto']['name'])){
 
                 $data['kodependaftaran'] = $kodePendaftaran;
-
+                
                 $this->load->view('jamaah/header');
                 $this->load->view('jamaah/metodebatal2', $data);
                 $this->load->view('front/footer');
+                
+            }
+            else if(!$this->form_validation->run() 
+            && empty($_FILES['berkas_waris_ktp']['name'])){
 
+                $data['kodependaftaran'] = $kodePendaftaran;
+                
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/metodebatal2', $data);
+                $this->load->view('front/footer');
+                
+            }
+            else if(!$this->form_validation->run() 
+            && empty($_FILES['berkas_waris_kk']['name'])){
+
+                $data['kodependaftaran'] = $kodePendaftaran;
+                
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/metodebatal2', $data);
+                $this->load->view('front/footer');
+                
+            }
+            else if(!$this->form_validation->run() 
+            && empty($_FILES['berkas_waris_passport']['name'])){
+
+                $data['kodependaftaran'] = $kodePendaftaran;
+                
+                $this->load->view('jamaah/header');
+                $this->load->view('jamaah/metodebatal2', $data);
+                $this->load->view('front/footer');
+                
             }
             else{
                 echo '1';
@@ -537,14 +577,18 @@
                 // upload file foto
                 // atur config file
                 $namaFileFoto = '';
+                $namaFileKTP = '';
+                $namaFileKK = '';
+                $namaFilePassport = '';
                 $config['upload_path'] = './uploads/foto';
                 $config['allowed_types'] = 'gif|jpg|png';
                 $config['max_size'] = 500;
+                $namaFile = array();
 
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
 
-                // upload
+                // upload foto
                 if(!$this->upload->do_upload('foto')){
 
                     echo $this->upload->display_errors();
@@ -552,8 +596,49 @@
                 else{
                     $dataFileBuktiPembayaran = $this->upload->data();
                     $namaFileFoto = $dataFileBuktiPembayaran['file_name'];
+                    $namaFile['foto'] = $this->upload->data();
+                }
+
+                // upload ktp
+                if(!$this->upload->do_upload('berkas_waris_ktp')){
+
+                    echo $this->upload->display_errors();
+                    return false;
+                }
+                else{
+                    $dataFileBuktiPembayaran = $this->upload->data();
+                    $namaFileKTP = $dataFileBuktiPembayaran['file_name'];
+                    $namaFile['ktp'] = $this->upload->data();
+                }
+
+                // upload kk
+                if(!$this->upload->do_upload('berkas_waris_kk')){
+
+                    echo $this->upload->display_errors();
+                    return false;
+                }
+                else{
+                    $dataFileBuktiPembayaran = $this->upload->data();
+                    $namaFileKK = $dataFileBuktiPembayaran['file_name'];
+                    $namaFile['kk'] = $this->upload->data();
+                }
+
+                // upload passport
+                if(!$this->upload->do_upload('berkas_waris_passport')){
+
+                    echo $this->upload->display_errors();
+                    return false;
+                }
+                else{
+                    $dataFileBuktiPembayaran = $this->upload->data();
+                    $namaFilePassport = $dataFileBuktiPembayaran['file_name'];
+                    $namaFile['passport'] = $this->upload->data();
                 }
                 ////////////////////////////////////////////
+
+                // echo '<pre>';
+                // print_r($namaFile);
+                // echo '</pre>';
 
                 $username = $_SESSION['username'];
 
@@ -634,8 +719,16 @@
                     'kode_pendaftaran' => $kodePendaftaran,
                     'metode_pembatalan' => 2,
                     'pewaris' => $ktp,
-                    'alasan_pembatalan' => $alasan
+                    'alasan_pembatalan' => $alasan,
+                    'berkas_ktp_ahliwaris' => $namaFileKTP,
+                    'berkas_kk_ahliwaris' => $namaFileKK,
+                    'berkas_passport_ahliwaris' => $namaFilePassport
                 );
+
+                // echo '<pre>';
+                // print_r($dataPembatalan);
+                // echo '</pre>';
+
                 // input ke pembatalan
                 $hasil = $this->jamaah_model->tambahPembatalan($dataPembatalan);
 

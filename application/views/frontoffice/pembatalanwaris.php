@@ -101,6 +101,31 @@
         </div>
 
         <!-- status pembayaran -->
+        <p>Berkas:</p>
+        <table class="table table-responsive table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>kTP</th>
+                    <th>KK</th>
+                    <th>Passport</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="<?php echo base_url() ?>uploads/foto/<?php echo $pembatalan[0]['berkas_ktp_ahliwaris'] ?>" target="_blank">Lihat Berkas</a>
+                    </td>
+                    <td>
+                        <a href="<?php echo base_url() ?>uploads/foto/<?php echo $pembatalan[0]['berkas_kk_ahliwaris'] ?>" target="_blank">Lihat Berkas</a>
+                    </td>
+                    <td>
+                        <a href="<?php echo base_url() ?>uploads/foto/<?php echo $pembatalan[0]['berkas_passport_ahliwaris'] ?>" target="_blank">Lihat Berkas</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- status pembayaran -->
         <p>Status Pembayaran:</p>
         <table class="table table-responsive table-striped table-hover">
             <thead>

@@ -1,9 +1,9 @@
 <h1 class="text-center">Jamaah</h1>
 <br><br>
 
-<!-- button tambah -->
+<!-- button tambah
 <a href="<?php echo base_url() ?>admin/jamaahtambah" class="btn btn-info">Tambah Jamaah +</a>
-<br><br>
+<br><br> -->
 
 <!-- table -->
 <div class="row">
@@ -33,7 +33,7 @@
                         <!-- detail -->
                         <a href="<?php echo base_url() ?>admin/jamaahdetail/<?php echo $orang['ktp'] ?>" class="btn btn-info">Detail</a>
                         <!-- ubah -->
-                        <a href="<?php echo base_url() ?>admin/jamaahdetail/<?php echo $orang['ktp'] ?>" class="btn btn-warning">Ubah</a>
+                        <a href="<?php echo base_url() ?>admin/jamaahubah/<?php echo $orang['ktp'] ?>" class="btn btn-warning">Ubah</a>
                     </td>
                 </tr>
                 <?php endforeach ?>
